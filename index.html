@@ -1,30 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>SoulVibe Sanctuary — Verse Rotator</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SoulVibe Sanctuary — Transparent Verse Rotator</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <img src="/mnt/data/Male.png" alt="SoulVibe logo" class="logo">
-      <h1 class="title">SoulVibe Sanctuary — Scripture Rotator</h1>
-      <p class="subtitle">Auto-rotating verses for your livestream — updates every 60 seconds</p>
-    </header>
-
-    <main id="main">
-      <div id="verse-card" class="verse-card">
-        <h2 id="message-title"></h2>
-        <div id="verse-list" class="verse-list"></div>
-      </div>
-    </main>
-
-    <footer class="footer">
-      <p>Made for Gospel Groove Girls • SoulVibe Sanctuary</p>
-    </footer>
+  <div class="center-wrap" aria-live="polite">
+    <div class="message-wrap">
+      <h1 id="message-title" class="message-title">SoulVibe Sanctuary</h1>
+      <p id="verse-line" class="verse-line">Psalm 23:1</p>
+    </div>
   </div>
+
+  <!-- logo image (local path included as requested) -->
+  <img src="/mnt/data/Male.png" alt="logo" class="logo-hidden" aria-hidden="true" />
 
   <script src="script.js"></script>
 </body>

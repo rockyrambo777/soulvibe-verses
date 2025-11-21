@@ -1,12 +1,7 @@
 
-/*
-  script.js - loads verses.json, rotates message sets every 60 seconds.
-  Expects verses.json to be in same folder and to have structure:
-  { "messages": [ { "title": "...", "references": ["Psalm 23:1","John 3:16", ...] }, ... ] }
-*/
-const ROTATE_SECONDS = 60; // user requested 60s rotation
+const ROTATE_SECONDS = 60;
 let messages = [];
-let currentIndex = 0;
+let current = 0;
 
 async function loadMessages(){
   try{
@@ -14,33 +9,35 @@ async function loadMessages(){
     const data = await res.json();
     messages = data.messages || [];
     if(messages.length === 0){
-      document.getElementById('message-title').textContent = 'No verses loaded';
+      document.getElementById('message-title').textContent = 'SoulVibe Sanctuary';
+      document.getElementById('verse-line').textContent = '';
       return;
     }
-    showMessage(0);
-    setInterval(()=>{ nextMessage(); }, ROTATE_SECONDS * 1000);
+    show(0);
+    setInterval(() => { next(); }, ROTATE_SECONDS * 1000);
   }catch(err){
     console.error('Failed to load verses.json', err);
-    document.getElementById('message-title').textContent = 'Failed to load verses.json';
+    document.getElementById('message-title').textContent = 'Failed to load verses';
   }
 }
 
-function showMessage(i){
-  currentIndex = i % messages.length;
-  const msg = messages[currentIndex];
-  document.getElementById('message-title').textContent = msg.title || '';
-  const list = document.getElementById('verse-list');
-  list.innerHTML = '';
-  for(const ref of (msg.references || [])){
-    const el = document.createElement('div');
-    el.className = 'verse-item';
-    el.textContent = ref; // this displays the reference (book chapter:verse). Optionally fetch full text via Bible API.
-    list.appendChild(el);
-  }
+function show(i){
+  current = i % messages.length;
+  const msg = messages[current];
+  const title = msg.title || 'SoulVibe Sanctuary';
+  const verse = (msg.references && msg.references.length) ? msg.references[0] : '';
+  const titleEl = document.getElementById('message-title');
+  const verseEl = document.getElementById('verse-line');
+  // update with fade
+  titleEl.classList.remove('fade');
+  verseEl.classList.remove('fade');
+  void titleEl.offsetWidth;
+  titleEl.textContent = title;
+  verseEl.textContent = verse;
+  titleEl.classList.add('fade');
+  verseEl.classList.add('fade');
 }
 
-function nextMessage(){
-  showMessage(currentIndex + 1);
-}
+function next(){ show(current + 1); }
 
 window.addEventListener('DOMContentLoaded', loadMessages);
