@@ -1,28 +1,2523 @@
 const ROTATE_SECONDS = 60;
-
-const messages = [{"title": "GospelVerse Set 1", "references": ["1 Thessalonians 5:16", "Psalm 46:1", "1 Peter 5:7", "Psalm 34:18", "Ecclesiastes 3:1", "James 4:7", "Titus 2:11", "Matthew 28:20", "Psalm 103:2", "Psalm 91:1"]}, {"title": "GospelVerse Set 2", "references": ["Psalm 34:18", "Matthew 6:33", "Psalm 46:1", "Proverbs 3:5", "1 Thessalonians 5:18", "John 8:12", "Psalm 34:18", "2 Corinthians 12:9", "John 6:35", "Psalm 23:1"]}, {"title": "GospelVerse Set 3", "references": ["John 6:35", "Psalm 121:1", "Romans 6:23", "1 Corinthians 13:4", "2 Peter 1:3", "Romans 6:23", "John 3:16", "John 3:16", "Ephesians 4:32", "Ephesians 6:10"]}, {"title": "GospelVerse Set 4", "references": ["John 6:35", "Proverbs 4:23", "Luke 12:22", "Revelation 3:20", "1 John 1:9", "John 10:10", "Romans 8:38", "Philippians 4:8", "Philippians 2:3", "Romans 15:13"]}, {"title": "GospelVerse Set 5", "references": ["Psalm 121:1", "Isaiah 41:10", "Psalm 119:105", "2 Corinthians 5:17", "Matthew 28:20", "Psalm 119:105", "John 14:27", "1 Peter 5:7", "Colossians 3:23", "Acts 16:31"]}, {"title": "GospelVerse Set 6", "references": ["Acts 16:31", "Proverbs 3:6", "James 1:5", "1 Peter 2:9", "1 Thessalonians 5:18", "Philippians 1:6", "Ephesians 3:20", "Proverbs 4:23", "Ephesians 2:8", "1 John 1:9"]}, {"title": "GospelVerse Set 7", "references": ["Revelation 21:4", "1 Thessalonians 5:16", "John 10:10", "James 4:7", "1 Corinthians 16:14", "Matthew 22:37", "Psalm 119:105", "Psalm 91:1", "Micah 6:8", "James 1:5"]}, {"title": "GospelVerse Set 8", "references": ["Proverbs 3:6", "1 Peter 4:8", "1 Timothy 4:12", "Micah 6:8", "1 Thessalonians 5:18", "2 Timothy 1:7", "Hebrews 11:6", "Isaiah 54:17", "James 1:5", "Galatians 5:22"]}, {"title": "GospelVerse Set 9", "references": ["John 15:5", "James 1:2", "1 Corinthians 10:13", "Titus 2:11", "2 Timothy 1:7", "Psalm 34:18", "Revelation 22:17", "Matthew 6:33", "John 3:16", "Isaiah 41:10"]}, {"title": "GospelVerse Set 10", "references": ["Romans 8:28", "Philippians 4:8", "Mark 11:24", "Psalm 103:2", "Jeremiah 29:11", "1 John 1:9", "Revelation 22:17", "Luke 1:37", "Revelation 3:20", "Philippians 2:3"]}, {"title": "GospelVerse Set 11", "references": ["Psalm 23:4", "Proverbs 18:10", "James 4:7", "Luke 12:22", "James 1:5", "1 Thessalonians 5:16", "Romans 8:28", "Isaiah 40:31", "Isaiah 54:17", "2 Peter 1:3"]}, {"title": "GospelVerse Set 12", "references": ["1 Timothy 4:12", "James 1:2", "Matthew 6:33", "Hebrews 11:1", "Hebrews 11:6", "Colossians 3:12", "Zephaniah 3:17", "1 Thessalonians 5:16", "Philippians 1:6", "1 Corinthians 13:4"]}, {"title": "GospelVerse Set 13", "references": ["Malachi 3:10", "John 8:12", "Matthew 22:37", "Luke 12:22", "Psalm 23:1", "Romans 5:8", "Psalm 23:4", "James 1:12", "1 Timothy 4:12", "Romans 8:38"]}, {"title": "GospelVerse Set 14", "references": ["Lamentations 3:22", "Isaiah 43:2", "1 Timothy 4:12", "1 Peter 4:8", "Matthew 28:20", "Matthew 5:3", "Matthew 11:28", "Malachi 3:10", "Matthew 7:7", "Philippians 4:6"]}, {"title": "GospelVerse Set 15", "references": ["Nahum 1:7", "John 10:10", "James 1:5", "Colossians 3:12", "Psalm 103:2", "Proverbs 3:6", "John 8:12", "Proverbs 4:23", "Proverbs 3:5", "Lamentations 3:22"]}, {"title": "GospelVerse Set 16", "references": ["Revelation 22:17", "1 Thessalonians 5:18", "Isaiah 40:31", "Matthew 6:34", "Romans 12:12", "Psalm 34:18", "Romans 6:23", "2 Corinthians 12:9", "Psalm 119:105", "Psalm 34:18"]}, {"title": "GospelVerse Set 17", "references": ["Matthew 11:28", "Colossians 3:23", "Psalm 119:105", "Hebrews 10:24", "Philippians 2:3", "Matthew 11:28", "Colossians 3:15", "Hebrews 12:1", "Proverbs 3:6", "Philippians 4:6"]}, {"title": "GospelVerse Set 18", "references": ["1 Peter 2:9", "Romans 15:13", "Nahum 1:7", "Mark 11:24", "John 6:35", "Hebrews 13:5", "John 3:16", "Psalm 103:2", "Psalm 103:2", "Jeremiah 17:7"]}, {"title": "GospelVerse Set 19", "references": ["Proverbs 4:23", "Hebrews 12:1", "Revelation 21:4", "John 14:27", "Psalm 27:1", "Romans 6:23", "Philippians 2:3", "Galatians 5:22", "Hebrews 13:5", "Isaiah 26:3"]}, {"title": "GospelVerse Set 20", "references": ["Psalm 103:2", "1 Peter 5:7", "Galatians 5:22", "James 1:12", "Isaiah 26:3", "Philippians 2:3", "John 10:10", "Isaiah 43:2", "Revelation 22:17", "1 Corinthians 16:14"]}, {"title": "GospelVerse Set 21", "references": ["Jude 1:24", "James 1:12", "Ephesians 4:32", "Ephesians 2:8", "Matthew 5:3", "Proverbs 3:6", "2 Timothy 1:7", "Isaiah 43:2", "1 John 1:9", "Revelation 21:4"]}, {"title": "GospelVerse Set 22", "references": ["James 1:5", "Matthew 22:37", "Isaiah 54:17", "Psalm 103:2", "2 Peter 1:3", "Revelation 22:17", "John 10:10", "Proverbs 18:10", "1 Corinthians 13:4", "Zephaniah 3:17"]}, {"title": "GospelVerse Set 23", "references": ["Jude 1:24", "1 Corinthians 10:13", "John 8:12", "Song of Solomon 2:4", "Isaiah 43:2", "1 Corinthians 10:13", "Matthew 6:33", "Ephesians 4:32", "Ephesians 2:8", "2 Peter 1:3"]}, {"title": "GospelVerse Set 24", "references": ["Matthew 28:20", "Hebrews 11:1", "2 Corinthians 12:9", "Hebrews 12:1", "Psalm 119:105", "Romans 12:12", "2 Timothy 3:16", "Galatians 5:22", "2 Corinthians 12:9", "Philippians 4:8"]}, {"title": "GospelVerse Set 25", "references": ["Psalm 37:4", "1 Corinthians 10:13", "Luke 1:37", "1 Peter 2:9", "Proverbs 3:5", "Proverbs 18:10", "Colossians 3:15", "2 Timothy 1:7", "Hebrews 12:1", "Zephaniah 3:17"]}, {"title": "GospelVerse Set 26", "references": ["Micah 6:8", "Song of Solomon 2:4", "Matthew 11:28", "Isaiah 54:17", "Revelation 22:17", "Revelation 22:17", "Matthew 11:28", "Proverbs 3:6", "James 1:5", "1 Peter 2:9"]}, {"title": "GospelVerse Set 27", "references": ["1 Timothy 4:12", "1 Timothy 4:12", "Acts 16:31", "Ephesians 2:8", "1 Corinthians 16:14", "Psalm 121:1", "Philippians 1:6", "Revelation 21:4", "1 Thessalonians 5:18", "Psalm 23:1"]}, {"title": "GospelVerse Set 28", "references": ["Romans 8:1", "Zephaniah 3:17", "Hebrews 4:16", "1 Peter 2:9", "Philippians 4:6", "Romans 8:28", "John 14:27", "John 10:10", "James 1:5", "Ephesians 6:10"]}, {"title": "GospelVerse Set 29", "references": ["Proverbs 18:10", "Proverbs 3:5", "Colossians 3:23", "James 1:2", "Matthew 5:3", "Hebrews 10:24", "Ephesians 4:32", "John 3:16", "Psalm 103:2", "1 Peter 5:7"]}, {"title": "GospelVerse Set 30", "references": ["Psalm 23:1", "Matthew 7:7", "Colossians 3:23", "James 1:2", "Ecclesiastes 3:1", "John 10:10", "Psalm 103:2", "Psalm 23:1", "Matthew 11:28", "2 Timothy 3:16"]}, {"title": "GospelVerse Set 31", "references": ["Hebrews 10:24", "John 8:12", "1 Corinthians 16:14", "1 Corinthians 10:13", "1 Corinthians 13:4", "Romans 12:12", "Lamentations 3:22", "Titus 2:11", "Luke 6:31", "Philippians 2:3"]}, {"title": "GospelVerse Set 32", "references": ["Titus 2:11", "Proverbs 3:6", "Galatians 5:22", "John 14:27", "Matthew 22:37", "2 Timothy 3:16", "Psalm 27:1", "Philippians 4:8", "1 Corinthians 13:4", "James 1:12"]}, {"title": "GospelVerse Set 33", "references": ["Colossians 3:12", "Revelation 3:20", "John 6:35", "1 Timothy 4:12", "Psalm 46:1", "Ecclesiastes 3:1", "Romans 5:8", "James 1:12", "Luke 6:31", "Colossians 3:12"]}, {"title": "GospelVerse Set 34", "references": ["John 6:35", "James 1:5", "Mark 11:24", "Romans 8:28", "Colossians 3:12", "Philippians 2:3", "Psalm 34:18", "Romans 8:1", "Isaiah 54:17", "Lamentations 3:22"]}, {"title": "GospelVerse Set 35", "references": ["Luke 6:31", "Psalm 119:105", "Psalm 46:1", "Hebrews 13:5", "Romans 5:8", "Colossians 3:12", "Jude 1:24", "1 Peter 5:7", "1 Thessalonians 5:16", "2 Timothy 1:7"]}, {"title": "GospelVerse Set 36", "references": ["Revelation 21:4", "Luke 12:22", "1 Peter 2:9", "Romans 8:28", "Jude 1:24", "Hebrews 11:1", "Jude 1:24", "James 1:5", "Romans 8:28", "Isaiah 40:31"]}, {"title": "GospelVerse Set 37", "references": ["Proverbs 4:23", "Lamentations 3:22", "Ephesians 6:10", "Matthew 6:34", "1 John 4:8", "Romans 15:13", "Galatians 5:22", "Psalm 145:18", "Psalm 23:1", "James 1:12"]}, {"title": "GospelVerse Set 38", "references": ["Luke 12:22", "Proverbs 18:10", "Ecclesiastes 3:1", "Hebrews 12:1", "Acts 16:31", "Matthew 11:28", "Hebrews 4:16", "Romans 5:8", "Micah 6:8", "Ephesians 4:32"]}, {"title": "GospelVerse Set 39", "references": ["Proverbs 18:10", "Zephaniah 3:17", "Lamentations 3:22", "Psalm 27:1", "Psalm 27:1", "Zephaniah 3:17", "Romans 12:12", "Psalm 37:4", "1 Peter 2:9", "James 4:7"]}, {"title": "GospelVerse Set 40", "references": ["Hebrews 10:24", "Philippians 1:6", "Zephaniah 3:17", "John 8:12", "Psalm 23:1", "2 Corinthians 5:17", "Psalm 103:2", "1 Corinthians 10:13", "1 Thessalonians 5:18", "Jeremiah 17:7"]}, {"title": "GospelVerse Set 41", "references": ["Isaiah 26:3", "Proverbs 3:6", "Nahum 1:7", "Titus 2:11", "Luke 6:31", "Ephesians 3:20", "Matthew 28:20", "Matthew 6:34", "Colossians 3:23", "Romans 6:23"]}, {"title": "GospelVerse Set 42", "references": ["Romans 8:1", "Song of Solomon 2:4", "Hebrews 12:1", "Psalm 34:18", "Proverbs 3:5", "Psalm 46:1", "Colossians 3:15", "Nahum 1:7", "Ephesians 4:32", "Matthew 11:28"]}, {"title": "GospelVerse Set 43", "references": ["Psalm 37:4", "Colossians 3:23", "Hebrews 13:5", "Psalm 121:1", "Matthew 5:9", "Colossians 3:15", "1 Thessalonians 5:18", "Psalm 23:1", "Song of Solomon 2:4", "Matthew 7:7"]}, {"title": "GospelVerse Set 44", "references": ["John 14:27", "Psalm 103:2", "Ephesians 3:20", "2 Peter 1:3", "Matthew 6:34", "Isaiah 43:2", "Galatians 5:22", "Ephesians 4:32", "Isaiah 54:17", "Luke 6:31"]}, {"title": "GospelVerse Set 45", "references": ["Hebrews 12:1", "Revelation 21:4", "2 Corinthians 12:9", "1 Peter 4:8", "2 Timothy 3:16", "Philippians 1:6", "Proverbs 18:10", "Matthew 6:33", "Romans 8:38", "John 8:12"]}, {"title": "GospelVerse Set 46", "references": ["Titus 2:11", "Ecclesiastes 3:1", "Nahum 1:7", "James 1:2", "Galatians 5:22", "1 Thessalonians 5:16", "Matthew 7:7", "Luke 1:37", "Philippians 4:8", "1 Peter 5:7"]}, {"title": "GospelVerse Set 47", "references": ["Matthew 11:28", "2 Corinthians 5:17", "James 1:5", "Micah 6:8", "John 8:12", "Philippians 4:13", "Psalm 119:105", "1 John 5:14", "Psalm 145:18", "Jeremiah 29:11"]}, {"title": "GospelVerse Set 48", "references": ["Psalm 27:1", "John 8:12", "Psalm 37:4", "Proverbs 3:6", "Psalm 37:4", "Hebrews 10:24", "1 Corinthians 10:13", "1 John 5:14", "Philippians 2:3", "Matthew 7:7"]}, {"title": "GospelVerse Set 49", "references": ["1 John 1:9", "Psalm 23:1", "Romans 10:9", "Song of Solomon 2:4", "Philippians 2:3", "2 Peter 1:3", "Psalm 37:4", "Song of Solomon 2:4", "John 8:12", "Ephesians 6:10"]}, {"title": "GospelVerse Set 50", "references": ["Psalm 34:18", "Psalm 34:18", "Isaiah 40:31", "Psalm 46:1", "Romans 6:23", "James 4:7", "Psalm 27:1", "Ephesians 2:8", "Jeremiah 17:7", "Philippians 4:6"]}, {"title": "GospelVerse Set 51", "references": ["Philippians 4:8", "Psalm 46:1", "2 Timothy 1:7", "John 15:5", "Psalm 46:1", "1 Thessalonians 5:16", "Philippians 4:6", "Jeremiah 17:7", "Isaiah 43:2", "1 John 1:9"]}, {"title": "GospelVerse Set 52", "references": ["Proverbs 3:6", "Romans 5:8", "Malachi 3:10", "1 John 1:9", "Song of Solomon 2:4", "Romans 8:38", "Galatians 5:22", "Matthew 28:20", "Psalm 23:4", "John 8:12"]}, {"title": "GospelVerse Set 53", "references": ["Revelation 22:17", "Romans 10:9", "1 Thessalonians 5:18", "Matthew 22:37", "1 Thessalonians 5:18", "Song of Solomon 2:4", "1 Peter 4:8", "Proverbs 3:5", "Psalm 46:1", "1 Corinthians 13:4"]}, {"title": "GospelVerse Set 54", "references": ["Romans 12:12", "Hebrews 12:1", "John 15:5", "Psalm 34:18", "Psalm 121:1", "Matthew 7:7", "Ephesians 3:20", "Ephesians 6:10", "Song of Solomon 2:4", "Romans 8:28"]}, {"title": "GospelVerse Set 55", "references": ["Romans 8:1", "Jude 1:24", "Romans 8:28", "Psalm 46:1", "Lamentations 3:22", "James 4:7", "2 Peter 1:3", "2 Timothy 1:7", "Psalm 145:18", "Matthew 11:28"]}, {"title": "GospelVerse Set 56", "references": ["1 John 5:14", "Philippians 4:8", "John 14:27", "Matthew 7:7", "Ephesians 4:32", "Ephesians 6:10", "Romans 12:12", "Revelation 21:4", "Matthew 22:37", "Romans 10:9"]}, {"title": "GospelVerse Set 57", "references": ["Psalm 103:2", "Acts 16:31", "Matthew 6:33", "Romans 6:23", "Ephesians 4:32", "Romans 8:1", "John 14:27", "Jude 1:24", "Colossians 3:23", "Romans 8:38"]}, {"title": "GospelVerse Set 58", "references": ["Psalm 145:18", "Isaiah 40:31", "Proverbs 4:23", "Jude 1:24", "James 1:5", "John 6:35", "Luke 12:22", "Matthew 5:3", "Isaiah 40:31", "Proverbs 4:23"]}, {"title": "GospelVerse Set 59", "references": ["James 1:5", "Ephesians 4:32", "Romans 8:38", "Matthew 28:20", "1 Timothy 4:12", "Colossians 3:15", "Jeremiah 17:7", "Philippians 1:6", "1 John 1:9", "Psalm 46:1"]}, {"title": "GospelVerse Set 60", "references": ["Ephesians 4:32", "Hebrews 11:1", "Proverbs 3:6", "Luke 6:31", "Romans 6:23", "1 Timothy 4:12", "Psalm 121:1", "1 Peter 5:7", "Psalm 23:4", "1 Peter 4:8"]}, {"title": "GospelVerse Set 61", "references": ["Matthew 28:20", "Proverbs 18:10", "Matthew 5:3", "Malachi 3:10", "1 John 5:14", "1 Thessalonians 5:16", "Matthew 5:9", "Mark 11:24", "John 3:16", "Psalm 34:18"]}, {"title": "GospelVerse Set 62", "references": ["1 John 5:14", "Lamentations 3:22", "1 Corinthians 10:13", "Nahum 1:7", "Luke 12:22", "Psalm 103:2", "Song of Solomon 2:4", "Romans 5:8", "Psalm 121:1", "James 1:5"]}, {"title": "GospelVerse Set 63", "references": ["Galatians 5:22", "Romans 12:12", "Hebrews 13:5", "Romans 12:12", "Luke 12:22", "Malachi 3:10", "Hebrews 11:1", "Psalm 34:18", "Matthew 5:3", "Proverbs 18:10"]}, {"title": "GospelVerse Set 64", "references": ["Revelation 3:20", "Luke 1:37", "1 Peter 5:7", "John 14:27", "Hebrews 13:5", "Psalm 119:105", "Hebrews 11:1", "Psalm 23:4", "Luke 12:22", "James 1:5"]}, {"title": "GospelVerse Set 65", "references": ["Revelation 3:20", "John 10:10", "Psalm 121:1", "Romans 12:12", "Colossians 3:12", "Matthew 5:9", "1 Timothy 4:12", "Romans 15:13", "Jeremiah 17:7", "Isaiah 40:31"]}, {"title": "GospelVerse Set 66", "references": ["Hebrews 11:1", "Isaiah 43:2", "1 Peter 2:9", "Nahum 1:7", "Romans 8:1", "2 Timothy 1:7", "Matthew 11:28", "Colossians 3:23", "Isaiah 43:2", "1 Corinthians 13:4"]}, {"title": "GospelVerse Set 67", "references": ["John 15:5", "Zephaniah 3:17", "Revelation 22:17", "Romans 12:12", "Malachi 3:10", "Ephesians 6:10", "Mark 11:24", "Psalm 119:105", "Luke 1:37", "Isaiah 26:3"]}, {"title": "GospelVerse Set 68", "references": ["Isaiah 26:3", "Philippians 2:3", "Revelation 21:4", "Lamentations 3:22", "Philippians 4:8", "Philippians 1:6", "Ecclesiastes 3:1", "1 Peter 4:8", "Proverbs 3:6", "Proverbs 3:6"]}, {"title": "GospelVerse Set 69", "references": ["Hebrews 4:16", "Ephesians 2:8", "Ephesians 3:20", "Matthew 11:28", "Psalm 23:1", "Isaiah 26:3", "2 Corinthians 12:9", "2 Corinthians 5:17", "Psalm 119:105", "Psalm 145:18"]}, {"title": "GospelVerse Set 70", "references": ["Psalm 121:1", "Isaiah 54:17", "1 John 5:14", "James 1:12", "Mark 11:24", "Philippians 4:8", "Hebrews 4:16", "1 Peter 2:9", "Psalm 103:2", "John 8:12"]}, {"title": "GospelVerse Set 71", "references": ["1 Thessalonians 5:18", "Hebrews 10:24", "Romans 8:38", "Matthew 11:28", "Ephesians 2:8", "Lamentations 3:22", "Song of Solomon 2:4", "Romans 15:13", "2 Corinthians 5:17", "Romans 12:12"]}, {"title": "GospelVerse Set 72", "references": ["1 John 5:14", "Psalm 121:1", "1 Peter 4:8", "Matthew 6:33", "Matthew 5:9", "Matthew 28:20", "Isaiah 41:10", "Isaiah 40:31", "Micah 6:8", "Galatians 5:22"]}, {"title": "GospelVerse Set 73", "references": ["John 3:16", "Jude 1:24", "1 Corinthians 16:14", "Romans 15:13", "1 Peter 4:8", "Revelation 22:17", "Hebrews 12:1", "James 1:5", "Isaiah 41:10", "Malachi 3:10"]}, {"title": "GospelVerse Set 74", "references": ["Jeremiah 17:7", "1 Thessalonians 5:18", "Hebrews 11:6", "Hebrews 11:1", "1 Corinthians 10:13", "Colossians 3:23", "Matthew 5:9", "John 3:16", "Romans 10:9", "Romans 5:8"]}, {"title": "GospelVerse Set 75", "references": ["Hebrews 12:1", "Philippians 2:3", "Romans 5:8", "1 John 5:14", "2 Corinthians 5:17", "1 Peter 4:8", "John 6:35", "John 10:10", "Isaiah 54:17", "Micah 6:8"]}, {"title": "GospelVerse Set 76", "references": ["Micah 6:8", "Jude 1:24", "Psalm 27:1", "Matthew 6:34", "Revelation 21:4", "Hebrews 4:16", "John 8:12", "Psalm 37:4", "Hebrews 13:5", "Acts 2:21"]}, {"title": "GospelVerse Set 77", "references": ["Malachi 3:10", "Philippians 4:8", "Malachi 3:10", "Proverbs 3:5", "John 10:10", "James 1:12", "Isaiah 40:31", "Psalm 121:1", "Romans 12:12", "Revelation 3:20"]}, {"title": "GospelVerse Set 78", "references": ["Philippians 1:6", "Colossians 3:15", "Ephesians 2:8", "John 10:10", "John 10:10", "John 3:16", "Revelation 22:17", "Hebrews 11:6", "Jeremiah 17:7", "Romans 8:28"]}, {"title": "GospelVerse Set 79", "references": ["Romans 8:38", "Matthew 5:9", "Proverbs 18:10", "Matthew 6:33", "James 1:5", "1 Corinthians 16:14", "Revelation 3:20", "Colossians 3:15", "John 10:10", "1 John 4:8"]}, {"title": "GospelVerse Set 80", "references": ["James 1:12", "Matthew 6:33", "1 Timothy 4:12", "Colossians 3:12", "1 Peter 5:7", "Mark 11:24", "Psalm 37:4", "1 Peter 2:9", "Matthew 6:33", "Romans 8:1"]}, {"title": "GospelVerse Set 81", "references": ["1 Peter 5:7", "Zephaniah 3:17", "1 Corinthians 10:13", "Revelation 22:17", "Matthew 5:3", "1 Corinthians 13:4", "Luke 12:22", "Romans 10:9", "John 10:10", "John 8:12"]}, {"title": "GospelVerse Set 82", "references": ["Isaiah 54:17", "Micah 6:8", "Hebrews 13:5", "Psalm 121:1", "Romans 15:13", "Psalm 119:105", "Matthew 22:37", "Isaiah 41:10", "Ecclesiastes 3:1", "Psalm 121:1"]}, {"title": "GospelVerse Set 83", "references": ["John 6:35", "1 John 4:8", "Hebrews 4:16", "Romans 8:1", "Revelation 21:4", "Matthew 5:9", "Psalm 91:1", "Matthew 6:33", "2 Corinthians 12:9", "Colossians 3:12"]}, {"title": "GospelVerse Set 84", "references": ["1 Timothy 4:12", "Isaiah 40:31", "Luke 1:37", "Isaiah 54:17", "Proverbs 18:10", "Psalm 27:1", "1 Thessalonians 5:18", "1 Corinthians 13:4", "Jeremiah 17:7", "Jude 1:24"]}, {"title": "GospelVerse Set 85", "references": ["Romans 6:23", "1 John 5:14", "1 Thessalonians 5:18", "Ephesians 4:32", "Ephesians 4:32", "Philippians 2:3", "1 John 1:9", "Micah 6:8", "Proverbs 18:10", "Malachi 3:10"]}, {"title": "GospelVerse Set 86", "references": ["Colossians 3:12", "Psalm 91:1", "Jeremiah 29:11", "Colossians 3:23", "Hebrews 11:6", "Revelation 22:17", "Song of Solomon 2:4", "Isaiah 40:31", "John 14:27", "Colossians 3:23"]}, {"title": "GospelVerse Set 87", "references": ["1 Timothy 4:12", "Isaiah 26:3", "1 John 5:14", "Hebrews 10:24", "Isaiah 41:10", "Luke 6:31", "2 Corinthians 5:17", "1 John 1:9", "Philippians 4:13", "Luke 12:22"]}, {"title": "GospelVerse Set 88", "references": ["John 15:5", "Mark 11:24", "Ephesians 3:20", "Matthew 28:20", "Colossians 3:12", "Philippians 4:8", "Colossians 3:15", "Hebrews 11:6", "Philippians 4:13", "Jeremiah 17:7"]}, {"title": "GospelVerse Set 89", "references": ["Galatians 5:22", "James 1:2", "Psalm 23:1", "John 6:35", "Titus 2:11", "James 4:7", "Ephesians 2:8", "Isaiah 26:3", "Romans 10:9", "1 Corinthians 10:13"]}, {"title": "GospelVerse Set 90", "references": ["1 Thessalonians 5:16", "Psalm 103:2", "Galatians 5:22", "Ephesians 4:32", "Proverbs 3:5", "1 John 4:8", "Matthew 5:3", "Colossians 3:15", "Romans 15:13", "Romans 15:13"]}, {"title": "GospelVerse Set 91", "references": ["Revelation 22:17", "Zephaniah 3:17", "Revelation 3:20", "Hebrews 4:16", "James 1:5", "John 15:5", "James 4:7", "Ecclesiastes 3:1", "Isaiah 43:2", "Ephesians 6:10"]}, {"title": "GospelVerse Set 92", "references": ["Matthew 5:9", "Hebrews 10:24", "2 Corinthians 5:17", "Luke 6:31", "Ephesians 6:10", "Romans 10:9", "Colossians 3:23", "Philippians 4:8", "James 4:7", "Proverbs 18:10"]}, {"title": "GospelVerse Set 93", "references": ["Hebrews 4:16", "1 Corinthians 16:14", "Colossians 3:23", "Hebrews 10:24", "1 Thessalonians 5:16", "Lamentations 3:22", "Isaiah 40:31", "1 Corinthians 10:13", "Proverbs 4:23", "John 3:16"]}, {"title": "GospelVerse Set 94", "references": ["Zephaniah 3:17", "Song of Solomon 2:4", "Ephesians 3:20", "Philippians 4:6", "John 8:12", "Revelation 3:20", "Luke 12:22", "Hebrews 11:6", "Romans 8:38", "James 1:2"]}, {"title": "GospelVerse Set 95", "references": ["Romans 8:38", "Matthew 5:3", "John 6:35", "Song of Solomon 2:4", "Romans 6:23", "Romans 8:28", "Jude 1:24", "Philippians 4:13", "Jude 1:24", "Philippians 2:3"]}, {"title": "GospelVerse Set 96", "references": ["Proverbs 18:10", "Revelation 3:20", "Jude 1:24", "John 6:35", "Acts 16:31", "Mark 11:24", "Psalm 23:4", "Luke 12:22", "Isaiah 54:17", "Hebrews 12:1"]}, {"title": "GospelVerse Set 97", "references": ["Hebrews 12:1", "1 Corinthians 10:13", "Romans 8:1", "1 Peter 2:9", "Romans 8:28", "Psalm 119:105", "Psalm 46:1", "2 Timothy 3:16", "John 15:5", "Hebrews 11:6"]}, {"title": "GospelVerse Set 98", "references": ["Psalm 34:18", "Jeremiah 29:11", "Romans 8:38", "Hebrews 10:24", "Zephaniah 3:17", "Psalm 27:1", "Philippians 4:13", "1 Peter 4:8", "Lamentations 3:22", "Matthew 5:9"]}, {"title": "GospelVerse Set 99", "references": ["John 3:16", "2 Timothy 3:16", "Philippians 4:6", "Isaiah 54:17", "Hebrews 12:1", "Ecclesiastes 3:1", "1 Peter 4:8", "Psalm 37:4", "Ecclesiastes 3:1", "1 Corinthians 13:4"]}, {"title": "GospelVerse Set 100", "references": ["Psalm 37:4", "John 14:27", "Matthew 5:3", "Psalm 27:1", "2 Peter 1:3", "Psalm 91:1", "Acts 16:31", "Isaiah 26:3", "1 Peter 4:8", "Philippians 2:3"]}, {"title": "GospelVerse Set 101", "references": ["John 14:27", "James 4:7", "John 8:12", "Revelation 3:20", "Acts 2:21", "2 Timothy 1:7", "Hebrews 13:5", "Romans 12:12", "Ephesians 4:32", "Isaiah 54:17"]}, {"title": "GospelVerse Set 102", "references": ["Hebrews 4:16", "1 Thessalonians 5:16", "2 Corinthians 12:9", "Psalm 46:1", "Mark 11:24", "Colossians 3:15", "Romans 12:12", "John 15:5", "Jeremiah 29:11", "Matthew 7:7"]}, {"title": "GospelVerse Set 103", "references": ["Proverbs 3:6", "Psalm 34:18", "Colossians 3:12", "Romans 5:8", "1 Corinthians 13:4", "Titus 2:11", "Psalm 23:1", "Philippians 2:3", "Philippians 4:13", "Philippians 4:6"]}, {"title": "GospelVerse Set 104", "references": ["Galatians 5:22", "Ephesians 3:20", "Hebrews 4:16", "Psalm 46:1", "Psalm 23:4", "Mark 11:24", "Colossians 3:15", "Romans 5:8", "Ephesians 3:20", "Isaiah 43:2"]}, {"title": "GospelVerse Set 105", "references": ["Ecclesiastes 3:1", "Luke 1:37", "Song of Solomon 2:4", "Nahum 1:7", "Matthew 22:37", "Matthew 6:34", "Romans 8:28", "Matthew 6:33", "1 Peter 4:8", "Isaiah 41:10"]}, {"title": "GospelVerse Set 106", "references": ["Matthew 22:37", "Colossians 3:12", "Luke 1:37", "Isaiah 54:17", "Jude 1:24", "Jeremiah 29:11", "Nahum 1:7", "2 Timothy 1:7", "James 4:7", "Matthew 5:9"]}, {"title": "GospelVerse Set 107", "references": ["Hebrews 10:24", "Matthew 11:28", "Matthew 28:20", "Philippians 1:6", "Jeremiah 29:11", "1 Peter 5:7", "Colossians 3:23", "John 8:12", "Romans 5:8", "Revelation 22:17"]}, {"title": "GospelVerse Set 108", "references": ["Luke 12:22", "Isaiah 54:17", "Ephesians 6:10", "John 14:27", "Psalm 121:1", "Ephesians 4:32", "1 Thessalonians 5:18", "Matthew 7:7", "Proverbs 18:10", "Proverbs 3:6"]}, {"title": "GospelVerse Set 109", "references": ["Isaiah 54:17", "Psalm 119:105", "Romans 6:23", "Isaiah 54:17", "Psalm 37:4", "John 3:16", "Psalm 103:2", "Hebrews 4:16", "1 John 1:9", "1 Corinthians 13:4"]}, {"title": "GospelVerse Set 110", "references": ["James 1:12", "Jeremiah 29:11", "Romans 8:38", "John 3:16", "John 3:16", "Ecclesiastes 3:1", "John 6:35", "John 10:10", "1 Corinthians 10:13", "John 15:5"]}, {"title": "GospelVerse Set 111", "references": ["Romans 5:8", "Romans 12:12", "Acts 2:21", "Hebrews 4:16", "Song of Solomon 2:4", "Colossians 3:12", "Proverbs 18:10", "Jude 1:24", "Ephesians 6:10", "Romans 10:9"]}, {"title": "GospelVerse Set 112", "references": ["Romans 15:13", "Proverbs 3:6", "1 Thessalonians 5:18", "Psalm 34:18", "Romans 8:28", "Ephesians 4:32", "Acts 16:31", "Malachi 3:10", "Romans 15:13", "John 6:35"]}, {"title": "GospelVerse Set 113", "references": ["Ephesians 4:32", "Revelation 3:20", "Romans 8:1", "Philippians 1:6", "1 Thessalonians 5:16", "Psalm 46:1", "James 1:12", "Romans 8:38", "James 1:5", "Hebrews 11:1"]}, {"title": "GospelVerse Set 114", "references": ["Psalm 121:1", "Lamentations 3:22", "Romans 6:23", "Psalm 23:1", "Colossians 3:12", "John 15:5", "2 Timothy 1:7", "Philippians 4:13", "Colossians 3:23", "Psalm 91:1"]}, {"title": "GospelVerse Set 115", "references": ["Song of Solomon 2:4", "Proverbs 3:6", "Psalm 37:4", "Romans 6:23", "Acts 16:31", "Proverbs 18:10", "Matthew 22:37", "John 15:5", "Matthew 28:20", "Isaiah 43:2"]}, {"title": "GospelVerse Set 116", "references": ["Ephesians 2:8", "Philippians 4:8", "Hebrews 12:1", "James 1:5", "Hebrews 4:16", "Matthew 5:3", "Isaiah 26:3", "James 1:5", "Malachi 3:10", "Romans 8:28"]}, {"title": "GospelVerse Set 117", "references": ["Psalm 103:2", "1 Peter 5:7", "James 4:7", "Matthew 5:3", "Hebrews 12:1", "Isaiah 41:10", "2 Timothy 1:7", "Ephesians 6:10", "Psalm 23:1", "Zephaniah 3:17"]}, {"title": "GospelVerse Set 118", "references": ["Proverbs 3:6", "Philippians 4:6", "James 1:2", "Romans 5:8", "Psalm 23:1", "Song of Solomon 2:4", "Ephesians 3:20", "1 John 1:9", "Psalm 121:1", "Matthew 6:33"]}, {"title": "GospelVerse Set 119", "references": ["1 Corinthians 16:14", "John 6:35", "Matthew 11:28", "Philippians 2:3", "Isaiah 41:10", "Psalm 23:4", "Hebrews 11:6", "Philippians 2:3", "Romans 15:13", "Romans 15:13"]}, {"title": "GospelVerse Set 120", "references": ["Psalm 145:18", "Psalm 37:4", "Romans 8:28", "Psalm 46:1", "Romans 5:8", "Luke 6:31", "Philippians 4:8", "Romans 8:38", "Hebrews 11:6", "Matthew 28:20"]}, {"title": "GospelVerse Set 121", "references": ["Ephesians 4:32", "Colossians 3:15", "2 Corinthians 12:9", "Luke 1:37", "2 Timothy 1:7", "Lamentations 3:22", "Romans 6:23", "Romans 5:8", "Ephesians 3:20", "Matthew 6:34"]}, {"title": "GospelVerse Set 122", "references": ["Romans 8:28", "Matthew 6:34", "Hebrews 10:24", "Romans 10:9", "Proverbs 4:23", "Romans 8:1", "Romans 8:1", "Colossians 3:15", "Philippians 4:13", "Proverbs 3:5"]}, {"title": "GospelVerse Set 123", "references": ["Ephesians 6:10", "Malachi 3:10", "1 Thessalonians 5:18", "Hebrews 11:1", "Matthew 7:7", "Matthew 5:9", "Song of Solomon 2:4", "Malachi 3:10", "Isaiah 26:3", "James 1:12"]}, {"title": "GospelVerse Set 124", "references": ["John 15:5", "Colossians 3:23", "Philippians 4:8", "Colossians 3:12", "Philippians 4:8", "1 Corinthians 13:4", "Jeremiah 29:11", "Isaiah 26:3", "Zephaniah 3:17", "1 Peter 5:7"]}, {"title": "GospelVerse Set 125", "references": ["Isaiah 43:2", "Matthew 6:33", "Lamentations 3:22", "Isaiah 54:17", "Isaiah 43:2", "Romans 8:38", "Matthew 11:28", "Colossians 3:12", "Philippians 2:3", "Philippians 1:6"]}, {"title": "GospelVerse Set 126", "references": ["Matthew 6:33", "Jeremiah 17:7", "John 10:10", "Mark 11:24", "Titus 2:11", "Isaiah 26:3", "John 6:35", "1 Thessalonians 5:18", "Micah 6:8", "Nahum 1:7"]}, {"title": "GospelVerse Set 127", "references": ["1 Corinthians 13:4", "Jeremiah 29:11", "John 14:27", "Titus 2:11", "Romans 10:9", "Psalm 145:18", "Matthew 6:33", "Ephesians 3:20", "Galatians 5:22", "Isaiah 40:31"]}, {"title": "GospelVerse Set 128", "references": ["Isaiah 40:31", "Luke 1:37", "Ephesians 2:8", "1 John 1:9", "1 Peter 5:7", "Psalm 27:1", "Romans 6:23", "2 Corinthians 12:9", "Mark 11:24", "1 Thessalonians 5:18"]}, {"title": "GospelVerse Set 129", "references": ["Jeremiah 29:11", "John 3:16", "James 4:7", "1 Peter 5:7", "Proverbs 18:10", "1 Thessalonians 5:18", "Hebrews 10:24", "1 Timothy 4:12", "Romans 6:23", "1 Corinthians 10:13"]}, {"title": "GospelVerse Set 130", "references": ["Philippians 4:13", "Romans 10:9", "Jude 1:24", "Psalm 121:1", "1 John 4:8", "2 Corinthians 12:9", "1 Peter 2:9", "Lamentations 3:22", "1 John 1:9", "Mark 11:24"]}, {"title": "GospelVerse Set 131", "references": ["John 6:35", "Hebrews 12:1", "Romans 8:38", "Ecclesiastes 3:1", "James 4:7", "Luke 1:37", "1 Thessalonians 5:16", "Psalm 103:2", "Acts 2:21", "Acts 2:21"]}, {"title": "GospelVerse Set 132", "references": ["Hebrews 11:1", "Proverbs 3:6", "1 Peter 4:8", "Matthew 5:3", "Psalm 119:105", "Philippians 4:13", "Matthew 11:28", "Ephesians 4:32", "John 14:27", "Matthew 7:7"]}, {"title": "GospelVerse Set 133", "references": ["1 Corinthians 16:14", "2 Timothy 3:16", "Psalm 91:1", "Romans 6:23", "Matthew 7:7", "Philippians 4:6", "1 John 1:9", "Ephesians 2:8", "Romans 8:38", "Matthew 7:7"]}, {"title": "GospelVerse Set 134", "references": ["John 6:35", "Ephesians 2:8", "Isaiah 40:31", "Psalm 27:1", "Hebrews 12:1", "Colossians 3:15", "Isaiah 26:3", "2 Corinthians 5:17", "Song of Solomon 2:4", "Isaiah 26:3"]}, {"title": "GospelVerse Set 135", "references": ["Luke 12:22", "Lamentations 3:22", "John 6:35", "Jeremiah 17:7", "1 Corinthians 16:14", "Acts 16:31", "1 Peter 4:8", "Revelation 21:4", "Jeremiah 17:7", "1 Peter 5:7"]}, {"title": "GospelVerse Set 136", "references": ["1 John 1:9", "Luke 1:37", "Jude 1:24", "Romans 8:1", "Luke 6:31", "Philippians 4:13", "Galatians 5:22", "1 Thessalonians 5:16", "1 Timothy 4:12", "John 10:10"]}, {"title": "GospelVerse Set 137", "references": ["John 14:27", "Ephesians 4:32", "Ephesians 4:32", "2 Corinthians 5:17", "Malachi 3:10", "James 1:5", "Hebrews 10:24", "1 Corinthians 13:4", "Isaiah 40:31", "1 Peter 4:8"]}, {"title": "GospelVerse Set 138", "references": ["Psalm 34:18", "Isaiah 54:17", "Romans 10:9", "Psalm 46:1", "Isaiah 43:2", "Matthew 6:33", "Colossians 3:15", "Revelation 22:17", "1 John 1:9", "Psalm 46:1"]}, {"title": "GospelVerse Set 139", "references": ["James 1:12", "1 Corinthians 16:14", "1 Thessalonians 5:18", "Mark 11:24", "Philippians 4:13", "2 Corinthians 5:17", "Romans 8:38", "1 John 5:14", "Philippians 4:13", "Psalm 121:1"]}, {"title": "GospelVerse Set 140", "references": ["Isaiah 26:3", "Psalm 23:1", "Matthew 28:20", "James 1:2", "1 Corinthians 16:14", "John 8:12", "Proverbs 4:23", "Luke 1:37", "Romans 8:28", "2 Corinthians 5:17"]}, {"title": "GospelVerse Set 141", "references": ["Zephaniah 3:17", "Isaiah 41:10", "Psalm 37:4", "Mark 11:24", "Isaiah 54:17", "Romans 8:28", "Hebrews 10:24", "2 Corinthians 12:9", "Psalm 23:4", "Matthew 6:34"]}, {"title": "GospelVerse Set 142", "references": ["Colossians 3:15", "Philippians 4:13", "Psalm 103:2", "Philippians 1:6", "Colossians 3:15", "Psalm 37:4", "Hebrews 4:16", "Matthew 28:20", "Revelation 3:20", "Jeremiah 29:11"]}, {"title": "GospelVerse Set 143", "references": ["Luke 1:37", "Matthew 6:33", "Revelation 21:4", "John 10:10", "1 John 4:8", "Jeremiah 17:7", "Colossians 3:23", "Revelation 21:4", "Galatians 5:22", "Psalm 23:4"]}, {"title": "GospelVerse Set 144", "references": ["Mark 11:24", "Romans 10:9", "Proverbs 4:23", "Colossians 3:23", "Matthew 7:7", "Proverbs 4:23", "Romans 5:8", "Isaiah 41:10", "John 8:12", "John 6:35"]}, {"title": "GospelVerse Set 145", "references": ["Ephesians 3:20", "Matthew 22:37", "Jeremiah 17:7", "1 John 5:14", "Colossians 3:23", "John 6:35", "Jeremiah 29:11", "Matthew 22:37", "Isaiah 54:17", "2 Corinthians 5:17"]}, {"title": "GospelVerse Set 146", "references": ["Isaiah 41:10", "Proverbs 3:5", "Isaiah 41:10", "1 Peter 2:9", "Matthew 6:34", "Revelation 21:4", "John 8:12", "Galatians 5:22", "Song of Solomon 2:4", "Hebrews 13:5"]}, {"title": "GospelVerse Set 147", "references": ["Acts 2:21", "Matthew 22:37", "Colossians 3:12", "Romans 5:8", "Romans 12:12", "Acts 16:31", "2 Timothy 3:16", "Ecclesiastes 3:1", "Titus 2:11", "1 John 4:8"]}, {"title": "GospelVerse Set 148", "references": ["Revelation 3:20", "Matthew 5:9", "Matthew 5:9", "James 1:12", "Matthew 6:34", "Luke 6:31", "Proverbs 4:23", "Matthew 28:20", "Ephesians 6:10", "Romans 8:1"]}, {"title": "GospelVerse Set 149", "references": ["John 8:12", "Micah 6:8", "Matthew 28:20", "Hebrews 4:16", "Lamentations 3:22", "Ephesians 6:10", "Psalm 103:2", "1 John 5:14", "Romans 10:9", "Isaiah 41:10"]}, {"title": "GospelVerse Set 150", "references": ["Colossians 3:12", "Romans 10:9", "Revelation 22:17", "1 Peter 5:7", "Revelation 3:20", "1 Peter 4:8", "Matthew 11:28", "1 Thessalonians 5:16", "Acts 16:31", "Luke 6:31"]}, {"title": "GospelVerse Set 151", "references": ["James 4:7", "2 Peter 1:3", "Philippians 4:13", "Ephesians 6:10", "Matthew 22:37", "Psalm 91:1", "Jeremiah 29:11", "Matthew 22:37", "Acts 16:31", "1 John 4:8"]}, {"title": "GospelVerse Set 152", "references": ["John 15:5", "Ephesians 6:10", "James 4:7", "1 Peter 4:8", "Acts 16:31", "Malachi 3:10", "Romans 15:13", "Luke 12:22", "2 Timothy 1:7", "1 Thessalonians 5:18"]}, {"title": "GospelVerse Set 153", "references": ["Galatians 5:22", "Romans 8:28", "Ecclesiastes 3:1", "Matthew 5:9", "1 John 4:8", "John 15:5", "James 1:2", "James 1:2", "Isaiah 26:3", "Revelation 22:17"]}, {"title": "GospelVerse Set 154", "references": ["2 Corinthians 5:17", "Hebrews 11:6", "Matthew 5:9", "Romans 12:12", "Ephesians 4:32", "Isaiah 54:17", "Titus 2:11", "Isaiah 26:3", "Matthew 28:20", "James 4:7"]}, {"title": "GospelVerse Set 155", "references": ["Ephesians 4:32", "Micah 6:8", "Romans 10:9", "Jeremiah 29:11", "John 8:12", "2 Timothy 3:16", "Ephesians 4:32", "Psalm 145:18", "James 1:12", "1 Thessalonians 5:16"]}, {"title": "GospelVerse Set 156", "references": ["Mark 11:24", "Matthew 6:33", "Romans 12:12", "Proverbs 3:5", "Philippians 4:13", "Mark 11:24", "Psalm 46:1", "John 10:10", "Acts 16:31", "Luke 6:31"]}, {"title": "GospelVerse Set 157", "references": ["John 10:10", "Philippians 1:6", "Matthew 28:20", "Lamentations 3:22", "Revelation 22:17", "Proverbs 18:10", "Luke 1:37", "Matthew 7:7", "Romans 8:1", "Matthew 11:28"]}, {"title": "GospelVerse Set 158", "references": ["Revelation 3:20", "1 Thessalonians 5:16", "Isaiah 26:3", "James 4:7", "Romans 10:9", "1 Timothy 4:12", "Matthew 22:37", "1 Thessalonians 5:16", "Hebrews 11:1", "Jude 1:24"]}, {"title": "GospelVerse Set 159", "references": ["Isaiah 40:31", "Hebrews 10:24", "Isaiah 43:2", "Romans 12:12", "1 Corinthians 13:4", "Ephesians 2:8", "Micah 6:8", "Psalm 145:18", "Romans 10:9", "1 Peter 2:9"]}, {"title": "GospelVerse Set 160", "references": ["Titus 2:11", "Ephesians 4:32", "Galatians 5:22", "Colossians 3:23", "John 10:10", "Romans 12:12", "Zephaniah 3:17", "Luke 12:22", "Matthew 6:33", "Ephesians 3:20"]}, {"title": "GospelVerse Set 161", "references": ["1 Peter 4:8", "1 Corinthians 13:4", "Hebrews 4:16", "Proverbs 18:10", "Ephesians 6:10", "1 Corinthians 16:14", "John 15:5", "Romans 8:38", "Psalm 46:1", "Isaiah 41:10"]}, {"title": "GospelVerse Set 162", "references": ["1 Thessalonians 5:16", "Romans 15:13", "1 Thessalonians 5:18", "Matthew 7:7", "Psalm 37:4", "1 Thessalonians 5:16", "Matthew 5:9", "Philippians 4:8", "2 Corinthians 5:17", "2 Peter 1:3"]}, {"title": "GospelVerse Set 163", "references": ["Matthew 5:3", "John 6:35", "James 4:7", "Zephaniah 3:17", "Matthew 11:28", "Jeremiah 29:11", "Isaiah 40:31", "Matthew 5:3", "Proverbs 3:5", "Ephesians 6:10"]}, {"title": "GospelVerse Set 164", "references": ["Lamentations 3:22", "Proverbs 18:10", "Proverbs 4:23", "Philippians 2:3", "Revelation 3:20", "Philippians 4:6", "Acts 16:31", "John 15:5", "Micah 6:8", "Jeremiah 17:7"]}, {"title": "GospelVerse Set 165", "references": ["James 1:5", "Galatians 5:22", "John 3:16", "2 Corinthians 5:17", "1 John 4:8", "Philippians 1:6", "Galatians 5:22", "Colossians 3:12", "Ephesians 2:8", "Romans 5:8"]}, {"title": "GospelVerse Set 166", "references": ["Romans 15:13", "Lamentations 3:22", "Malachi 3:10", "Matthew 5:9", "Matthew 6:34", "Matthew 5:9", "Lamentations 3:22", "Psalm 46:1", "1 Peter 4:8", "Matthew 6:33"]}, {"title": "GospelVerse Set 167", "references": ["Jude 1:24", "Proverbs 3:6", "Romans 10:9", "Isaiah 43:2", "Matthew 5:9", "1 Timothy 4:12", "1 Thessalonians 5:18", "Jeremiah 17:7", "Luke 12:22", "Ephesians 4:32"]}, {"title": "GospelVerse Set 168", "references": ["Psalm 103:2", "2 Timothy 3:16", "Proverbs 4:23", "Malachi 3:10", "Acts 16:31", "2 Timothy 1:7", "Romans 15:13", "Hebrews 13:5", "John 10:10", "Matthew 11:28"]}, {"title": "GospelVerse Set 169", "references": ["Matthew 6:33", "Malachi 3:10", "1 Peter 5:7", "Revelation 21:4", "James 4:7", "Romans 12:12", "Revelation 3:20", "2 Timothy 1:7", "Luke 6:31", "Romans 6:23"]}, {"title": "GospelVerse Set 170", "references": ["1 Peter 2:9", "Malachi 3:10", "Proverbs 3:5", "Matthew 6:33", "Matthew 6:33", "Isaiah 41:10", "Philippians 4:6", "Romans 5:8", "Nahum 1:7", "Isaiah 54:17"]}, {"title": "GospelVerse Set 171", "references": ["Ephesians 6:10", "Matthew 6:34", "Romans 5:8", "Philippians 1:6", "Ephesians 2:8", "Revelation 22:17", "Ecclesiastes 3:1", "Zephaniah 3:17", "Romans 6:23", "Romans 8:38"]}, {"title": "GospelVerse Set 172", "references": ["Luke 12:22", "Psalm 145:18", "Zephaniah 3:17", "Romans 8:1", "Acts 16:31", "Hebrews 12:1", "Revelation 3:20", "1 Corinthians 10:13", "Luke 6:31", "Proverbs 18:10"]}, {"title": "GospelVerse Set 173", "references": ["1 John 5:14", "Psalm 46:1", "Nahum 1:7", "Jude 1:24", "Matthew 22:37", "Matthew 22:37", "Romans 15:13", "Proverbs 18:10", "1 Corinthians 10:13", "Ephesians 3:20"]}, {"title": "GospelVerse Set 174", "references": ["Colossians 3:23", "Philippians 4:8", "1 Corinthians 16:14", "1 Corinthians 13:4", "James 4:7", "Psalm 91:1", "1 Peter 4:8", "Romans 8:28", "Psalm 23:4", "Lamentations 3:22"]}, {"title": "GospelVerse Set 175", "references": ["1 Corinthians 13:4", "1 John 5:14", "Psalm 27:1", "Matthew 22:37", "Hebrews 11:6", "1 Timothy 4:12", "Ecclesiastes 3:1", "Jeremiah 29:11", "Philippians 4:13", "Proverbs 3:6"]}, {"title": "GospelVerse Set 176", "references": ["Romans 5:8", "Hebrews 4:16", "Luke 1:37", "Micah 6:8", "Ephesians 3:20", "Hebrews 11:6", "Romans 6:23", "Acts 2:21", "Matthew 7:7", "Proverbs 18:10"]}, {"title": "GospelVerse Set 177", "references": ["1 Thessalonians 5:16", "1 John 5:14", "Philippians 1:6", "Hebrews 13:5", "Galatians 5:22", "John 10:10", "Psalm 34:18", "Revelation 3:20", "Zephaniah 3:17", "2 Corinthians 5:17"]}, {"title": "GospelVerse Set 178", "references": ["Proverbs 3:6", "Psalm 121:1", "Micah 6:8", "Romans 10:9", "1 Peter 2:9", "Luke 6:31", "James 1:5", "Romans 12:12", "James 4:7", "1 John 1:9"]}, {"title": "GospelVerse Set 179", "references": ["Revelation 3:20", "Romans 8:1", "2 Peter 1:3", "John 6:35", "2 Corinthians 5:17", "2 Corinthians 5:17", "Psalm 145:18", "Romans 10:9", "Isaiah 26:3", "James 1:2"]}, {"title": "GospelVerse Set 180", "references": ["Nahum 1:7", "Proverbs 3:5", "Luke 12:22", "1 Peter 2:9", "Psalm 121:1", "Philippians 4:13", "Philippians 1:6", "1 Corinthians 10:13", "Colossians 3:15", "Hebrews 12:1"]}, {"title": "GospelVerse Set 181", "references": ["Luke 12:22", "1 Thessalonians 5:16", "Isaiah 43:2", "Psalm 37:4", "Proverbs 18:10", "John 14:27", "Matthew 7:7", "Psalm 23:1", "John 10:10", "James 1:12"]}, {"title": "GospelVerse Set 182", "references": ["Psalm 27:1", "1 Peter 2:9", "1 Timothy 4:12", "Nahum 1:7", "Proverbs 3:5", "Jude 1:24", "Micah 6:8", "1 Thessalonians 5:16", "Hebrews 10:24", "John 3:16"]}, {"title": "GospelVerse Set 183", "references": ["Romans 15:13", "Luke 12:22", "Proverbs 18:10", "1 Peter 2:9", "Hebrews 11:6", "Ephesians 3:20", "1 Timothy 4:12", "Ephesians 3:20", "Hebrews 11:6", "Revelation 22:17"]}, {"title": "GospelVerse Set 184", "references": ["2 Timothy 1:7", "Matthew 5:9", "1 Peter 2:9", "Jude 1:24", "James 1:12", "1 Timothy 4:12", "Psalm 23:1", "John 15:5", "John 14:27", "Revelation 21:4"]}, {"title": "GospelVerse Set 185", "references": ["2 Corinthians 5:17", "Revelation 21:4", "John 8:12", "Matthew 5:9", "1 Peter 2:9", "Ephesians 4:32", "Jeremiah 17:7", "Hebrews 13:5", "Romans 8:28", "Ephesians 2:8"]}, {"title": "GospelVerse Set 186", "references": ["Isaiah 54:17", "James 1:2", "Hebrews 11:1", "Ecclesiastes 3:1", "Mark 11:24", "John 15:5", "Malachi 3:10", "Ephesians 3:20", "Philippians 2:3", "Titus 2:11"]}, {"title": "GospelVerse Set 187", "references": ["Romans 8:38", "Matthew 6:34", "Matthew 28:20", "Hebrews 12:1", "Hebrews 11:1", "Philippians 4:13", "Romans 5:8", "Galatians 5:22", "James 1:2", "Colossians 3:15"]}, {"title": "GospelVerse Set 188", "references": ["Song of Solomon 2:4", "2 Peter 1:3", "Zephaniah 3:17", "Proverbs 18:10", "Psalm 23:4", "1 Thessalonians 5:18", "1 John 5:14", "Jeremiah 29:11", "Romans 12:12", "Lamentations 3:22"]}, {"title": "GospelVerse Set 189", "references": ["Psalm 27:1", "Matthew 6:33", "Titus 2:11", "Psalm 121:1", "Lamentations 3:22", "Romans 8:28", "Hebrews 11:6", "Zephaniah 3:17", "Philippians 1:6", "Psalm 34:18"]}, {"title": "GospelVerse Set 190", "references": ["Philippians 4:6", "1 Corinthians 13:4", "Song of Solomon 2:4", "Ephesians 6:10", "Psalm 37:4", "John 10:10", "Nahum 1:7", "Luke 12:22", "Hebrews 4:16", "Psalm 34:18"]}, {"title": "GospelVerse Set 191", "references": ["Galatians 5:22", "Song of Solomon 2:4", "1 Timothy 4:12", "Matthew 28:20", "Isaiah 26:3", "Psalm 121:1", "Matthew 11:28", "John 15:5", "Jeremiah 29:11", "John 8:12"]}, {"title": "GospelVerse Set 192", "references": ["Matthew 6:33", "Romans 15:13", "1 Corinthians 13:4", "Romans 5:8", "Luke 1:37", "Romans 8:28", "Proverbs 3:5", "1 Corinthians 10:13", "John 3:16", "Matthew 6:34"]}, {"title": "GospelVerse Set 193", "references": ["John 6:35", "Isaiah 54:17", "Matthew 6:34", "Isaiah 54:17", "Isaiah 43:2", "Jeremiah 17:7", "John 6:35", "Proverbs 18:10", "2 Timothy 1:7", "Romans 8:1"]}, {"title": "GospelVerse Set 194", "references": ["Song of Solomon 2:4", "Romans 15:13", "Isaiah 41:10", "Romans 10:9", "Jeremiah 29:11", "Revelation 22:17", "1 Peter 2:9", "Matthew 11:28", "1 Peter 2:9", "Psalm 91:1"]}, {"title": "GospelVerse Set 195", "references": ["Psalm 27:1", "Matthew 7:7", "Matthew 7:7", "Revelation 3:20", "1 Thessalonians 5:16", "Psalm 37:4", "Revelation 22:17", "1 John 4:8", "Colossians 3:12", "Hebrews 10:24"]}, {"title": "GospelVerse Set 196", "references": ["1 John 1:9", "James 4:7", "Hebrews 4:16", "John 8:12", "1 Thessalonians 5:18", "Romans 10:9", "Hebrews 11:1", "Luke 12:22", "Luke 1:37", "Proverbs 4:23"]}, {"title": "GospelVerse Set 197", "references": ["Psalm 34:18", "Psalm 23:1", "Psalm 46:1", "Zephaniah 3:17", "Hebrews 12:1", "John 8:12", "Luke 12:22", "Romans 8:1", "Galatians 5:22", "Romans 10:9"]}, {"title": "GospelVerse Set 198", "references": ["1 Peter 5:7", "1 Peter 2:9", "Proverbs 18:10", "Romans 8:28", "John 6:35", "Psalm 37:4", "Matthew 7:7", "2 Timothy 3:16", "Psalm 23:4", "Proverbs 3:6"]}, {"title": "GospelVerse Set 199", "references": ["John 14:27", "Psalm 91:1", "2 Corinthians 12:9", "Psalm 121:1", "Isaiah 41:10", "Ecclesiastes 3:1", "Psalm 27:1", "Psalm 119:105", "Psalm 34:18", "Colossians 3:12"]}, {"title": "GospelVerse Set 200", "references": ["Isaiah 43:2", "Matthew 6:33", "2 Corinthians 5:17", "Romans 8:1", "Proverbs 4:23", "Micah 6:8", "2 Corinthians 12:9", "Hebrews 12:1", "Micah 6:8", "Zephaniah 3:17"]}, {"title": "GospelVerse Set 201", "references": ["Philippians 4:13", "Hebrews 4:16", "Psalm 34:18", "Zephaniah 3:17", "Jeremiah 29:11", "1 Peter 4:8", "1 Timothy 4:12", "Hebrews 10:24", "Philippians 4:8", "Psalm 103:2"]}, {"title": "GospelVerse Set 202", "references": ["Matthew 5:9", "Revelation 3:20", "1 Peter 4:8", "Hebrews 12:1", "Mark 11:24", "Micah 6:8", "Psalm 37:4", "1 Corinthians 13:4", "1 John 1:9", "Song of Solomon 2:4"]}, {"title": "GospelVerse Set 203", "references": ["Nahum 1:7", "Ephesians 4:32", "Zephaniah 3:17", "Psalm 145:18", "John 6:35", "Hebrews 11:6", "John 15:5", "Jude 1:24", "John 10:10", "Philippians 4:6"]}, {"title": "GospelVerse Set 204", "references": ["Colossians 3:15", "Proverbs 3:5", "1 Thessalonians 5:16", "James 1:12", "Ephesians 4:32", "John 3:16", "Proverbs 18:10", "Hebrews 13:5", "James 1:5", "Hebrews 12:1"]}, {"title": "GospelVerse Set 205", "references": ["Ephesians 6:10", "1 Timothy 4:12", "Hebrews 13:5", "Malachi 3:10", "Proverbs 18:10", "John 15:5", "Nahum 1:7", "Colossians 3:12", "Romans 5:8", "2 Peter 1:3"]}, {"title": "GospelVerse Set 206", "references": ["Psalm 23:4", "1 Peter 2:9", "Jude 1:24", "Romans 8:28", "Revelation 22:17", "Nahum 1:7", "Colossians 3:15", "Ephesians 6:10", "Proverbs 3:5", "Hebrews 11:6"]}, {"title": "GospelVerse Set 207", "references": ["John 10:10", "Matthew 22:37", "1 John 1:9", "Luke 12:22", "Acts 2:21", "James 1:2", "Matthew 6:34", "Matthew 5:9", "John 14:27", "Revelation 21:4"]}, {"title": "GospelVerse Set 208", "references": ["Jeremiah 17:7", "1 Corinthians 16:14", "Hebrews 11:6", "Acts 16:31", "Psalm 37:4", "John 15:5", "Psalm 34:18", "Philippians 4:13", "James 1:2", "1 Peter 2:9"]}, {"title": "GospelVerse Set 209", "references": ["1 Corinthians 10:13", "Psalm 37:4", "1 Corinthians 13:4", "Romans 5:8", "1 John 1:9", "1 Corinthians 16:14", "Matthew 5:9", "1 Thessalonians 5:18", "James 4:7", "James 1:2"]}, {"title": "GospelVerse Set 210", "references": ["Romans 8:1", "Jude 1:24", "1 Thessalonians 5:16", "Matthew 5:9", "Ephesians 3:20", "Luke 6:31", "Ephesians 3:20", "Proverbs 18:10", "Matthew 5:3", "Hebrews 11:6"]}, {"title": "GospelVerse Set 211", "references": ["John 8:12", "1 Thessalonians 5:16", "Isaiah 43:2", "Psalm 91:1", "Ephesians 4:32", "1 Peter 4:8", "Hebrews 12:1", "Malachi 3:10", "Psalm 37:4", "1 Corinthians 16:14"]}, {"title": "GospelVerse Set 212", "references": ["Psalm 119:105", "Psalm 145:18", "Psalm 23:1", "Matthew 6:33", "1 John 1:9", "Philippians 4:8", "Hebrews 12:1", "Philippians 1:6", "Matthew 5:3", "Matthew 5:3"]}, {"title": "GospelVerse Set 213", "references": ["Psalm 23:1", "John 10:10", "Psalm 23:4", "Luke 12:22", "1 Peter 5:7", "Revelation 3:20", "Psalm 23:4", "John 6:35", "Hebrews 12:1", "John 6:35"]}, {"title": "GospelVerse Set 214", "references": ["Hebrews 10:24", "John 14:27", "John 3:16", "1 Corinthians 13:4", "Hebrews 13:5", "Luke 1:37", "Romans 8:1", "James 1:5", "2 Timothy 1:7", "1 John 1:9"]}, {"title": "GospelVerse Set 215", "references": ["Psalm 27:1", "John 15:5", "Revelation 22:17", "Psalm 119:105", "James 4:7", "Ephesians 4:32", "1 Thessalonians 5:18", "Philippians 2:3", "Malachi 3:10", "John 3:16"]}, {"title": "GospelVerse Set 216", "references": ["1 John 1:9", "John 10:10", "Isaiah 43:2", "Psalm 23:1", "Ephesians 3:20", "Matthew 5:9", "Isaiah 40:31", "Mark 11:24", "John 15:5", "Philippians 2:3"]}, {"title": "GospelVerse Set 217", "references": ["John 3:16", "Luke 1:37", "Isaiah 41:10", "Proverbs 3:6", "Colossians 3:12", "2 Timothy 3:16", "Nahum 1:7", "Isaiah 41:10", "Matthew 11:28", "James 1:12"]}, {"title": "GospelVerse Set 218", "references": ["Titus 2:11", "John 15:5", "Psalm 91:1", "James 1:12", "Micah 6:8", "Jude 1:24", "1 Corinthians 10:13", "Song of Solomon 2:4", "Psalm 145:18", "2 Timothy 1:7"]}, {"title": "GospelVerse Set 219", "references": ["Matthew 11:28", "Ephesians 2:8", "Colossians 3:15", "1 Corinthians 16:14", "1 John 4:8", "Titus 2:11", "Romans 5:8", "Malachi 3:10", "Philippians 4:13", "Revelation 21:4"]}, {"title": "GospelVerse Set 220", "references": ["Proverbs 18:10", "Matthew 6:33", "Revelation 3:20", "Isaiah 43:2", "Isaiah 40:31", "1 Corinthians 16:14", "Romans 6:23", "Matthew 7:7", "2 Peter 1:3", "2 Timothy 1:7"]}, {"title": "GospelVerse Set 221", "references": ["Matthew 7:7", "Psalm 91:1", "James 1:5", "Revelation 22:17", "Matthew 5:9", "Acts 2:21", "1 Peter 2:9", "Isaiah 40:31", "James 4:7", "Hebrews 4:16"]}, {"title": "GospelVerse Set 222", "references": ["Matthew 28:20", "Philippians 4:8", "Luke 6:31", "Psalm 145:18", "Matthew 28:20", "1 Corinthians 13:4", "Psalm 145:18", "Colossians 3:23", "Ecclesiastes 3:1", "Micah 6:8"]}, {"title": "GospelVerse Set 223", "references": ["John 14:27", "Psalm 23:1", "Lamentations 3:22", "Acts 2:21", "James 1:5", "Philippians 4:6", "Hebrews 13:5", "Isaiah 26:3", "John 10:10", "Psalm 27:1"]}, {"title": "GospelVerse Set 224", "references": ["Psalm 46:1", "Acts 2:21", "John 3:16", "Ephesians 6:10", "Romans 5:8", "1 John 4:8", "2 Corinthians 5:17", "1 John 4:8", "Matthew 28:20", "Titus 2:11"]}, {"title": "GospelVerse Set 225", "references": ["Hebrews 10:24", "Revelation 3:20", "Romans 15:13", "Ephesians 3:20", "1 John 1:9", "Philippians 4:13", "Zephaniah 3:17", "Matthew 5:9", "Jeremiah 29:11", "Isaiah 40:31"]}, {"title": "GospelVerse Set 226", "references": ["Psalm 37:4", "Matthew 5:3", "Matthew 11:28", "Galatians 5:22", "Galatians 5:22", "Philippians 4:8", "2 Corinthians 12:9", "Hebrews 13:5", "John 14:27", "Lamentations 3:22"]}, {"title": "GospelVerse Set 227", "references": ["1 Peter 4:8", "Romans 5:8", "Philippians 4:8", "John 6:35", "Romans 5:8", "Romans 6:23", "Romans 8:1", "Philippians 2:3", "Revelation 3:20", "Philippians 4:6"]}, {"title": "GospelVerse Set 228", "references": ["Micah 6:8", "1 Peter 4:8", "Proverbs 3:5", "Micah 6:8", "Jude 1:24", "Jude 1:24", "2 Corinthians 5:17", "1 John 5:14", "Matthew 5:9", "Romans 15:13"]}, {"title": "GospelVerse Set 229", "references": ["Colossians 3:15", "1 John 1:9", "Romans 8:1", "2 Timothy 1:7", "Romans 8:28", "John 15:5", "2 Corinthians 12:9", "John 8:12", "James 4:7", "John 10:10"]}, {"title": "GospelVerse Set 230", "references": ["2 Peter 1:3", "Jeremiah 17:7", "Psalm 145:18", "Isaiah 40:31", "2 Corinthians 5:17", "1 John 5:14", "Romans 8:1", "Luke 6:31", "Psalm 27:1", "Matthew 5:9"]}, {"title": "GospelVerse Set 231", "references": ["Colossians 3:23", "Colossians 3:15", "Hebrews 4:16", "Psalm 145:18", "Mark 11:24", "Matthew 11:28", "Revelation 22:17", "Nahum 1:7", "2 Timothy 1:7", "Matthew 6:33"]}, {"title": "GospelVerse Set 232", "references": ["Hebrews 11:6", "1 John 5:14", "John 8:12", "Mark 11:24", "Acts 2:21", "Titus 2:11", "Luke 12:22", "1 Thessalonians 5:16", "Matthew 28:20", "Matthew 7:7"]}, {"title": "GospelVerse Set 233", "references": ["Hebrews 4:16", "Acts 2:21", "1 Thessalonians 5:16", "Isaiah 41:10", "Revelation 21:4", "James 4:7", "2 Timothy 1:7", "Song of Solomon 2:4", "Jude 1:24", "Psalm 103:2"]}, {"title": "GospelVerse Set 234", "references": ["Psalm 23:4", "James 1:2", "Matthew 6:34", "Matthew 6:34", "1 Corinthians 10:13", "Romans 15:13", "Isaiah 26:3", "1 John 4:8", "Matthew 7:7", "2 Corinthians 12:9"]}, {"title": "GospelVerse Set 235", "references": ["Matthew 6:33", "Romans 10:9", "Psalm 46:1", "John 14:27", "Psalm 37:4", "Jude 1:24", "Romans 8:28", "1 Peter 2:9", "Philippians 4:13", "Lamentations 3:22"]}, {"title": "GospelVerse Set 236", "references": ["Isaiah 54:17", "Proverbs 3:6", "Matthew 5:3", "Nahum 1:7", "Isaiah 40:31", "Psalm 121:1", "Micah 6:8", "Zephaniah 3:17", "John 6:35", "Romans 8:28"]}, {"title": "GospelVerse Set 237", "references": ["Ephesians 4:32", "1 Thessalonians 5:18", "James 4:7", "Ephesians 2:8", "Revelation 21:4", "Colossians 3:15", "Ephesians 3:20", "Ephesians 2:8", "John 15:5", "2 Peter 1:3"]}, {"title": "GospelVerse Set 238", "references": ["Psalm 119:105", "Psalm 27:1", "Hebrews 11:1", "1 Thessalonians 5:16", "Isaiah 40:31", "Psalm 46:1", "Philippians 1:6", "Proverbs 3:5", "2 Corinthians 12:9", "1 John 4:8"]}, {"title": "GospelVerse Set 239", "references": ["Psalm 121:1", "Proverbs 3:5", "Song of Solomon 2:4", "John 6:35", "Jeremiah 29:11", "John 14:27", "Colossians 3:12", "Hebrews 13:5", "Romans 5:8", "Isaiah 54:17"]}, {"title": "GospelVerse Set 240", "references": ["James 1:2", "Philippians 2:3", "Luke 1:37", "1 Thessalonians 5:16", "2 Corinthians 12:9", "Philippians 1:6", "1 Corinthians 10:13", "Romans 10:9", "Ephesians 4:32", "Philippians 1:6"]}, {"title": "GospelVerse Set 241", "references": ["Romans 8:1", "Psalm 145:18", "Zephaniah 3:17", "Philippians 1:6", "Matthew 28:20", "Philippians 4:6", "Romans 12:12", "Lamentations 3:22", "Hebrews 11:1", "1 John 5:14"]}, {"title": "GospelVerse Set 242", "references": ["Matthew 6:34", "Psalm 37:4", "Philippians 4:13", "1 John 4:8", "Hebrews 11:1", "Colossians 3:23", "1 John 5:14", "1 Thessalonians 5:16", "Revelation 22:17", "John 10:10"]}, {"title": "GospelVerse Set 243", "references": ["Matthew 5:3", "Philippians 4:13", "Micah 6:8", "Isaiah 54:17", "Isaiah 43:2", "Acts 2:21", "Psalm 23:1", "Philippians 4:6", "Romans 8:1", "Jude 1:24"]}, {"title": "GospelVerse Set 244", "references": ["Matthew 6:33", "Matthew 5:9", "James 4:7", "Psalm 37:4", "1 Corinthians 16:14", "Matthew 5:3", "Matthew 28:20", "Psalm 91:1", "Malachi 3:10", "2 Corinthians 5:17"]}, {"title": "GospelVerse Set 245", "references": ["1 Peter 5:7", "Luke 12:22", "Ephesians 3:20", "Isaiah 54:17", "Ecclesiastes 3:1", "Matthew 7:7", "John 10:10", "Romans 8:28", "Romans 8:28", "Matthew 22:37"]}, {"title": "GospelVerse Set 246", "references": ["Romans 8:1", "Acts 16:31", "Romans 8:1", "Isaiah 41:10", "Proverbs 18:10", "John 8:12", "Revelation 21:4", "John 14:27", "Romans 8:38", "Song of Solomon 2:4"]}, {"title": "GospelVerse Set 247", "references": ["Zephaniah 3:17", "Revelation 22:17", "Isaiah 26:3", "Romans 10:9", "Romans 8:1", "Isaiah 40:31", "Revelation 22:17", "Matthew 22:37", "Colossians 3:15", "John 6:35"]}, {"title": "GospelVerse Set 248", "references": ["1 Corinthians 10:13", "Romans 10:9", "Psalm 145:18", "Colossians 3:23", "Ephesians 2:8", "Philippians 4:13", "Proverbs 3:6", "Proverbs 3:6", "Jeremiah 29:11", "Romans 10:9"]}, {"title": "GospelVerse Set 249", "references": ["1 Peter 5:7", "Luke 12:22", "Romans 5:8", "Psalm 121:1", "2 Corinthians 5:17", "James 1:5", "Philippians 2:3", "Revelation 21:4", "James 4:7", "John 3:16"]}, {"title": "GospelVerse Set 250", "references": ["Jude 1:24", "Mark 11:24", "Hebrews 11:6", "Revelation 22:17", "Colossians 3:12", "Romans 12:12", "Colossians 3:12", "Galatians 5:22", "Psalm 145:18", "Romans 8:38"]}, {"title": "GospelVerse Set 251", "references": ["Malachi 3:10", "Hebrews 12:1", "Matthew 5:3", "Romans 15:13", "James 1:5", "Psalm 37:4", "Isaiah 54:17", "Colossians 3:23", "1 Timothy 4:12", "John 3:16"]}, {"title": "GospelVerse Set 252", "references": ["Matthew 6:34", "1 Peter 5:7", "1 Peter 2:9", "Acts 16:31", "1 Peter 4:8", "Romans 5:8", "Psalm 23:1", "Matthew 7:7", "Proverbs 4:23", "Proverbs 4:23"]}, {"title": "GospelVerse Set 253", "references": ["Isaiah 54:17", "Hebrews 4:16", "Acts 2:21", "Jeremiah 29:11", "Luke 12:22", "Psalm 34:18", "Psalm 103:2", "Proverbs 3:6", "James 1:5", "Romans 8:38"]}, {"title": "GospelVerse Set 254", "references": ["Romans 6:23", "Romans 15:13", "John 15:5", "Matthew 5:3", "Romans 10:9", "James 4:7", "Isaiah 41:10", "John 14:27", "Matthew 22:37", "Isaiah 54:17"]}, {"title": "GospelVerse Set 255", "references": ["Romans 12:12", "Philippians 2:3", "Isaiah 26:3", "Psalm 23:1", "2 Peter 1:3", "Proverbs 3:5", "1 John 5:14", "Philippians 4:6", "1 Thessalonians 5:18", "Ephesians 2:8"]}, {"title": "GospelVerse Set 256", "references": ["1 Peter 2:9", "James 1:5", "1 Thessalonians 5:18", "Galatians 5:22", "Acts 16:31", "Hebrews 10:24", "Ephesians 2:8", "2 Timothy 1:7", "Lamentations 3:22", "Psalm 121:1"]}, {"title": "GospelVerse Set 257", "references": ["Psalm 119:105", "1 Thessalonians 5:18", "Psalm 121:1", "Psalm 23:1", "Nahum 1:7", "Philippians 4:6", "Psalm 119:105", "James 4:7", "Psalm 23:1", "1 John 5:14"]}, {"title": "GospelVerse Set 258", "references": ["Romans 8:1", "Revelation 21:4", "Psalm 103:2", "Philippians 4:6", "Matthew 11:28", "1 John 4:8", "Proverbs 4:23", "John 14:27", "Lamentations 3:22", "1 Timothy 4:12"]}, {"title": "GospelVerse Set 259", "references": ["Philippians 4:6", "Matthew 7:7", "Song of Solomon 2:4", "Philippians 4:6", "Revelation 22:17", "Philippians 4:13", "Luke 12:22", "Psalm 23:1", "1 Thessalonians 5:18", "Isaiah 40:31"]}, {"title": "GospelVerse Set 260", "references": ["Proverbs 18:10", "Colossians 3:23", "1 Corinthians 13:4", "Psalm 27:1", "1 John 5:14", "Philippians 2:3", "Matthew 28:20", "John 14:27", "Song of Solomon 2:4", "2 Corinthians 12:9"]}, {"title": "GospelVerse Set 261", "references": ["1 John 4:8", "Jude 1:24", "Micah 6:8", "Philippians 4:13", "1 Peter 5:7", "Matthew 28:20", "John 10:10", "Ephesians 6:10", "Ephesians 6:10", "Matthew 22:37"]}, {"title": "GospelVerse Set 262", "references": ["1 John 5:14", "Ephesians 4:32", "Hebrews 4:16", "Zephaniah 3:17", "Matthew 6:34", "Matthew 6:33", "Song of Solomon 2:4", "Zephaniah 3:17", "Isaiah 43:2", "Titus 2:11"]}, {"title": "GospelVerse Set 263", "references": ["2 Peter 1:3", "Matthew 5:9", "Romans 8:28", "Matthew 5:9", "2 Corinthians 12:9", "Luke 1:37", "Revelation 3:20", "Revelation 21:4", "1 Peter 2:9", "Philippians 4:6"]}, {"title": "GospelVerse Set 264", "references": ["Philippians 2:3", "John 15:5", "Acts 16:31", "James 4:7", "Malachi 3:10", "2 Peter 1:3", "Matthew 7:7", "Psalm 23:4", "Jeremiah 29:11", "James 1:2"]}, {"title": "GospelVerse Set 265", "references": ["Isaiah 41:10", "Jeremiah 29:11", "Mark 11:24", "Matthew 6:33", "Colossians 3:23", "Matthew 6:33", "Psalm 37:4", "Psalm 121:1", "Matthew 28:20", "Luke 12:22"]}, {"title": "GospelVerse Set 266", "references": ["Philippians 1:6", "1 Peter 5:7", "Lamentations 3:22", "Matthew 6:34", "Proverbs 3:5", "John 6:35", "Luke 12:22", "1 John 4:8", "Colossians 3:23", "1 Corinthians 16:14"]}, {"title": "GospelVerse Set 267", "references": ["James 4:7", "Jeremiah 29:11", "Psalm 121:1", "Proverbs 4:23", "Ephesians 4:32", "Isaiah 43:2", "Matthew 28:20", "Isaiah 40:31", "Isaiah 54:17", "Philippians 1:6"]}, {"title": "GospelVerse Set 268", "references": ["Lamentations 3:22", "Ecclesiastes 3:1", "Ecclesiastes 3:1", "Romans 12:12", "Psalm 145:18", "Psalm 121:1", "Ephesians 2:8", "2 Peter 1:3", "Luke 1:37", "Matthew 22:37"]}, {"title": "GospelVerse Set 269", "references": ["Proverbs 18:10", "Ephesians 3:20", "Romans 12:12", "Matthew 22:37", "James 1:5", "2 Timothy 3:16", "Matthew 7:7", "Psalm 46:1", "John 6:35", "James 1:5"]}, {"title": "GospelVerse Set 270", "references": ["Jeremiah 29:11", "Psalm 145:18", "Romans 15:13", "Matthew 11:28", "Isaiah 54:17", "Acts 2:21", "Matthew 5:9", "John 15:5", "Acts 16:31", "James 1:2"]}, {"title": "GospelVerse Set 271", "references": ["John 14:27", "Romans 15:13", "Proverbs 18:10", "Psalm 119:105", "Matthew 6:33", "Isaiah 41:10", "Colossians 3:12", "Colossians 3:15", "Nahum 1:7", "1 John 4:8"]}, {"title": "GospelVerse Set 272", "references": ["1 Corinthians 13:4", "James 1:12", "Philippians 2:3", "John 10:10", "Hebrews 11:6", "Ecclesiastes 3:1", "Psalm 37:4", "Micah 6:8", "Psalm 37:4", "Proverbs 18:10"]}, {"title": "GospelVerse Set 273", "references": ["James 1:5", "Matthew 11:28", "1 John 1:9", "Matthew 6:33", "Titus 2:11", "Hebrews 11:1", "John 6:35", "Revelation 21:4", "2 Peter 1:3", "Matthew 11:28"]}, {"title": "GospelVerse Set 274", "references": ["Jeremiah 17:7", "1 Peter 5:7", "Ephesians 4:32", "Romans 5:8", "John 10:10", "Psalm 23:1", "Proverbs 3:5", "John 15:5", "Zephaniah 3:17", "Philippians 4:8"]}, {"title": "GospelVerse Set 275", "references": ["Jeremiah 17:7", "2 Corinthians 12:9", "Matthew 5:9", "Matthew 7:7", "Hebrews 13:5", "Titus 2:11", "Malachi 3:10", "Galatians 5:22", "Psalm 23:1", "Psalm 27:1"]}, {"title": "GospelVerse Set 276", "references": ["Psalm 119:105", "Romans 10:9", "1 Corinthians 16:14", "1 Timothy 4:12", "2 Peter 1:3", "Psalm 23:1", "Hebrews 4:16", "Ephesians 4:32", "Proverbs 4:23", "John 14:27"]}, {"title": "GospelVerse Set 277", "references": ["Luke 12:22", "Colossians 3:15", "Matthew 5:9", "Jeremiah 29:11", "Revelation 22:17", "Psalm 145:18", "John 3:16", "Hebrews 11:6", "Titus 2:11", "Luke 1:37"]}, {"title": "GospelVerse Set 278", "references": ["Psalm 121:1", "Acts 16:31", "Revelation 3:20", "Matthew 28:20", "John 3:16", "Philippians 4:6", "Romans 8:1", "Matthew 11:28", "John 15:5", "Isaiah 40:31"]}, {"title": "GospelVerse Set 279", "references": ["Jude 1:24", "Colossians 3:15", "James 1:2", "Micah 6:8", "Luke 6:31", "Psalm 121:1", "Ecclesiastes 3:1", "Micah 6:8", "James 1:5", "Matthew 11:28"]}, {"title": "GospelVerse Set 280", "references": ["Proverbs 3:5", "Matthew 22:37", "1 Corinthians 10:13", "1 Corinthians 13:4", "Ephesians 2:8", "Jeremiah 17:7", "Psalm 27:1", "Luke 12:22", "Jude 1:24", "Proverbs 3:6"]}, {"title": "GospelVerse Set 281", "references": ["Lamentations 3:22", "James 1:5", "Romans 12:12", "Ephesians 2:8", "James 4:7", "Romans 8:38", "Psalm 121:1", "Isaiah 41:10", "1 Corinthians 16:14", "Romans 5:8"]}, {"title": "GospelVerse Set 282", "references": ["John 3:16", "Galatians 5:22", "Acts 2:21", "Matthew 6:34", "James 4:7", "James 1:2", "Revelation 22:17", "Psalm 91:1", "Psalm 27:1", "Isaiah 54:17"]}, {"title": "GospelVerse Set 283", "references": ["Song of Solomon 2:4", "Galatians 5:22", "Jeremiah 17:7", "Luke 6:31", "Philippians 4:13", "Psalm 23:4", "Romans 8:38", "Revelation 21:4", "Philippians 4:6", "Romans 8:38"]}, {"title": "GospelVerse Set 284", "references": ["Acts 16:31", "Colossians 3:23", "1 Thessalonians 5:16", "1 Corinthians 10:13", "James 1:2", "John 6:35", "Psalm 46:1", "Jeremiah 29:11", "Hebrews 10:24", "Isaiah 26:3"]}, {"title": "GospelVerse Set 285", "references": ["Philippians 4:6", "Hebrews 10:24", "Romans 8:38", "Romans 5:8", "Isaiah 41:10", "Jeremiah 17:7", "Ephesians 3:20", "Romans 15:13", "Romans 8:1", "2 Timothy 1:7"]}, {"title": "GospelVerse Set 286", "references": ["Psalm 91:1", "James 4:7", "Ephesians 3:20", "Proverbs 3:6", "Hebrews 13:5", "1 Peter 5:7", "2 Timothy 3:16", "Psalm 91:1", "Philippians 4:8", "Galatians 5:22"]}, {"title": "GospelVerse Set 287", "references": ["Zephaniah 3:17", "Psalm 37:4", "John 10:10", "Jeremiah 29:11", "1 Peter 5:7", "Philippians 4:6", "Proverbs 3:5", "2 Timothy 3:16", "Luke 1:37", "Colossians 3:23"]}, {"title": "GospelVerse Set 288", "references": ["Luke 6:31", "Luke 6:31", "Revelation 21:4", "Matthew 22:37", "Acts 2:21", "John 8:12", "Matthew 5:3", "Hebrews 11:6", "Matthew 6:33", "1 John 4:8"]}, {"title": "GospelVerse Set 289", "references": ["Hebrews 11:1", "Micah 6:8", "Psalm 34:18", "Titus 2:11", "Matthew 22:37", "Isaiah 43:2", "Revelation 22:17", "Luke 12:22", "Matthew 7:7", "Revelation 22:17"]}, {"title": "GospelVerse Set 290", "references": ["Revelation 3:20", "John 14:27", "Hebrews 4:16", "James 1:5", "Romans 8:1", "Hebrews 11:6", "Isaiah 43:2", "Revelation 22:17", "Psalm 34:18", "Ephesians 4:32"]}, {"title": "GospelVerse Set 291", "references": ["Luke 6:31", "Acts 2:21", "1 Corinthians 16:14", "Ephesians 4:32", "Ephesians 3:20", "2 Corinthians 12:9", "John 6:35", "Psalm 121:1", "Hebrews 11:6", "Psalm 46:1"]}, {"title": "GospelVerse Set 292", "references": ["Psalm 121:1", "1 Peter 4:8", "John 15:5", "John 15:5", "Hebrews 13:5", "Revelation 21:4", "1 Timothy 4:12", "Matthew 5:9", "Lamentations 3:22", "Matthew 5:9"]}, {"title": "GospelVerse Set 293", "references": ["John 3:16", "Psalm 119:105", "Psalm 34:18", "Luke 1:37", "Psalm 23:1", "Hebrews 11:6", "Proverbs 3:5", "Philippians 4:6", "Proverbs 18:10", "Hebrews 11:6"]}, {"title": "GospelVerse Set 294", "references": ["Ephesians 4:32", "Romans 5:8", "Psalm 46:1", "1 Corinthians 10:13", "Hebrews 11:6", "Matthew 7:7", "Ephesians 4:32", "Philippians 2:3", "2 Peter 1:3", "1 John 1:9"]}, {"title": "GospelVerse Set 295", "references": ["1 Peter 4:8", "2 Timothy 1:7", "John 14:27", "Zephaniah 3:17", "Philippians 4:6", "Ephesians 2:8", "1 Peter 4:8", "Mark 11:24", "2 Peter 1:3", "1 Thessalonians 5:18"]}, {"title": "GospelVerse Set 296", "references": ["Ephesians 3:20", "Jude 1:24", "1 John 5:14", "James 1:12", "Mark 11:24", "Psalm 34:18", "2 Corinthians 12:9", "Ephesians 3:20", "Lamentations 3:22", "1 John 5:14"]}, {"title": "GospelVerse Set 297", "references": ["Romans 12:12", "Proverbs 4:23", "1 Peter 4:8", "1 Peter 4:8", "1 John 4:8", "Revelation 22:17", "Jude 1:24", "Psalm 91:1", "Ephesians 6:10", "Hebrews 11:6"]}, {"title": "GospelVerse Set 298", "references": ["Jude 1:24", "Psalm 34:18", "John 15:5", "1 Peter 2:9", "Philippians 4:13", "Song of Solomon 2:4", "Colossians 3:15", "Revelation 21:4", "Ephesians 3:20", "2 Timothy 3:16"]}, {"title": "GospelVerse Set 299", "references": ["John 3:16", "Psalm 145:18", "1 Thessalonians 5:16", "2 Timothy 3:16", "Isaiah 26:3", "James 1:5", "Galatians 5:22", "Jeremiah 29:11", "James 1:2", "Romans 8:28"]}, {"title": "GospelVerse Set 300", "references": ["Psalm 23:1", "1 John 4:8", "Proverbs 4:23", "Jude 1:24", "2 Timothy 3:16", "Matthew 5:9", "1 John 1:9", "John 8:12", "John 14:27", "Nahum 1:7"]}, {"title": "GospelVerse Set 301", "references": ["Colossians 3:12", "1 Thessalonians 5:18", "1 John 5:14", "Ephesians 2:8", "Matthew 11:28", "Ephesians 4:32", "Zephaniah 3:17", "Micah 6:8", "2 Peter 1:3", "Matthew 11:28"]}, {"title": "GospelVerse Set 302", "references": ["Ephesians 3:20", "1 John 1:9", "Proverbs 4:23", "John 8:12", "Titus 2:11", "John 3:16", "2 Corinthians 12:9", "Philippians 1:6", "Matthew 5:3", "Psalm 91:1"]}, {"title": "GospelVerse Set 303", "references": ["1 Peter 4:8", "Ephesians 2:8", "2 Timothy 3:16", "Ephesians 2:8", "John 14:27", "Proverbs 3:5", "Hebrews 13:5", "Psalm 121:1", "Proverbs 18:10", "Proverbs 4:23"]}, {"title": "GospelVerse Set 304", "references": ["James 1:5", "1 Peter 5:7", "Colossians 3:15", "Isaiah 43:2", "Romans 15:13", "1 Corinthians 16:14", "1 Corinthians 13:4", "Acts 2:21", "Psalm 103:2", "Zephaniah 3:17"]}, {"title": "GospelVerse Set 305", "references": ["Hebrews 4:16", "Ephesians 6:10", "Proverbs 3:5", "Psalm 46:1", "Ephesians 3:20", "2 Corinthians 5:17", "Matthew 28:20", "Ephesians 4:32", "Lamentations 3:22", "2 Timothy 1:7"]}, {"title": "GospelVerse Set 306", "references": ["Matthew 5:3", "Hebrews 4:16", "John 3:16", "John 8:12", "Hebrews 11:1", "2 Timothy 3:16", "Acts 16:31", "Isaiah 26:3", "James 1:2", "Jeremiah 17:7"]}, {"title": "GospelVerse Set 307", "references": ["Psalm 119:105", "James 1:5", "Jeremiah 29:11", "Song of Solomon 2:4", "Hebrews 12:1", "Matthew 28:20", "Romans 10:9", "John 8:12", "Revelation 3:20", "2 Corinthians 12:9"]}, {"title": "GospelVerse Set 308", "references": ["John 10:10", "1 Corinthians 16:14", "Romans 8:1", "Psalm 37:4", "Luke 12:22", "Colossians 3:12", "Nahum 1:7", "1 Timothy 4:12", "Nahum 1:7", "Matthew 28:20"]}, {"title": "GospelVerse Set 309", "references": ["Hebrews 10:24", "Psalm 145:18", "Matthew 6:33", "Titus 2:11", "Luke 6:31", "James 4:7", "Philippians 4:8", "Romans 12:12", "Malachi 3:10", "Ephesians 3:20"]}, {"title": "GospelVerse Set 310", "references": ["Revelation 21:4", "Revelation 3:20", "John 6:35", "Romans 12:12", "Psalm 103:2", "Revelation 21:4", "Isaiah 40:31", "Revelation 22:17", "Philippians 4:8", "1 Corinthians 16:14"]}, {"title": "GospelVerse Set 311", "references": ["James 1:2", "Hebrews 10:24", "Hebrews 11:6", "Jeremiah 29:11", "1 John 4:8", "2 Timothy 1:7", "Romans 5:8", "1 Peter 5:7", "Isaiah 54:17", "1 Timothy 4:12"]}, {"title": "GospelVerse Set 312", "references": ["Mark 11:24", "Philippians 4:8", "Luke 1:37", "Psalm 37:4", "Psalm 37:4", "1 Corinthians 13:4", "1 Corinthians 10:13", "Malachi 3:10", "1 Peter 2:9", "James 1:12"]}, {"title": "GospelVerse Set 313", "references": ["John 15:5", "John 14:27", "2 Corinthians 5:17", "Luke 12:22", "Romans 10:9", "Psalm 27:1", "1 John 4:8", "Matthew 5:3", "Philippians 1:6", "Psalm 91:1"]}, {"title": "GospelVerse Set 314", "references": ["1 Peter 5:7", "Philippians 4:13", "Philippians 1:6", "1 John 5:14", "Psalm 91:1", "2 Timothy 3:16", "Romans 5:8", "Colossians 3:15", "Song of Solomon 2:4", "Hebrews 11:6"]}, {"title": "GospelVerse Set 315", "references": ["Titus 2:11", "Psalm 46:1", "Romans 8:1", "Zephaniah 3:17", "1 Peter 5:7", "Matthew 5:9", "Psalm 121:1", "John 14:27", "Colossians 3:12", "Philippians 4:6"]}, {"title": "GospelVerse Set 316", "references": ["Revelation 3:20", "Isaiah 26:3", "Romans 8:38", "James 1:5", "Psalm 37:4", "1 Thessalonians 5:16", "Hebrews 13:5", "Proverbs 3:6", "Romans 8:38", "Ecclesiastes 3:1"]}, {"title": "GospelVerse Set 317", "references": ["Malachi 3:10", "Colossians 3:12", "Romans 8:1", "Matthew 6:34", "Ephesians 2:8", "Lamentations 3:22", "Matthew 6:33", "Philippians 4:6", "Ephesians 4:32", "1 Timothy 4:12"]}, {"title": "GospelVerse Set 318", "references": ["Psalm 46:1", "Hebrews 13:5", "Romans 8:38", "1 Corinthians 16:14", "Galatians 5:22", "Isaiah 54:17", "Hebrews 11:6", "Psalm 121:1", "James 1:5", "Romans 8:1"]}, {"title": "GospelVerse Set 319", "references": ["Matthew 6:33", "Colossians 3:23", "Romans 12:12", "Psalm 91:1", "Acts 16:31", "2 Corinthians 12:9", "Hebrews 11:1", "Colossians 3:12", "1 Corinthians 10:13", "Romans 10:9"]}, {"title": "GospelVerse Set 320", "references": ["Ephesians 2:8", "Titus 2:11", "Song of Solomon 2:4", "1 John 5:14", "2 Corinthians 5:17", "1 John 4:8", "Ephesians 2:8", "Romans 15:13", "Jude 1:24", "Philippians 2:3"]}, {"title": "GospelVerse Set 321", "references": ["1 Thessalonians 5:18", "James 4:7", "James 1:5", "Psalm 27:1", "Psalm 46:1", "Matthew 22:37", "Matthew 7:7", "Psalm 23:1", "Hebrews 10:24", "1 Thessalonians 5:18"]}, {"title": "GospelVerse Set 322", "references": ["Ephesians 6:10", "Psalm 23:1", "Galatians 5:22", "John 6:35", "Lamentations 3:22", "Jude 1:24", "1 Thessalonians 5:16", "Psalm 103:2", "1 John 1:9", "Romans 10:9"]}, {"title": "GospelVerse Set 323", "references": ["Galatians 5:22", "Jeremiah 17:7", "James 4:7", "Romans 8:38", "2 Timothy 1:7", "John 14:27", "Matthew 6:34", "Hebrews 4:16", "Ephesians 4:32", "1 John 1:9"]}, {"title": "GospelVerse Set 324", "references": ["1 Thessalonians 5:18", "Philippians 1:6", "Zephaniah 3:17", "Romans 8:28", "Jeremiah 29:11", "Revelation 21:4", "1 Thessalonians 5:16", "Philippians 2:3", "James 1:2", "Psalm 145:18"]}, {"title": "GospelVerse Set 325", "references": ["Titus 2:11", "Zephaniah 3:17", "1 Corinthians 13:4", "Matthew 7:7", "Titus 2:11", "John 6:35", "Luke 6:31", "Ephesians 6:10", "Hebrews 4:16", "James 4:7"]}, {"title": "GospelVerse Set 326", "references": ["Proverbs 18:10", "1 Thessalonians 5:18", "Revelation 22:17", "James 1:2", "Psalm 37:4", "1 John 4:8", "Psalm 91:1", "Psalm 145:18", "Romans 15:13", "Hebrews 13:5"]}, {"title": "GospelVerse Set 327", "references": ["Proverbs 4:23", "Psalm 34:18", "Luke 12:22", "Mark 11:24", "Hebrews 10:24", "Hebrews 12:1", "Matthew 6:33", "Ephesians 4:32", "1 Corinthians 16:14", "1 Timothy 4:12"]}, {"title": "GospelVerse Set 328", "references": ["Hebrews 11:1", "John 3:16", "Philippians 4:6", "James 1:2", "John 6:35", "Malachi 3:10", "Hebrews 11:1", "James 4:7", "Romans 6:23", "John 3:16"]}, {"title": "GospelVerse Set 329", "references": ["Acts 2:21", "Ecclesiastes 3:1", "Lamentations 3:22", "Mark 11:24", "Romans 5:8", "James 1:2", "2 Corinthians 5:17", "Ephesians 4:32", "Jeremiah 17:7", "Colossians 3:12"]}, {"title": "GospelVerse Set 330", "references": ["1 Corinthians 10:13", "1 Peter 4:8", "Matthew 11:28", "2 Timothy 3:16", "Matthew 6:33", "Colossians 3:12", "1 John 1:9", "Zephaniah 3:17", "Isaiah 43:2", "Philippians 2:3"]}, {"title": "GospelVerse Set 331", "references": ["Philippians 4:13", "Proverbs 3:5", "Psalm 27:1", "Romans 15:13", "Hebrews 10:24", "Isaiah 54:17", "Micah 6:8", "Psalm 145:18", "Matthew 22:37", "Matthew 5:3"]}, {"title": "GospelVerse Set 332", "references": ["Colossians 3:23", "Hebrews 11:1", "Colossians 3:23", "Psalm 23:1", "James 1:5", "Malachi 3:10", "Ephesians 3:20", "Malachi 3:10", "Matthew 5:3", "Malachi 3:10"]}, {"title": "GospelVerse Set 333", "references": ["Matthew 28:20", "Philippians 1:6", "Colossians 3:23", "Psalm 27:1", "Jude 1:24", "1 John 4:8", "Psalm 91:1", "Proverbs 3:5", "1 John 1:9", "Psalm 23:4"]}, {"title": "GospelVerse Set 334", "references": ["Micah 6:8", "Romans 8:38", "Hebrews 13:5", "James 4:7", "Philippians 4:8", "Galatians 5:22", "1 John 5:14", "Romans 10:9", "Philippians 4:6", "1 John 4:8"]}, {"title": "GospelVerse Set 335", "references": ["2 Corinthians 12:9", "Ephesians 3:20", "Romans 8:38", "Zephaniah 3:17", "2 Corinthians 5:17", "Proverbs 4:23", "2 Corinthians 12:9", "Romans 6:23", "2 Timothy 3:16", "Revelation 22:17"]}, {"title": "GospelVerse Set 336", "references": ["Romans 6:23", "Titus 2:11", "Acts 2:21", "Hebrews 13:5", "1 Peter 4:8", "Hebrews 11:6", "Psalm 27:1", "Psalm 119:105", "Proverbs 4:23", "Philippians 4:6"]}, {"title": "GospelVerse Set 337", "references": ["Proverbs 4:23", "2 Corinthians 12:9", "Ephesians 3:20", "Acts 16:31", "1 Thessalonians 5:18", "Psalm 91:1", "1 Timothy 4:12", "James 1:2", "Luke 12:22", "Isaiah 41:10"]}, {"title": "GospelVerse Set 338", "references": ["Revelation 22:17", "Hebrews 4:16", "1 Thessalonians 5:18", "Psalm 46:1", "1 John 5:14", "Psalm 37:4", "1 John 1:9", "John 8:12", "Nahum 1:7", "1 Corinthians 13:4"]}, {"title": "GospelVerse Set 339", "references": ["1 John 5:14", "Colossians 3:23", "Zephaniah 3:17", "Hebrews 4:16", "Hebrews 4:16", "James 1:5", "Ephesians 6:10", "Philippians 4:6", "Romans 8:38", "John 14:27"]}, {"title": "GospelVerse Set 340", "references": ["Proverbs 18:10", "Romans 12:12", "Romans 8:28", "John 14:27", "Proverbs 3:5", "Proverbs 3:5", "James 1:2", "Luke 1:37", "Proverbs 3:5", "Psalm 121:1"]}, {"title": "GospelVerse Set 341", "references": ["Zephaniah 3:17", "Isaiah 41:10", "Matthew 5:9", "Proverbs 3:6", "1 Peter 2:9", "Romans 5:8", "Psalm 23:1", "Hebrews 12:1", "Hebrews 10:24", "1 Corinthians 16:14"]}, {"title": "GospelVerse Set 342", "references": ["Hebrews 12:1", "1 Corinthians 13:4", "John 3:16", "Matthew 6:34", "Proverbs 18:10", "John 14:27", "James 1:2", "Psalm 119:105", "Revelation 21:4", "Zephaniah 3:17"]}, {"title": "GospelVerse Set 343", "references": ["Jeremiah 17:7", "John 14:27", "Ephesians 3:20", "Isaiah 41:10", "2 Corinthians 5:17", "Luke 6:31", "Lamentations 3:22", "Ecclesiastes 3:1", "John 3:16", "Malachi 3:10"]}, {"title": "GospelVerse Set 344", "references": ["Isaiah 41:10", "Ephesians 4:32", "Hebrews 4:16", "Ephesians 3:20", "Acts 2:21", "Isaiah 40:31", "Philippians 4:8", "1 Timothy 4:12", "John 3:16", "Romans 8:1"]}, {"title": "GospelVerse Set 345", "references": ["Hebrews 11:1", "2 Timothy 1:7", "Jude 1:24", "James 1:5", "1 John 4:8", "Ephesians 4:32", "Luke 6:31", "1 Thessalonians 5:18", "Luke 6:31", "Romans 8:28"]}, {"title": "GospelVerse Set 346", "references": ["Psalm 121:1", "Isaiah 43:2", "1 Peter 4:8", "Ephesians 2:8", "Psalm 37:4", "2 Corinthians 12:9", "Luke 6:31", "James 4:7", "Hebrews 11:1", "1 John 1:9"]}, {"title": "GospelVerse Set 347", "references": ["Acts 2:21", "Psalm 46:1", "James 4:7", "1 Corinthians 16:14", "Revelation 3:20", "Philippians 4:6", "Hebrews 11:6", "Romans 8:28", "Psalm 27:1", "Isaiah 41:10"]}, {"title": "GospelVerse Set 348", "references": ["James 1:2", "Micah 6:8", "Psalm 121:1", "James 4:7", "Matthew 7:7", "Romans 15:13", "John 15:5", "Revelation 3:20", "Hebrews 12:1", "Romans 6:23"]}, {"title": "GospelVerse Set 349", "references": ["Luke 1:37", "Psalm 121:1", "John 3:16", "Hebrews 4:16", "Galatians 5:22", "Romans 10:9", "Hebrews 12:1", "1 John 4:8", "1 Corinthians 16:14", "John 10:10"]}, {"title": "GospelVerse Set 350", "references": ["Revelation 21:4", "Isaiah 43:2", "1 Thessalonians 5:16", "Ephesians 2:8", "Ephesians 4:32", "Ephesians 4:32", "Colossians 3:12", "Matthew 11:28", "Matthew 5:9", "Colossians 3:15"]}, {"title": "GospelVerse Set 351", "references": ["Jude 1:24", "Isaiah 43:2", "Psalm 34:18", "1 Thessalonians 5:16", "Psalm 27:1", "Psalm 119:105", "Isaiah 54:17", "Luke 6:31", "Isaiah 26:3", "Philippians 2:3"]}, {"title": "GospelVerse Set 352", "references": ["Isaiah 26:3", "Romans 12:12", "Matthew 5:9", "1 Thessalonians 5:18", "John 14:27", "Psalm 37:4", "John 10:10", "Psalm 23:1", "John 3:16", "Ephesians 6:10"]}, {"title": "GospelVerse Set 353", "references": ["Philippians 4:8", "Lamentations 3:22", "Matthew 6:33", "Proverbs 3:6", "Hebrews 12:1", "1 Peter 4:8", "Acts 16:31", "Isaiah 43:2", "Psalm 34:18", "Isaiah 54:17"]}, {"title": "GospelVerse Set 354", "references": ["John 15:5", "Philippians 4:8", "Nahum 1:7", "Hebrews 4:16", "Proverbs 18:10", "Romans 8:28", "Malachi 3:10", "Psalm 34:18", "Romans 6:23", "Romans 8:38"]}, {"title": "GospelVerse Set 355", "references": ["Jude 1:24", "2 Corinthians 5:17", "Luke 1:37", "Psalm 121:1", "Isaiah 41:10", "Ephesians 2:8", "Philippians 4:13", "Proverbs 18:10", "Proverbs 18:10", "John 14:27"]}, {"title": "GospelVerse Set 356", "references": ["Philippians 1:6", "Hebrews 13:5", "James 1:12", "2 Timothy 1:7", "Isaiah 54:17", "Matthew 22:37", "Proverbs 18:10", "John 14:27", "Psalm 37:4", "James 1:12"]}, {"title": "GospelVerse Set 357", "references": ["1 Corinthians 16:14", "2 Corinthians 12:9", "Matthew 7:7", "Isaiah 26:3", "Hebrews 4:16", "2 Peter 1:3", "Philippians 4:6", "Matthew 5:9", "Luke 12:22", "Isaiah 41:10"]}, {"title": "GospelVerse Set 358", "references": ["1 Peter 2:9", "1 Corinthians 16:14", "Matthew 5:3", "Matthew 6:33", "Hebrews 11:6", "Hebrews 11:1", "1 Corinthians 10:13", "Proverbs 4:23", "Philippians 4:6", "1 John 4:8"]}, {"title": "GospelVerse Set 359", "references": ["Ephesians 6:10", "2 Timothy 3:16", "Matthew 6:33", "1 John 4:8", "Revelation 3:20", "Hebrews 11:6", "Malachi 3:10", "James 1:5", "Jude 1:24", "Jude 1:24"]}, {"title": "GospelVerse Set 360", "references": ["Isaiah 54:17", "Philippians 4:6", "Psalm 37:4", "Psalm 121:1", "Song of Solomon 2:4", "Zephaniah 3:17", "Psalm 121:1", "Philippians 2:3", "Psalm 145:18", "1 Peter 2:9"]}, {"title": "GospelVerse Set 361", "references": ["Colossians 3:23", "Proverbs 3:5", "Philippians 4:8", "2 Corinthians 5:17", "Romans 10:9", "Hebrews 12:1", "Revelation 21:4", "1 Thessalonians 5:18", "2 Peter 1:3", "Matthew 6:33"]}, {"title": "GospelVerse Set 362", "references": ["1 John 5:14", "Micah 6:8", "Romans 8:28", "Romans 10:9", "Nahum 1:7", "Romans 15:13", "Hebrews 12:1", "Psalm 37:4", "Song of Solomon 2:4", "1 Corinthians 16:14"]}, {"title": "GospelVerse Set 363", "references": ["2 Corinthians 5:17", "Ephesians 4:32", "John 6:35", "Luke 1:37", "Psalm 46:1", "Philippians 4:13", "Hebrews 12:1", "Proverbs 3:5", "Song of Solomon 2:4", "Ephesians 2:8"]}, {"title": "GospelVerse Set 364", "references": ["2 Corinthians 5:17", "Galatians 5:22", "1 Corinthians 16:14", "1 John 5:14", "Zephaniah 3:17", "Song of Solomon 2:4", "Psalm 91:1", "Romans 8:1", "John 14:27", "Colossians 3:12"]}, {"title": "GospelVerse Set 365", "references": ["Ecclesiastes 3:1", "Colossians 3:12", "Ecclesiastes 3:1", "John 15:5", "Colossians 3:15", "Matthew 22:37", "Luke 6:31", "2 Corinthians 5:17", "Hebrews 4:16", "James 1:12"]}, {"title": "GospelVerse Set 366", "references": ["1 John 4:8", "2 Peter 1:3", "Revelation 3:20", "Lamentations 3:22", "John 10:10", "Psalm 23:4", "Galatians 5:22", "Philippians 4:8", "Matthew 22:37", "Colossians 3:12"]}, {"title": "GospelVerse Set 367", "references": ["Romans 8:38", "Hebrews 10:24", "Psalm 121:1", "1 Thessalonians 5:18", "Malachi 3:10", "John 8:12", "Ephesians 6:10", "Matthew 22:37", "Jude 1:24", "Zephaniah 3:17"]}, {"title": "GospelVerse Set 368", "references": ["Hebrews 11:1", "James 4:7", "Hebrews 13:5", "Ephesians 3:20", "Matthew 6:34", "1 John 1:9", "Psalm 103:2", "John 10:10", "Philippians 4:6", "1 Corinthians 10:13"]}, {"title": "GospelVerse Set 369", "references": ["James 1:2", "Romans 5:8", "Psalm 145:18", "1 Corinthians 13:4", "1 Corinthians 13:4", "Micah 6:8", "Isaiah 43:2", "1 Peter 2:9", "Philippians 1:6", "Hebrews 4:16"]}, {"title": "GospelVerse Set 370", "references": ["Matthew 5:9", "Romans 15:13", "Acts 2:21", "Matthew 22:37", "Micah 6:8", "Psalm 34:18", "Hebrews 11:1", "Jeremiah 29:11", "Matthew 6:33", "Psalm 37:4"]}, {"title": "GospelVerse Set 371", "references": ["Luke 12:22", "John 3:16", "Psalm 34:18", "Proverbs 3:6", "Romans 5:8", "Acts 2:21", "Psalm 34:18", "Song of Solomon 2:4", "Luke 12:22", "Revelation 22:17"]}, {"title": "GospelVerse Set 372", "references": ["Romans 8:38", "Revelation 21:4", "Psalm 23:1", "Hebrews 12:1", "Isaiah 26:3", "Hebrews 10:24", "Philippians 1:6", "Philippians 4:8", "2 Peter 1:3", "James 4:7"]}, {"title": "GospelVerse Set 373", "references": ["Micah 6:8", "Hebrews 11:6", "1 Peter 4:8", "1 John 4:8", "John 8:12", "1 Peter 5:7", "Hebrews 10:24", "Romans 8:1", "1 John 1:9", "Luke 6:31"]}, {"title": "GospelVerse Set 374", "references": ["Isaiah 26:3", "Isaiah 41:10", "Titus 2:11", "Hebrews 13:5", "Matthew 6:34", "1 Peter 4:8", "Ephesians 3:20", "2 Peter 1:3", "Luke 12:22", "Psalm 23:1"]}, {"title": "GospelVerse Set 375", "references": ["Jeremiah 29:11", "Hebrews 12:1", "Matthew 7:7", "Colossians 3:12", "Psalm 103:2", "John 14:27", "Luke 12:22", "Psalm 121:1", "Revelation 3:20", "Matthew 22:37"]}, {"title": "GospelVerse Set 376", "references": ["1 Thessalonians 5:16", "1 Peter 2:9", "Song of Solomon 2:4", "1 Corinthians 13:4", "Isaiah 54:17", "Romans 5:8", "Matthew 28:20", "Isaiah 43:2", "Luke 6:31", "John 10:10"]}, {"title": "GospelVerse Set 377", "references": ["Romans 15:13", "Psalm 119:105", "James 1:2", "1 John 4:8", "Colossians 3:23", "Isaiah 40:31", "Psalm 23:4", "Hebrews 12:1", "Luke 12:22", "1 Thessalonians 5:16"]}, {"title": "GospelVerse Set 378", "references": ["Philippians 4:8", "Malachi 3:10", "1 Corinthians 10:13", "Psalm 121:1", "Matthew 11:28", "James 1:12", "John 14:27", "Mark 11:24", "Zephaniah 3:17", "Matthew 28:20"]}, {"title": "GospelVerse Set 379", "references": ["Matthew 7:7", "Isaiah 40:31", "2 Timothy 1:7", "Hebrews 4:16", "Nahum 1:7", "Luke 12:22", "Philippians 4:6", "1 John 4:8", "Luke 6:31", "John 8:12"]}, {"title": "GospelVerse Set 380", "references": ["2 Peter 1:3", "Philippians 4:13", "James 4:7", "Hebrews 11:6", "Luke 6:31", "Proverbs 4:23", "1 John 1:9", "1 Peter 4:8", "John 10:10", "John 10:10"]}, {"title": "GospelVerse Set 381", "references": ["Romans 12:12", "Psalm 23:1", "2 Corinthians 12:9", "Luke 12:22", "1 Peter 4:8", "Lamentations 3:22", "Song of Solomon 2:4", "Hebrews 10:24", "Romans 10:9", "Psalm 37:4"]}, {"title": "GospelVerse Set 382", "references": ["1 Thessalonians 5:16", "Matthew 6:34", "Ephesians 2:8", "Psalm 34:18", "1 Corinthians 16:14", "Hebrews 13:5", "Hebrews 11:1", "Luke 6:31", "Ephesians 4:32", "Ephesians 4:32"]}, {"title": "GospelVerse Set 383", "references": ["1 Peter 2:9", "Revelation 22:17", "Jeremiah 17:7", "John 10:10", "2 Corinthians 5:17", "Jeremiah 29:11", "John 14:27", "Proverbs 4:23", "Matthew 5:3", "Romans 5:8"]}, {"title": "GospelVerse Set 384", "references": ["Philippians 4:6", "1 Thessalonians 5:18", "John 14:27", "Philippians 4:8", "Titus 2:11", "Micah 6:8", "Isaiah 26:3", "Philippians 1:6", "Lamentations 3:22", "1 Corinthians 10:13"]}, {"title": "GospelVerse Set 385", "references": ["John 15:5", "Acts 16:31", "Micah 6:8", "Psalm 103:2", "Psalm 23:1", "Galatians 5:22", "Psalm 34:18", "Ecclesiastes 3:1", "Isaiah 40:31", "1 Corinthians 16:14"]}, {"title": "GospelVerse Set 386", "references": ["Philippians 4:6", "Proverbs 4:23", "1 Timothy 4:12", "Jeremiah 17:7", "Acts 2:21", "Lamentations 3:22", "John 10:10", "Ephesians 3:20", "Ephesians 6:10", "1 Corinthians 16:14"]}, {"title": "GospelVerse Set 387", "references": ["Philippians 2:3", "Philippians 4:13", "Luke 12:22", "James 1:2", "2 Timothy 3:16", "Matthew 11:28", "Matthew 11:28", "Psalm 23:4", "Matthew 6:33", "Psalm 91:1"]}, {"title": "GospelVerse Set 388", "references": ["1 Corinthians 10:13", "Psalm 27:1", "2 Corinthians 12:9", "Hebrews 10:24", "John 10:10", "John 8:12", "Revelation 22:17", "Nahum 1:7", "Matthew 22:37", "Acts 16:31"]}, {"title": "GospelVerse Set 389", "references": ["Psalm 34:18", "Matthew 7:7", "Proverbs 4:23", "2 Corinthians 5:17", "Jeremiah 17:7", "Matthew 6:34", "2 Timothy 1:7", "Matthew 6:33", "Hebrews 4:16", "Ephesians 4:32"]}, {"title": "GospelVerse Set 390", "references": ["John 6:35", "Philippians 1:6", "Ephesians 2:8", "Matthew 6:34", "Isaiah 26:3", "Hebrews 11:1", "1 Peter 4:8", "Hebrews 4:16", "Jude 1:24", "Ecclesiastes 3:1"]}, {"title": "GospelVerse Set 391", "references": ["Matthew 5:3", "Acts 2:21", "Psalm 34:18", "Matthew 5:3", "Jeremiah 29:11", "Acts 16:31", "Isaiah 41:10", "Proverbs 3:6", "Hebrews 10:24", "Acts 2:21"]}, {"title": "GospelVerse Set 392", "references": ["Jeremiah 17:7", "Isaiah 54:17", "Isaiah 41:10", "Revelation 21:4", "Romans 5:8", "Psalm 121:1", "Luke 1:37", "Romans 8:38", "1 Corinthians 16:14", "James 1:2"]}, {"title": "GospelVerse Set 393", "references": ["John 8:12", "Ephesians 3:20", "1 Thessalonians 5:18", "Acts 16:31", "1 Thessalonians 5:18", "1 Corinthians 16:14", "Matthew 6:34", "1 John 1:9", "Hebrews 10:24", "Matthew 6:34"]}, {"title": "GospelVerse Set 394", "references": ["Romans 10:9", "Colossians 3:12", "Matthew 5:3", "Matthew 5:3", "Ephesians 6:10", "Matthew 6:33", "Philippians 4:13", "Ephesians 2:8", "Matthew 11:28", "1 Thessalonians 5:16"]}, {"title": "GospelVerse Set 395", "references": ["Proverbs 3:6", "Hebrews 13:5", "Acts 2:21", "Proverbs 18:10", "Romans 12:12", "Psalm 119:105", "John 6:35", "Proverbs 18:10", "Matthew 5:3", "Nahum 1:7"]}, {"title": "GospelVerse Set 396", "references": ["Proverbs 3:6", "Ephesians 2:8", "1 Corinthians 16:14", "Psalm 46:1", "Isaiah 41:10", "Romans 15:13", "Ephesians 2:8", "Colossians 3:23", "Psalm 91:1", "Romans 15:13"]}, {"title": "GospelVerse Set 397", "references": ["Isaiah 43:2", "James 1:2", "Hebrews 11:1", "2 Peter 1:3", "Ephesians 6:10", "John 15:5", "Psalm 23:4", "Proverbs 18:10", "Hebrews 4:16", "1 Peter 5:7"]}, {"title": "GospelVerse Set 398", "references": ["Matthew 28:20", "Isaiah 26:3", "Revelation 22:17", "Colossians 3:12", "Ephesians 3:20", "Romans 8:38", "Ephesians 6:10", "Luke 6:31", "Romans 8:1", "Hebrews 11:1"]}, {"title": "GospelVerse Set 399", "references": ["Hebrews 4:16", "James 1:2", "Proverbs 18:10", "Romans 6:23", "Isaiah 54:17", "2 Corinthians 12:9", "Psalm 119:105", "1 John 4:8", "Romans 8:28", "Proverbs 3:5"]}, {"title": "GospelVerse Set 400", "references": ["Philippians 2:3", "Matthew 6:33", "Psalm 37:4", "1 Corinthians 13:4", "John 3:16", "Nahum 1:7", "Philippians 1:6", "Psalm 91:1", "Matthew 22:37", "Matthew 6:33"]}, {"title": "GospelVerse Set 401", "references": ["Romans 8:28", "Matthew 5:3", "Philippians 4:6", "Ephesians 6:10", "Romans 8:38", "Titus 2:11", "Matthew 22:37", "1 Thessalonians 5:18", "Luke 1:37", "Acts 16:31"]}, {"title": "GospelVerse Set 402", "references": ["Isaiah 41:10", "Luke 12:22", "Psalm 119:105", "Luke 6:31", "Mark 11:24", "1 John 1:9", "2 Corinthians 12:9", "Ecclesiastes 3:1", "Malachi 3:10", "Psalm 121:1"]}, {"title": "GospelVerse Set 403", "references": ["John 3:16", "Philippians 4:6", "Nahum 1:7", "Psalm 119:105", "Philippians 2:3", "1 Peter 5:7", "1 Timothy 4:12", "Psalm 27:1", "Hebrews 13:5", "Psalm 145:18"]}, {"title": "GospelVerse Set 404", "references": ["Mark 11:24", "Romans 15:13", "Romans 12:12", "Psalm 23:1", "1 Thessalonians 5:18", "1 John 5:14", "Micah 6:8", "Acts 2:21", "1 Corinthians 13:4", "1 Thessalonians 5:18"]}, {"title": "GospelVerse Set 405", "references": ["Galatians 5:22", "Philippians 2:3", "Psalm 103:2", "Acts 16:31", "1 Peter 5:7", "James 4:7", "Malachi 3:10", "Psalm 37:4", "Matthew 22:37", "Matthew 5:3"]}, {"title": "GospelVerse Set 406", "references": ["Acts 16:31", "John 10:10", "Galatians 5:22", "Lamentations 3:22", "Romans 10:9", "Psalm 121:1", "Ecclesiastes 3:1", "Philippians 2:3", "Hebrews 4:16", "Song of Solomon 2:4"]}, {"title": "GospelVerse Set 407", "references": ["Isaiah 26:3", "Psalm 121:1", "Ephesians 2:8", "Proverbs 3:6", "2 Timothy 1:7", "Romans 6:23", "John 10:10", "Psalm 121:1", "Psalm 145:18", "Ephesians 2:8"]}, {"title": "GospelVerse Set 408", "references": ["Jude 1:24", "Psalm 23:1", "John 3:16", "Philippians 4:13", "James 1:12", "Isaiah 40:31", "Jeremiah 29:11", "Psalm 34:18", "Matthew 28:20", "Psalm 91:1"]}, {"title": "GospelVerse Set 409", "references": ["1 John 4:8", "Revelation 21:4", "Philippians 1:6", "Luke 1:37", "Psalm 145:18", "2 Corinthians 12:9", "1 Peter 4:8", "Romans 8:1", "1 Thessalonians 5:16", "Isaiah 40:31"]}, {"title": "GospelVerse Set 410", "references": ["Proverbs 3:5", "Hebrews 4:16", "Luke 6:31", "2 Corinthians 5:17", "Psalm 91:1", "Ephesians 6:10", "Matthew 6:34", "Psalm 119:105", "Ephesians 3:20", "Psalm 91:1"]}, {"title": "GospelVerse Set 411", "references": ["Colossians 3:15", "Psalm 23:1", "Ephesians 2:8", "Revelation 22:17", "Matthew 22:37", "Acts 2:21", "2 Timothy 1:7", "1 Corinthians 10:13", "Matthew 6:34", "Ecclesiastes 3:1"]}, {"title": "GospelVerse Set 412", "references": ["Jeremiah 29:11", "John 3:16", "2 Corinthians 5:17", "Romans 8:38", "Hebrews 11:6", "Romans 10:9", "Jude 1:24", "1 Peter 5:7", "Ephesians 6:10", "Hebrews 13:5"]}, {"title": "GospelVerse Set 413", "references": ["James 1:12", "Romans 15:13", "James 1:2", "Psalm 27:1", "John 14:27", "Matthew 11:28", "Zephaniah 3:17", "1 Peter 4:8", "Luke 6:31", "2 Peter 1:3"]}, {"title": "GospelVerse Set 414", "references": ["1 Timothy 4:12", "John 6:35", "Romans 15:13", "1 John 5:14", "Jude 1:24", "John 15:5", "Matthew 7:7", "Malachi 3:10", "Jude 1:24", "Isaiah 54:17"]}, {"title": "GospelVerse Set 415", "references": ["Isaiah 54:17", "1 Corinthians 10:13", "Psalm 46:1", "Romans 8:28", "Jeremiah 29:11", "Colossians 3:23", "Revelation 22:17", "James 4:7", "Psalm 119:105", "Micah 6:8"]}, {"title": "GospelVerse Set 416", "references": ["2 Peter 1:3", "Matthew 6:34", "Psalm 23:1", "Romans 8:38", "Galatians 5:22", "John 3:16", "Hebrews 12:1", "Romans 8:1", "Matthew 11:28", "1 Peter 2:9"]}, {"title": "GospelVerse Set 417", "references": ["Nahum 1:7", "Acts 2:21", "Titus 2:11", "James 1:5", "1 Peter 4:8", "James 4:7", "Hebrews 10:24", "Matthew 5:9", "Proverbs 3:5", "Ecclesiastes 3:1"]}, {"title": "GospelVerse Set 418", "references": ["1 Timothy 4:12", "Proverbs 3:6", "Proverbs 3:5", "Galatians 5:22", "Philippians 4:8", "1 Corinthians 13:4", "John 14:27", "Hebrews 11:6", "Hebrews 12:1", "Hebrews 4:16"]}, {"title": "GospelVerse Set 419", "references": ["Philippians 1:6", "Malachi 3:10", "John 8:12", "Isaiah 41:10", "Matthew 5:3", "Philippians 4:8", "Matthew 5:9", "Revelation 21:4", "Titus 2:11", "Colossians 3:12"]}, {"title": "GospelVerse Set 420", "references": ["Matthew 5:9", "Revelation 21:4", "Hebrews 11:6", "1 Peter 5:7", "Psalm 34:18", "Romans 15:13", "Isaiah 43:2", "Luke 6:31", "Nahum 1:7", "John 8:12"]}, {"title": "GospelVerse Set 421", "references": ["Matthew 6:33", "2 Timothy 1:7", "1 John 5:14", "Ephesians 3:20", "Revelation 3:20", "Psalm 121:1", "Isaiah 54:17", "1 John 5:14", "Psalm 23:4", "Proverbs 3:6"]}, {"title": "GospelVerse Set 422", "references": ["1 Corinthians 10:13", "Romans 5:8", "Philippians 1:6", "James 1:2", "John 8:12", "Colossians 3:15", "Nahum 1:7", "Philippians 1:6", "Acts 16:31", "Matthew 5:9"]}, {"title": "GospelVerse Set 423", "references": ["Proverbs 3:6", "Psalm 121:1", "Acts 16:31", "Philippians 2:3", "1 Peter 5:7", "Hebrews 11:1", "Philippians 4:6", "Romans 15:13", "Psalm 119:105", "John 14:27"]}, {"title": "GospelVerse Set 424", "references": ["James 1:5", "Colossians 3:15", "Isaiah 40:31", "1 John 1:9", "Philippians 4:13", "2 Peter 1:3", "1 Corinthians 13:4", "John 6:35", "Hebrews 11:1", "Matthew 5:9"]}, {"title": "GospelVerse Set 425", "references": ["Revelation 22:17", "Ephesians 4:32", "Matthew 6:34", "Proverbs 18:10", "Mark 11:24", "Zephaniah 3:17", "John 15:5", "John 15:5", "2 Timothy 1:7", "1 John 5:14"]}, {"title": "GospelVerse Set 426", "references": ["Jeremiah 29:11", "Romans 8:1", "Nahum 1:7", "Colossians 3:23", "Isaiah 26:3", "Romans 6:23", "Acts 2:21", "John 15:5", "1 Peter 2:9", "James 1:2"]}, {"title": "GospelVerse Set 427", "references": ["Psalm 46:1", "Romans 12:12", "Colossians 3:12", "Jude 1:24", "Proverbs 3:5", "Romans 15:13", "1 Thessalonians 5:18", "Ephesians 3:20", "Matthew 22:37", "Acts 2:21"]}, {"title": "GospelVerse Set 428", "references": ["Hebrews 12:1", "Matthew 5:3", "Ecclesiastes 3:1", "2 Timothy 3:16", "1 John 1:9", "2 Corinthians 5:17", "Colossians 3:23", "Philippians 4:13", "Ephesians 3:20", "John 6:35"]}, {"title": "GospelVerse Set 429", "references": ["Romans 6:23", "Colossians 3:23", "Romans 15:13", "Ephesians 4:32", "Matthew 11:28", "Ephesians 2:8", "Psalm 119:105", "Micah 6:8", "2 Corinthians 5:17", "James 1:5"]}, {"title": "GospelVerse Set 430", "references": ["1 Thessalonians 5:16", "James 1:5", "Isaiah 26:3", "Colossians 3:12", "Acts 16:31", "1 Corinthians 10:13", "Jude 1:24", "Psalm 37:4", "Hebrews 11:1", "Psalm 46:1"]}, {"title": "GospelVerse Set 431", "references": ["Proverbs 4:23", "Hebrews 4:16", "1 Peter 2:9", "Psalm 121:1", "Matthew 28:20", "Ephesians 3:20", "John 14:27", "Jeremiah 29:11", "1 Timothy 4:12", "John 8:12"]}, {"title": "GospelVerse Set 432", "references": ["Psalm 46:1", "2 Timothy 1:7", "Matthew 7:7", "Matthew 28:20", "James 1:2", "1 Corinthians 13:4", "1 Thessalonians 5:18", "2 Timothy 3:16", "Lamentations 3:22", "Galatians 5:22"]}, {"title": "GospelVerse Set 433", "references": ["1 Peter 5:7", "Philippians 4:8", "Philippians 4:6", "1 Corinthians 16:14", "Psalm 46:1", "Hebrews 4:16", "Philippians 2:3", "Romans 5:8", "Nahum 1:7", "Revelation 3:20"]}, {"title": "GospelVerse Set 434", "references": ["John 8:12", "James 1:5", "Isaiah 26:3", "Jude 1:24", "Psalm 121:1", "Hebrews 11:1", "2 Corinthians 12:9", "Colossians 3:23", "Colossians 3:23", "John 15:5"]}, {"title": "GospelVerse Set 435", "references": ["Luke 1:37", "1 Thessalonians 5:16", "Lamentations 3:22", "Romans 10:9", "John 8:12", "John 6:35", "Isaiah 26:3", "Acts 16:31", "James 1:2", "Zephaniah 3:17"]}, {"title": "GospelVerse Set 436", "references": ["Psalm 23:1", "Romans 8:1", "Ephesians 4:32", "Romans 10:9", "Jeremiah 17:7", "Psalm 23:1", "James 1:12", "1 Peter 4:8", "Nahum 1:7", "Psalm 23:1"]}, {"title": "GospelVerse Set 437", "references": ["Psalm 103:2", "2 Corinthians 5:17", "Psalm 119:105", "Psalm 23:1", "1 John 1:9", "Psalm 27:1", "John 15:5", "2 Timothy 1:7", "Ephesians 2:8", "Ecclesiastes 3:1"]}, {"title": "GospelVerse Set 438", "references": ["1 John 4:8", "1 John 1:9", "James 1:2", "Psalm 103:2", "Colossians 3:15", "Malachi 3:10", "Hebrews 10:24", "John 6:35", "James 4:7", "2 Corinthians 5:17"]}, {"title": "GospelVerse Set 439", "references": ["Ecclesiastes 3:1", "John 6:35", "Psalm 37:4", "Philippians 2:3", "Hebrews 11:1", "2 Corinthians 5:17", "Colossians 3:23", "Philippians 4:8", "James 1:5", "Philippians 4:8"]}, {"title": "GospelVerse Set 440", "references": ["Hebrews 13:5", "Psalm 23:4", "Isaiah 43:2", "Luke 12:22", "Hebrews 11:1", "John 14:27", "James 1:5", "Psalm 145:18", "Proverbs 4:23", "Psalm 119:105"]}, {"title": "GospelVerse Set 441", "references": ["1 Corinthians 13:4", "Matthew 5:9", "Romans 6:23", "Lamentations 3:22", "Luke 6:31", "Revelation 22:17", "Jeremiah 17:7", "Mark 11:24", "Romans 5:8", "Ephesians 4:32"]}, {"title": "GospelVerse Set 442", "references": ["2 Peter 1:3", "Isaiah 43:2", "Matthew 22:37", "Matthew 11:28", "Jeremiah 17:7", "Hebrews 13:5", "1 Corinthians 16:14", "Romans 8:1", "Romans 8:38", "Romans 12:12"]}, {"title": "GospelVerse Set 443", "references": ["Matthew 7:7", "Galatians 5:22", "Matthew 7:7", "Isaiah 26:3", "Ecclesiastes 3:1", "Psalm 91:1", "Jeremiah 17:7", "Matthew 7:7", "Luke 1:37", "Revelation 21:4"]}, {"title": "GospelVerse Set 444", "references": ["Nahum 1:7", "James 4:7", "Lamentations 3:22", "Micah 6:8", "Colossians 3:23", "Isaiah 41:10", "1 Peter 2:9", "Luke 1:37", "Galatians 5:22", "1 Thessalonians 5:16"]}, {"title": "GospelVerse Set 445", "references": ["Proverbs 3:5", "2 Timothy 3:16", "Colossians 3:12", "Psalm 34:18", "Romans 8:28", "Colossians 3:23", "Romans 5:8", "Ephesians 3:20", "1 Peter 5:7", "Romans 12:12"]}, {"title": "GospelVerse Set 446", "references": ["Mark 11:24", "Psalm 23:1", "Isaiah 41:10", "Matthew 22:37", "Nahum 1:7", "2 Corinthians 12:9", "Acts 16:31", "John 3:16", "Ephesians 2:8", "John 3:16"]}, {"title": "GospelVerse Set 447", "references": ["Philippians 4:8", "James 1:12", "Revelation 22:17", "Philippians 4:8", "Jeremiah 29:11", "1 Thessalonians 5:16", "Psalm 121:1", "Mark 11:24", "Romans 12:12", "Psalm 119:105"]}, {"title": "GospelVerse Set 448", "references": ["Revelation 21:4", "Mark 11:24", "Malachi 3:10", "John 6:35", "Isaiah 40:31", "Hebrews 13:5", "1 John 5:14", "Acts 2:21", "Philippians 4:6", "Titus 2:11"]}, {"title": "GospelVerse Set 449", "references": ["Matthew 5:3", "Isaiah 40:31", "Zephaniah 3:17", "Psalm 121:1", "Hebrews 13:5", "Hebrews 13:5", "Romans 10:9", "Proverbs 4:23", "1 Peter 5:7", "Romans 8:38"]}, {"title": "GospelVerse Set 450", "references": ["Hebrews 11:6", "John 10:10", "Matthew 11:28", "1 Corinthians 13:4", "Zephaniah 3:17", "James 1:2", "Acts 16:31", "Psalm 23:1", "1 Thessalonians 5:16", "1 John 1:9"]}, {"title": "GospelVerse Set 451", "references": ["Hebrews 11:1", "Psalm 23:4", "Philippians 2:3", "Matthew 22:37", "Colossians 3:15", "Proverbs 18:10", "Hebrews 4:16", "Luke 12:22", "1 John 4:8", "Luke 1:37"]}, {"title": "GospelVerse Set 452", "references": ["Matthew 5:9", "John 10:10", "Philippians 1:6", "Micah 6:8", "1 Thessalonians 5:16", "Romans 8:28", "Luke 1:37", "Jeremiah 29:11", "1 Corinthians 16:14", "Philippians 4:6"]}, {"title": "GospelVerse Set 453", "references": ["1 Timothy 4:12", "Proverbs 3:5", "Matthew 5:3", "John 14:27", "Romans 15:13", "1 Corinthians 16:14", "Hebrews 4:16", "Luke 1:37", "Psalm 121:1", "James 1:2"]}, {"title": "GospelVerse Set 454", "references": ["Acts 16:31", "Ephesians 6:10", "Matthew 11:28", "James 1:12", "Proverbs 3:6", "Matthew 5:9", "2 Timothy 3:16", "Matthew 28:20", "Luke 6:31", "Jeremiah 29:11"]}, {"title": "GospelVerse Set 455", "references": ["John 10:10", "1 Peter 2:9", "Psalm 37:4", "Acts 16:31", "Psalm 145:18", "Romans 8:38", "James 1:5", "Isaiah 41:10", "Matthew 11:28", "Zephaniah 3:17"]}, {"title": "GospelVerse Set 456", "references": ["1 Peter 4:8", "2 Peter 1:3", "John 3:16", "Proverbs 18:10", "Luke 12:22", "Hebrews 13:5", "Luke 1:37", "Galatians 5:22", "Philippians 4:8", "Hebrews 11:1"]}, {"title": "GospelVerse Set 457", "references": ["Song of Solomon 2:4", "Psalm 37:4", "John 14:27", "1 Thessalonians 5:16", "Acts 2:21", "Isaiah 54:17", "Hebrews 4:16", "2 Timothy 3:16", "Ephesians 3:20", "Hebrews 11:1"]}, {"title": "GospelVerse Set 458", "references": ["2 Timothy 1:7", "Romans 6:23", "Ephesians 2:8", "Revelation 22:17", "Isaiah 26:3", "Romans 10:9", "Micah 6:8", "Revelation 22:17", "Romans 5:8", "Acts 16:31"]}, {"title": "GospelVerse Set 459", "references": ["Malachi 3:10", "Psalm 103:2", "Proverbs 4:23", "Philippians 1:6", "John 15:5", "Proverbs 3:6", "Matthew 7:7", "James 1:12", "Galatians 5:22", "Jude 1:24"]}, {"title": "GospelVerse Set 460", "references": ["Isaiah 26:3", "2 Timothy 1:7", "Proverbs 4:23", "Revelation 21:4", "2 Corinthians 12:9", "Matthew 6:34", "Revelation 22:17", "Zephaniah 3:17", "Zephaniah 3:17", "Psalm 34:18"]}, {"title": "GospelVerse Set 461", "references": ["Philippians 2:3", "Psalm 46:1", "Romans 8:1", "1 John 5:14", "1 Peter 5:7", "John 10:10", "John 10:10", "James 1:12", "1 Corinthians 13:4", "Psalm 91:1"]}, {"title": "GospelVerse Set 462", "references": ["Acts 2:21", "Philippians 4:13", "Acts 16:31", "1 Corinthians 10:13", "Psalm 119:105", "John 6:35", "John 3:16", "2 Timothy 1:7", "Hebrews 11:6", "Proverbs 4:23"]}, {"title": "GospelVerse Set 463", "references": ["Proverbs 18:10", "Mark 11:24", "Ephesians 3:20", "Romans 8:38", "1 John 5:14", "Romans 15:13", "Hebrews 10:24", "2 Corinthians 12:9", "Zephaniah 3:17", "Proverbs 4:23"]}, {"title": "GospelVerse Set 464", "references": ["Romans 15:13", "Matthew 28:20", "Isaiah 43:2", "Matthew 7:7", "Romans 10:9", "Romans 8:1", "Psalm 37:4", "Colossians 3:12", "Colossians 3:12", "Psalm 119:105"]}, {"title": "GospelVerse Set 465", "references": ["1 Thessalonians 5:18", "Ephesians 6:10", "Psalm 23:4", "Matthew 22:37", "1 John 4:8", "Lamentations 3:22", "Isaiah 41:10", "John 8:12", "1 Corinthians 13:4", "Matthew 6:33"]}, {"title": "GospelVerse Set 466", "references": ["Psalm 34:18", "Isaiah 43:2", "Proverbs 4:23", "2 Timothy 1:7", "Isaiah 26:3", "2 Corinthians 12:9", "Matthew 6:33", "Psalm 34:18", "2 Corinthians 5:17", "2 Timothy 1:7"]}, {"title": "GospelVerse Set 467", "references": ["Philippians 4:6", "Matthew 28:20", "Romans 15:13", "Isaiah 43:2", "2 Timothy 1:7", "Matthew 28:20", "Matthew 6:33", "Matthew 7:7", "Philippians 4:6", "Philippians 4:6"]}, {"title": "GospelVerse Set 468", "references": ["John 15:5", "Matthew 5:3", "1 Thessalonians 5:18", "Proverbs 3:5", "Philippians 1:6", "Ecclesiastes 3:1", "Galatians 5:22", "Matthew 11:28", "Matthew 22:37", "Micah 6:8"]}, {"title": "GospelVerse Set 469", "references": ["James 1:12", "John 3:16", "Hebrews 12:1", "Psalm 103:2", "Romans 10:9", "Micah 6:8", "2 Corinthians 12:9", "Psalm 46:1", "Lamentations 3:22", "Revelation 21:4"]}, {"title": "GospelVerse Set 470", "references": ["Philippians 1:6", "Revelation 21:4", "Isaiah 26:3", "Philippians 4:13", "Isaiah 41:10", "Romans 8:1", "Proverbs 3:5", "1 John 1:9", "Malachi 3:10", "Ephesians 4:32"]}, {"title": "GospelVerse Set 471", "references": ["Romans 8:28", "Isaiah 43:2", "1 Peter 4:8", "James 1:12", "Colossians 3:12", "Romans 8:1", "Psalm 23:4", "1 John 5:14", "Romans 8:28", "Isaiah 26:3"]}, {"title": "GospelVerse Set 472", "references": ["Psalm 46:1", "Proverbs 3:6", "Luke 12:22", "Proverbs 3:5", "Luke 1:37", "James 1:2", "Matthew 5:3", "Proverbs 4:23", "Philippians 4:13", "Psalm 121:1"]}, {"title": "GospelVerse Set 473", "references": ["Psalm 23:4", "1 Corinthians 10:13", "Hebrews 4:16", "Isaiah 41:10", "Ephesians 3:20", "1 Peter 5:7", "Mark 11:24", "Philippians 4:8", "Isaiah 43:2", "1 Thessalonians 5:18"]}, {"title": "GospelVerse Set 474", "references": ["Psalm 23:1", "1 John 4:8", "James 1:5", "Ephesians 4:32", "Hebrews 4:16", "Colossians 3:12", "Psalm 23:4", "Colossians 3:12", "1 Thessalonians 5:18", "Psalm 119:105"]}, {"title": "GospelVerse Set 475", "references": ["1 John 1:9", "Revelation 3:20", "John 14:27", "Micah 6:8", "Colossians 3:12", "Luke 12:22", "Hebrews 13:5", "Matthew 6:33", "Isaiah 54:17", "James 1:12"]}, {"title": "GospelVerse Set 476", "references": ["Psalm 46:1", "Galatians 5:22", "Luke 12:22", "Romans 6:23", "2 Timothy 1:7", "Ephesians 2:8", "Romans 10:9", "Romans 10:9", "Philippians 4:8", "Colossians 3:15"]}, {"title": "GospelVerse Set 477", "references": ["Revelation 3:20", "Matthew 6:33", "John 6:35", "Philippians 4:8", "1 Timothy 4:12", "2 Timothy 3:16", "Romans 8:1", "Psalm 91:1", "John 10:10", "1 Peter 5:7"]}, {"title": "GospelVerse Set 478", "references": ["1 Corinthians 13:4", "Titus 2:11", "Hebrews 4:16", "Matthew 28:20", "1 John 1:9", "2 Peter 1:3", "Philippians 1:6", "Philippians 4:8", "Psalm 119:105", "Colossians 3:15"]}, {"title": "GospelVerse Set 479", "references": ["1 Corinthians 13:4", "Jude 1:24", "Hebrews 10:24", "Romans 5:8", "John 8:12", "Proverbs 3:6", "Philippians 4:13", "John 8:12", "Luke 6:31", "Philippians 2:3"]}, {"title": "GospelVerse Set 480", "references": ["Lamentations 3:22", "Psalm 121:1", "Luke 1:37", "Philippians 4:6", "Revelation 22:17", "Revelation 3:20", "Philippians 4:13", "1 Peter 2:9", "Hebrews 11:6", "Micah 6:8"]}, {"title": "GospelVerse Set 481", "references": ["John 10:10", "1 Peter 4:8", "Romans 12:12", "Micah 6:8", "1 Timothy 4:12", "Proverbs 4:23", "Matthew 7:7", "1 Timothy 4:12", "Psalm 37:4", "Psalm 27:1"]}, {"title": "GospelVerse Set 482", "references": ["Isaiah 26:3", "1 Peter 2:9", "Titus 2:11", "1 Peter 2:9", "James 1:5", "Matthew 22:37", "John 14:27", "Hebrews 11:1", "Malachi 3:10", "Philippians 1:6"]}, {"title": "GospelVerse Set 483", "references": ["James 1:5", "John 15:5", "Psalm 119:105", "Psalm 119:105", "1 John 5:14", "Acts 2:21", "1 John 5:14", "Nahum 1:7", "Matthew 6:33", "Ephesians 6:10"]}, {"title": "GospelVerse Set 484", "references": ["Psalm 145:18", "1 John 1:9", "Ephesians 4:32", "Matthew 5:9", "Philippians 4:13", "Hebrews 13:5", "Psalm 91:1", "Malachi 3:10", "Psalm 23:4", "James 1:5"]}, {"title": "GospelVerse Set 485", "references": ["Psalm 37:4", "Ecclesiastes 3:1", "Revelation 21:4", "Malachi 3:10", "Jeremiah 29:11", "James 1:12", "Revelation 21:4", "Colossians 3:12", "Matthew 5:3", "Romans 5:8"]}, {"title": "GospelVerse Set 486", "references": ["Isaiah 54:17", "Galatians 5:22", "Psalm 27:1", "Isaiah 41:10", "Ecclesiastes 3:1", "1 John 1:9", "Lamentations 3:22", "Philippians 1:6", "Ecclesiastes 3:1", "2 Corinthians 12:9"]}, {"title": "GospelVerse Set 487", "references": ["Luke 1:37", "1 Timothy 4:12", "Mark 11:24", "Luke 1:37", "Isaiah 54:17", "Romans 8:38", "Isaiah 41:10", "Revelation 22:17", "Matthew 6:34", "2 Timothy 1:7"]}, {"title": "GospelVerse Set 488", "references": ["Proverbs 4:23", "John 10:10", "Matthew 6:34", "Colossians 3:23", "Isaiah 43:2", "2 Corinthians 5:17", "2 Timothy 1:7", "Lamentations 3:22", "Romans 8:38", "Jeremiah 17:7"]}, {"title": "GospelVerse Set 489", "references": ["Psalm 103:2", "Philippians 1:6", "Isaiah 43:2", "Matthew 6:34", "Philippians 4:13", "Romans 8:38", "Isaiah 54:17", "Proverbs 18:10", "Romans 8:28", "Matthew 22:37"]}, {"title": "GospelVerse Set 490", "references": ["1 Peter 2:9", "Psalm 121:1", "Philippians 4:6", "Psalm 37:4", "Isaiah 26:3", "Hebrews 11:1", "2 Corinthians 12:9", "Psalm 145:18", "Proverbs 3:5", "Isaiah 54:17"]}, {"title": "GospelVerse Set 491", "references": ["Galatians 5:22", "1 John 5:14", "Hebrews 10:24", "Luke 6:31", "Proverbs 18:10", "Romans 12:12", "Romans 8:28", "Isaiah 26:3", "Acts 16:31", "Luke 1:37"]}, {"title": "GospelVerse Set 492", "references": ["1 John 4:8", "Mark 11:24", "Matthew 6:34", "1 Peter 4:8", "1 John 1:9", "1 John 1:9", "Matthew 7:7", "Hebrews 11:6", "John 15:5", "Hebrews 4:16"]}, {"title": "GospelVerse Set 493", "references": ["1 Corinthians 13:4", "Colossians 3:12", "Hebrews 11:1", "Psalm 145:18", "Psalm 37:4", "Lamentations 3:22", "Matthew 7:7", "Isaiah 26:3", "Philippians 4:8", "Romans 8:28"]}, {"title": "GospelVerse Set 494", "references": ["Philippians 4:6", "Proverbs 3:5", "Philippians 4:8", "Galatians 5:22", "Isaiah 54:17", "Philippians 2:3", "John 8:12", "Psalm 23:1", "2 Timothy 3:16", "Colossians 3:15"]}, {"title": "GospelVerse Set 495", "references": ["2 Corinthians 12:9", "Nahum 1:7", "Psalm 27:1", "Matthew 28:20", "Ephesians 6:10", "Colossians 3:15", "John 8:12", "Philippians 4:8", "John 10:10", "Romans 8:38"]}, {"title": "GospelVerse Set 496", "references": ["Isaiah 41:10", "1 Corinthians 13:4", "1 Thessalonians 5:18", "Psalm 91:1", "Philippians 2:3", "Hebrews 12:1", "1 Corinthians 16:14", "Zephaniah 3:17", "Hebrews 11:6", "Isaiah 43:2"]}, {"title": "GospelVerse Set 497", "references": ["Psalm 37:4", "Hebrews 11:1", "Hebrews 12:1", "Philippians 1:6", "1 John 5:14", "2 Corinthians 12:9", "Mark 11:24", "Hebrews 11:1", "Isaiah 54:17", "1 Corinthians 10:13"]}, {"title": "GospelVerse Set 498", "references": ["1 Peter 2:9", "John 3:16", "Zephaniah 3:17", "Acts 16:31", "1 John 1:9", "Jeremiah 29:11", "Psalm 103:2", "John 10:10", "2 Corinthians 5:17", "Philippians 4:6"]}, {"title": "GospelVerse Set 499", "references": ["1 John 5:14", "James 1:5", "Luke 1:37", "Luke 1:37", "1 John 5:14", "Philippians 1:6", "Romans 8:28", "Proverbs 4:23", "Colossians 3:23", "Revelation 21:4"]}, {"title": "GospelVerse Set 500", "references": ["Matthew 5:3", "1 John 5:14", "1 Peter 2:9", "Revelation 21:4", "2 Corinthians 5:17", "Philippians 1:6", "Micah 6:8", "Luke 1:37", "Revelation 22:17", "Acts 2:21"]}];
+const messages = [
+  {
+    "title": "Keep rejoicing — joy is a command and a gift.",
+    "message": "Keep rejoicing — joy is a command and a gift.",
+    "verse_text": "Rejoice always. — 1 Thessalonians 5:16"
+  },
+  {
+    "title": "God is near when your heart is broken and will heal you.",
+    "message": "God is near when your heart is broken and will heal you.",
+    "verse_text": "The Lord is close to the brokenhearted and saves those who are crushed in spirit. — Psalm 34:18"
+  },
+  {
+    "title": "Jesus satisfies the deepest hunger of your soul.",
+    "message": "Jesus satisfies the deepest hunger of your soul.",
+    "verse_text": "I am the bread of life... — John 6:35"
+  },
+  {
+    "title": "Jesus satisfies the deepest hunger of your soul.",
+    "message": "Jesus satisfies the deepest hunger of your soul.",
+    "verse_text": "I am the bread of life... — John 6:35"
+  },
+  {
+    "title": "Look to God as your helper — He provides support.",
+    "message": "Look to God as your helper — He provides support.",
+    "verse_text": "I lift up my eyes to the hills... where does my help come from? — Psalm 121:1"
+  },
+  {
+    "title": "Believe in Jesus and be saved; faith brings deliverance.",
+    "message": "Believe in Jesus and be saved; faith brings deliverance.",
+    "verse_text": "Believe in the Lord Jesus, and you will be saved—you and your household. — Acts 16:31"
+  },
+  {
+    "title": "A day is coming when God will remove sorrow and pain.",
+    "message": "A day is coming when God will remove sorrow and pain.",
+    "verse_text": "He will wipe away every tear... — Revelation 21:4"
+  },
+  {
+    "title": "Invite God into every step and He will guide you.",
+    "message": "Invite God into every step and He will guide you.",
+    "verse_text": "In all your ways acknowledge him, and he will make straight your paths. — Proverbs 3:6"
+  },
+  {
+    "title": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "message": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "verse_text": "I am the vine; you are the branches... — John 15:5"
+  },
+  {
+    "title": "God will work all things for your good when you trust Him.",
+    "message": "God will work all things for your good when you trust Him.",
+    "verse_text": "In all things God works for the good of those who love him. — Romans 8:28"
+  },
+  {
+    "title": "God walks with you through every valley; do not fear.",
+    "message": "God walks with you through every valley; do not fear.",
+    "verse_text": "Even though I walk through the darkest valley, I will fear no evil. — Psalm 23:4"
+  },
+  {
+    "title": "Live in integrity and lead by example, no matter your age.",
+    "message": "Live in integrity and lead by example, no matter your age.",
+    "verse_text": "Let no one despise you for your youth... — 1 Timothy 4:12"
+  },
+  {
+    "title": "Trust God with your giving and watch Him provide.",
+    "message": "Trust God with your giving and watch Him provide.",
+    "verse_text": "Bring the whole tithe into the storehouse... — Malachi 3:10"
+  },
+  {
+    "title": "God's mercy never ends — His love sustains you.",
+    "message": "God's mercy never ends — His love sustains you.",
+    "verse_text": "Because of the Lord's great love we are not consumed, for his mercies never fail. — Lamentations 3:22"
+  },
+  {
+    "title": "God is good and a safe refuge when troubles come.",
+    "message": "God is good and a safe refuge when troubles come.",
+    "verse_text": "The Lord is good, a refuge in times of trouble... — Nahum 1:7"
+  },
+  {
+    "title": "The call of God invites you into living fellowship with Him.",
+    "message": "The call of God invites you into living fellowship with Him.",
+    "verse_text": "The Spirit and the bride say, 'Come' — Revelation 22:17"
+  },
+  {
+    "title": "Bring your burdens to Jesus — He will give you rest.",
+    "message": "Bring your burdens to Jesus — He will give you rest.",
+    "verse_text": "Come to me, all who are weary, and I will give you rest. — Matthew 11:28"
+  },
+  {
+    "title": "You are chosen by God and called to shine His light.",
+    "message": "You are chosen by God and called to shine His light.",
+    "verse_text": "You are a chosen people, a royal priesthood... — 1 Peter 2:9"
+  },
+  {
+    "title": "Protect your heart; it shapes your life.",
+    "message": "Protect your heart; it shapes your life.",
+    "verse_text": "Guard your heart above all else... — Proverbs 4:23"
+  },
+  {
+    "title": "Remember God's blessings and give Him thanks.",
+    "message": "Remember God's blessings and give Him thanks.",
+    "verse_text": "Forget not all his benefits... — Psalm 103:2"
+  },
+  {
+    "title": "God keeps you secure and strong to stand.",
+    "message": "God keeps you secure and strong to stand.",
+    "verse_text": "To him who is able to keep you from stumbling... — Jude 1:24"
+  },
+  {
+    "title": "Ask God for wisdom — He gives generously to those who ask.",
+    "message": "Ask God for wisdom — He gives generously to those who ask.",
+    "verse_text": "If any lacks wisdom, ask God, who gives generously. — James 1:5"
+  },
+  {
+    "title": "God keeps you secure and strong to stand.",
+    "message": "God keeps you secure and strong to stand.",
+    "verse_text": "To him who is able to keep you from stumbling... — Jude 1:24"
+  },
+  {
+    "title": "Jesus promises to be with you always, no matter what.",
+    "message": "Jesus promises to be with you always, no matter what.",
+    "verse_text": "I am with you always, to the end of the age. — Matthew 28:20"
+  },
+  {
+    "title": "Find joy in God and He will fulfill the desires He placed in you.",
+    "message": "Find joy in God and He will fulfill the desires He placed in you.",
+    "verse_text": "Delight yourself in the Lord, and he will give you the desires of your heart. — Psalm 37:4"
+  },
+  {
+    "title": "Live with justice, mercy, and humility before God.",
+    "message": "Live with justice, mercy, and humility before God.",
+    "verse_text": "Act justly, love mercy, walk humbly with your God. — Micah 6:8"
+  },
+  {
+    "title": "Live in integrity and lead by example, no matter your age.",
+    "message": "Live in integrity and lead by example, no matter your age.",
+    "verse_text": "Let no one despise you for your youth... — 1 Timothy 4:12"
+  },
+  {
+    "title": "In Christ you are not condemned; you are free.",
+    "message": "In Christ you are not condemned; you are free.",
+    "verse_text": "There is therefore now no condemnation for those who are in Christ. — Romans 8:1"
+  },
+  {
+    "title": "Run to God's name for safety; He is your strong refuge.",
+    "message": "Run to God's name for safety; He is your strong refuge.",
+    "verse_text": "The name of the Lord is a strong tower... — Proverbs 18:10"
+  },
+  {
+    "title": "You are never alone — He guides and cares for you.",
+    "message": "You are never alone — He guides and cares for you.",
+    "verse_text": "The Lord is my shepherd; I lack nothing. — Psalm 23:1"
+  },
+  {
+    "title": "Encourage one another toward love and good deeds.",
+    "message": "Encourage one another toward love and good deeds.",
+    "verse_text": "And let us consider how to stir up one another to love and good works. — Hebrews 10:24"
+  },
+  {
+    "title": "God's grace has come to save all who believe.",
+    "message": "God's grace has come to save all who believe.",
+    "verse_text": "For the grace of God has appeared, bringing salvation to all people. — Titus 2:11"
+  },
+  {
+    "title": "Clothe yourself with compassion, kindness, and humility.",
+    "message": "Clothe yourself with compassion, kindness, and humility.",
+    "verse_text": "Put on then, as God's chosen ones, compassionate hearts... — Colossians 3:12"
+  },
+  {
+    "title": "Jesus satisfies the deepest hunger of your soul.",
+    "message": "Jesus satisfies the deepest hunger of your soul.",
+    "verse_text": "I am the bread of life... — John 6:35"
+  },
+  {
+    "title": "Treat others with the kindness you wish to receive.",
+    "message": "Treat others with the kindness you wish to receive.",
+    "verse_text": "Do to others as you would have them do to you. — Luke 6:31"
+  },
+  {
+    "title": "A day is coming when God will remove sorrow and pain.",
+    "message": "A day is coming when God will remove sorrow and pain.",
+    "verse_text": "He will wipe away every tear... — Revelation 21:4"
+  },
+  {
+    "title": "Protect your heart; it shapes your life.",
+    "message": "Protect your heart; it shapes your life.",
+    "verse_text": "Guard your heart above all else... — Proverbs 4:23"
+  },
+  {
+    "title": "Trust God to provide for your needs; don't be anxious.",
+    "message": "Trust God to provide for your needs; don't be anxious.",
+    "verse_text": "Do not be anxious about your life... — Luke 12:22"
+  },
+  {
+    "title": "Run to God's name for safety; He is your strong refuge.",
+    "message": "Run to God's name for safety; He is your strong refuge.",
+    "verse_text": "The name of the Lord is a strong tower... — Proverbs 18:10"
+  },
+  {
+    "title": "Encourage one another toward love and good deeds.",
+    "message": "Encourage one another toward love and good deeds.",
+    "verse_text": "And let us consider how to stir up one another to love and good works. — Hebrews 10:24"
+  },
+  {
+    "title": "God gives perfect peace to those who trust Him.",
+    "message": "God gives perfect peace to those who trust Him.",
+    "verse_text": "You keep in perfect peace those whose minds are steadfast... — Isaiah 26:3"
+  },
+  {
+    "title": "In Christ you are not condemned; you are free.",
+    "message": "In Christ you are not condemned; you are free.",
+    "verse_text": "There is therefore now no condemnation for those who are in Christ. — Romans 8:1"
+  },
+  {
+    "title": "Find joy in God and He will fulfill the desires He placed in you.",
+    "message": "Find joy in God and He will fulfill the desires He placed in you.",
+    "verse_text": "Delight yourself in the Lord, and he will give you the desires of your heart. — Psalm 37:4"
+  },
+  {
+    "title": "Receive the peace of Jesus — it calms every storm.",
+    "message": "Receive the peace of Jesus — it calms every storm.",
+    "verse_text": "Peace I leave with you; my peace I give to you. — John 14:27"
+  },
+  {
+    "title": "Run your race with perseverance and focus on Jesus.",
+    "message": "Run your race with perseverance and focus on Jesus.",
+    "verse_text": "Let us run with endurance the race that is set before us... — Hebrews 12:1"
+  },
+  {
+    "title": "God's grace has come to save all who believe.",
+    "message": "God's grace has come to save all who believe.",
+    "verse_text": "For the grace of God has appeared, bringing salvation to all people. — Titus 2:11"
+  },
+  {
+    "title": "Bring your burdens to Jesus — He will give you rest.",
+    "message": "Bring your burdens to Jesus — He will give you rest.",
+    "verse_text": "Come to me, all who are weary, and I will give you rest. — Matthew 11:28"
+  },
+  {
+    "title": "God is your light and salvation — you need not fear.",
+    "message": "God is your light and salvation — you need not fear.",
+    "verse_text": "The Lord is my light and my salvation; whom shall I fear? — Psalm 27:1"
+  },
+  {
+    "title": "Confess your wrongs — God forgives and restores.",
+    "message": "Confess your wrongs — God forgives and restores.",
+    "verse_text": "If we confess our sins, he is faithful and just to forgive us our sins. — 1 John 1:9"
+  },
+  {
+    "title": "God is near when your heart is broken and will heal you.",
+    "message": "God is near when your heart is broken and will heal you.",
+    "verse_text": "The Lord is close to the brokenhearted and saves those who are crushed in spirit. — Psalm 34:18"
+  },
+  {
+    "title": "Fill your mind with what is true and pure.",
+    "message": "Fill your mind with what is true and pure.",
+    "verse_text": "Think on these things: true, noble... excellent... — Philippians 4:8"
+  },
+  {
+    "title": "Invite God into every step and He will guide you.",
+    "message": "Invite God into every step and He will guide you.",
+    "verse_text": "In all your ways acknowledge him, and he will make straight your paths. — Proverbs 3:6"
+  },
+  {
+    "title": "The call of God invites you into living fellowship with Him.",
+    "message": "The call of God invites you into living fellowship with Him.",
+    "verse_text": "The Spirit and the bride say, 'Come' — Revelation 22:17"
+  },
+  {
+    "title": "Keep hope alive, stay patient in hardship, and pray constantly.",
+    "message": "Keep hope alive, stay patient in hardship, and pray constantly.",
+    "verse_text": "Be joyful in hope, patient in affliction, faithful in prayer. — Romans 12:12"
+  },
+  {
+    "title": "In Christ you are not condemned; you are free.",
+    "message": "In Christ you are not condemned; you are free.",
+    "verse_text": "There is therefore now no condemnation for those who are in Christ. — Romans 8:1"
+  },
+  {
+    "title": "Pray confidently — God hears and answers.",
+    "message": "Pray confidently — God hears and answers.",
+    "verse_text": "This is the confidence we have in approaching God... — 1 John 5:14"
+  },
+  {
+    "title": "Remember God's blessings and give Him thanks.",
+    "message": "Remember God's blessings and give Him thanks.",
+    "verse_text": "Forget not all his benefits... — Psalm 103:2"
+  },
+  {
+    "title": "Call on the Lord; He is close to those who seek Him.",
+    "message": "Call on the Lord; He is close to those who seek Him.",
+    "verse_text": "The Lord is near to all who call on him... — Psalm 145:18"
+  },
+  {
+    "title": "Ask God for wisdom — He gives generously to those who ask.",
+    "message": "Ask God for wisdom — He gives generously to those who ask.",
+    "verse_text": "If any lacks wisdom, ask God, who gives generously. — James 1:5"
+  },
+  {
+    "title": "Show kindness and forgiveness as God showed to you.",
+    "message": "Show kindness and forgiveness as God showed to you.",
+    "verse_text": "Be kind to one another, tenderhearted, forgiving one another... — Ephesians 4:32"
+  },
+  {
+    "title": "Jesus promises to be with you always, no matter what.",
+    "message": "Jesus promises to be with you always, no matter what.",
+    "verse_text": "I am with you always, to the end of the age. — Matthew 28:20"
+  },
+  {
+    "title": "Pray confidently — God hears and answers.",
+    "message": "Pray confidently — God hears and answers.",
+    "verse_text": "This is the confidence we have in approaching God... — 1 John 5:14"
+  },
+  {
+    "title": "The Spirit brings love, joy, peace, and goodness into you.",
+    "message": "The Spirit brings love, joy, peace, and goodness into you.",
+    "verse_text": "The fruit of the Spirit is love, joy, peace... — Galatians 5:22"
+  },
+  {
+    "title": "Jesus waits for you — open your heart to Him.",
+    "message": "Jesus waits for you — open your heart to Him.",
+    "verse_text": "Behold, I stand at the door and knock... — Revelation 3:20"
+  },
+  {
+    "title": "Jesus waits for you — open your heart to Him.",
+    "message": "Jesus waits for you — open your heart to Him.",
+    "verse_text": "Behold, I stand at the door and knock... — Revelation 3:20"
+  },
+  {
+    "title": "Faith is trusting God even when you can't see the outcome.",
+    "message": "Faith is trusting God even when you can't see the outcome.",
+    "verse_text": "Now faith is confidence in what we hope for and assurance about what we do not see. — Hebrews 11:1"
+  },
+  {
+    "title": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "message": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "verse_text": "I am the vine; you are the branches... — John 15:5"
+  },
+  {
+    "title": "God gives perfect peace to those who trust Him.",
+    "message": "God gives perfect peace to those who trust Him.",
+    "verse_text": "You keep in perfect peace those whose minds are steadfast... — Isaiah 26:3"
+  },
+  {
+    "title": "Approach God with confidence to find grace and help.",
+    "message": "Approach God with confidence to find grace and help.",
+    "verse_text": "Let us then with confidence draw near to the throne of grace... — Hebrews 4:16"
+  },
+  {
+    "title": "Look to God as your helper — He provides support.",
+    "message": "Look to God as your helper — He provides support.",
+    "verse_text": "I lift up my eyes to the hills... where does my help come from? — Psalm 121:1"
+  },
+  {
+    "title": "Give thanks in every situation; gratitude transforms.",
+    "message": "Give thanks in every situation; gratitude transforms.",
+    "verse_text": "Give thanks in all circumstances... — 1 Thessalonians 5:18"
+  },
+  {
+    "title": "Pray confidently — God hears and answers.",
+    "message": "Pray confidently — God hears and answers.",
+    "verse_text": "This is the confidence we have in approaching God... — 1 John 5:14"
+  },
+  {
+    "title": "God's love is great — He gave His Son for us.",
+    "message": "God's love is great — He gave His Son for us.",
+    "verse_text": "For God so loved the world that he gave his only Son. — John 3:16"
+  },
+  {
+    "title": "Blessing comes to those who trust God.",
+    "message": "Blessing comes to those who trust God.",
+    "verse_text": "Blessed is the man who trusts in the Lord... — Jeremiah 17:7"
+  },
+  {
+    "title": "Run your race with perseverance and focus on Jesus.",
+    "message": "Run your race with perseverance and focus on Jesus.",
+    "verse_text": "Let us run with endurance the race that is set before us... — Hebrews 12:1"
+  },
+  {
+    "title": "Live with justice, mercy, and humility before God.",
+    "message": "Live with justice, mercy, and humility before God.",
+    "verse_text": "Act justly, love mercy, walk humbly with your God. — Micah 6:8"
+  },
+  {
+    "title": "Trust God with your giving and watch Him provide.",
+    "message": "Trust God with your giving and watch Him provide.",
+    "verse_text": "Bring the whole tithe into the storehouse... — Malachi 3:10"
+  },
+  {
+    "title": "God will finish the work He started in your life.",
+    "message": "God will finish the work He started in your life.",
+    "verse_text": "He who began a good work in you will bring it to completion... — Philippians 1:6"
+  },
+  {
+    "title": "God's love for you is unbreakable and eternal.",
+    "message": "God's love for you is unbreakable and eternal.",
+    "verse_text": "Nothing can separate us from the love of God in Christ Jesus. — Romans 8:38"
+  },
+  {
+    "title": "Persevere through tests and receive God's reward.",
+    "message": "Persevere through tests and receive God's reward.",
+    "verse_text": "Blessed is the man who remains steadfast under trial... — James 1:12"
+  },
+  {
+    "title": "Give your worries to God; He cares deeply for you.",
+    "message": "Give your worries to God; He cares deeply for you.",
+    "verse_text": "Cast all your anxiety on him because he cares for you. — 1 Peter 5:7"
+  },
+  {
+    "title": "God protects you — no weapon formed will succeed.",
+    "message": "God protects you — no weapon formed will succeed.",
+    "verse_text": "No weapon formed against you shall prosper. — Isaiah 54:17"
+  },
+  {
+    "title": "Jesus satisfies the deepest hunger of your soul.",
+    "message": "Jesus satisfies the deepest hunger of your soul.",
+    "verse_text": "I am the bread of life... — John 6:35"
+  },
+  {
+    "title": "Live in integrity and lead by example, no matter your age.",
+    "message": "Live in integrity and lead by example, no matter your age.",
+    "verse_text": "Let no one despise you for your youth... — 1 Timothy 4:12"
+  },
+  {
+    "title": "Sin leads to death, but God gives the gift of life through Christ.",
+    "message": "Sin leads to death, but God gives the gift of life through Christ.",
+    "verse_text": "The wages of sin is death, but the gift of God is eternal life in Christ Jesus. — Romans 6:23"
+  },
+  {
+    "title": "Clothe yourself with compassion, kindness, and humility.",
+    "message": "Clothe yourself with compassion, kindness, and humility.",
+    "verse_text": "Put on then, as God's chosen ones, compassionate hearts... — Colossians 3:12"
+  },
+  {
+    "title": "Live in integrity and lead by example, no matter your age.",
+    "message": "Live in integrity and lead by example, no matter your age.",
+    "verse_text": "Let no one despise you for your youth... — 1 Timothy 4:12"
+  },
+  {
+    "title": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "message": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "verse_text": "I am the vine; you are the branches... — John 15:5"
+  },
+  {
+    "title": "The Spirit brings love, joy, peace, and goodness into you.",
+    "message": "The Spirit brings love, joy, peace, and goodness into you.",
+    "verse_text": "The fruit of the Spirit is love, joy, peace... — Galatians 5:22"
+  },
+  {
+    "title": "Keep rejoicing — joy is a command and a gift.",
+    "message": "Keep rejoicing — joy is a command and a gift.",
+    "verse_text": "Rejoice always. — 1 Thessalonians 5:16"
+  },
+  {
+    "title": "The call of God invites you into living fellowship with Him.",
+    "message": "The call of God invites you into living fellowship with Him.",
+    "verse_text": "The Spirit and the bride say, 'Come' — Revelation 22:17"
+  },
+  {
+    "title": "Be a peacemaker and you will be called God's child.",
+    "message": "Be a peacemaker and you will be called God's child.",
+    "verse_text": "Blessed are the peacemakers... — Matthew 5:9"
+  },
+  {
+    "title": "Approach God with confidence to find grace and help.",
+    "message": "Approach God with confidence to find grace and help.",
+    "verse_text": "Let us then with confidence draw near to the throne of grace... — Hebrews 4:16"
+  },
+  {
+    "title": "God rejoices over you and quiets you with His love.",
+    "message": "God rejoices over you and quiets you with His love.",
+    "verse_text": "The Lord your God is with you... he will quiet you with his love. — Zephaniah 3:17"
+  },
+  {
+    "title": "God's love for you is unbreakable and eternal.",
+    "message": "God's love for you is unbreakable and eternal.",
+    "verse_text": "Nothing can separate us from the love of God in Christ Jesus. — Romans 8:38"
+  },
+  {
+    "title": "Run to God's name for safety; He is your strong refuge.",
+    "message": "Run to God's name for safety; He is your strong refuge.",
+    "verse_text": "The name of the Lord is a strong tower... — Proverbs 18:10"
+  },
+  {
+    "title": "Run your race with perseverance and focus on Jesus.",
+    "message": "Run your race with perseverance and focus on Jesus.",
+    "verse_text": "Let us run with endurance the race that is set before us... — Hebrews 12:1"
+  },
+  {
+    "title": "God is near when your heart is broken and will heal you.",
+    "message": "God is near when your heart is broken and will heal you.",
+    "verse_text": "The Lord is close to the brokenhearted and saves those who are crushed in spirit. — Psalm 34:18"
+  },
+  {
+    "title": "God's love is great — He gave His Son for us.",
+    "message": "God's love is great — He gave His Son for us.",
+    "verse_text": "For God so loved the world that he gave his only Son. — John 3:16"
+  },
+  {
+    "title": "Find joy in God and He will fulfill the desires He placed in you.",
+    "message": "Find joy in God and He will fulfill the desires He placed in you.",
+    "verse_text": "Delight yourself in the Lord, and he will give you the desires of your heart. — Psalm 37:4"
+  },
+  {
+    "title": "Receive the peace of Jesus — it calms every storm.",
+    "message": "Receive the peace of Jesus — it calms every storm.",
+    "verse_text": "Peace I leave with you; my peace I give to you. — John 14:27"
+  },
+  {
+    "title": "Approach God with confidence to find grace and help.",
+    "message": "Approach God with confidence to find grace and help.",
+    "verse_text": "Let us then with confidence draw near to the throne of grace... — Hebrews 4:16"
+  },
+  {
+    "title": "Invite God into every step and He will guide you.",
+    "message": "Invite God into every step and He will guide you.",
+    "verse_text": "In all your ways acknowledge him, and he will make straight your paths. — Proverbs 3:6"
+  },
+  {
+    "title": "The Spirit brings love, joy, peace, and goodness into you.",
+    "message": "The Spirit brings love, joy, peace, and goodness into you.",
+    "verse_text": "The fruit of the Spirit is love, joy, peace... — Galatians 5:22"
+  },
+  {
+    "title": "There is a season for every purpose under heaven.",
+    "message": "There is a season for every purpose under heaven.",
+    "verse_text": "For everything there is a season... — Ecclesiastes 3:1"
+  },
+  {
+    "title": "Love God fully with your whole heart.",
+    "message": "Love God fully with your whole heart.",
+    "verse_text": "Love the Lord your God with all your heart... — Matthew 22:37"
+  },
+  {
+    "title": "Encourage one another toward love and good deeds.",
+    "message": "Encourage one another toward love and good deeds.",
+    "verse_text": "And let us consider how to stir up one another to love and good works. — Hebrews 10:24"
+  },
+  {
+    "title": "Trust God to provide for your needs; don't be anxious.",
+    "message": "Trust God to provide for your needs; don't be anxious.",
+    "verse_text": "Do not be anxious about your life... — Luke 12:22"
+  },
+  {
+    "title": "God protects you — no weapon formed will succeed.",
+    "message": "God protects you — no weapon formed will succeed.",
+    "verse_text": "No weapon formed against you shall prosper. — Isaiah 54:17"
+  },
+  {
+    "title": "Persevere through tests and receive God's reward.",
+    "message": "Persevere through tests and receive God's reward.",
+    "verse_text": "Blessed is the man who remains steadfast under trial... — James 1:12"
+  },
+  {
+    "title": "God loved us first — Christ died to bring us back to Him.",
+    "message": "God loved us first — Christ died to bring us back to Him.",
+    "verse_text": "God demonstrates his own love for us in this: while we were still sinners, Christ died for us. — Romans 5:8"
+  },
+  {
+    "title": "God fills you with hope, joy, and peace as you trust Him.",
+    "message": "God fills you with hope, joy, and peace as you trust Him.",
+    "verse_text": "May the God of hope fill you with all joy and peace... — Romans 15:13"
+  },
+  {
+    "title": "Show kindness and forgiveness as God showed to you.",
+    "message": "Show kindness and forgiveness as God showed to you.",
+    "verse_text": "Be kind to one another, tenderhearted, forgiving one another... — Ephesians 4:32"
+  },
+  {
+    "title": "Look to God as your helper — He provides support.",
+    "message": "Look to God as your helper — He provides support.",
+    "verse_text": "I lift up my eyes to the hills... where does my help come from? — Psalm 121:1"
+  },
+  {
+    "title": "God brings you into places of joy and celebration.",
+    "message": "God brings you into places of joy and celebration.",
+    "verse_text": "He brought me to the banquet hall... — Song of Solomon 2:4"
+  },
+  {
+    "title": "Salvation is a gift of grace — accept it by faith.",
+    "message": "Salvation is a gift of grace — accept it by faith.",
+    "verse_text": "For by grace you have been saved through faith. — Ephesians 2:8"
+  },
+  {
+    "title": "Remember God's blessings and give Him thanks.",
+    "message": "Remember God's blessings and give Him thanks.",
+    "verse_text": "Forget not all his benefits... — Psalm 103:2"
+  },
+  {
+    "title": "Invite God into every step and He will guide you.",
+    "message": "Invite God into every step and He will guide you.",
+    "verse_text": "In all your ways acknowledge him, and he will make straight your paths. — Proverbs 3:6"
+  },
+  {
+    "title": "Let love guide every action you take.",
+    "message": "Let love guide every action you take.",
+    "verse_text": "Do everything in love. — 1 Corinthians 16:14"
+  },
+  {
+    "title": "Call on the Lord; He is close to those who seek Him.",
+    "message": "Call on the Lord; He is close to those who seek Him.",
+    "verse_text": "The Lord is near to all who call on him... — Psalm 145:18"
+  },
+  {
+    "title": "Show kindness and forgiveness as God showed to you.",
+    "message": "Show kindness and forgiveness as God showed to you.",
+    "verse_text": "Be kind to one another, tenderhearted, forgiving one another... — Ephesians 4:32"
+  },
+  {
+    "title": "God will work all things for your good when you trust Him.",
+    "message": "God will work all things for your good when you trust Him.",
+    "verse_text": "In all things God works for the good of those who love him. — Romans 8:28"
+  },
+  {
+    "title": "Find strength in the Lord and His power.",
+    "message": "Find strength in the Lord and His power.",
+    "verse_text": "Be strong in the Lord and in his mighty power. — Ephesians 6:10"
+  },
+  {
+    "title": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "message": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "verse_text": "I am the vine; you are the branches... — John 15:5"
+  },
+  {
+    "title": "Through every storm, God is with you and will carry you.",
+    "message": "Through every storm, God is with you and will carry you.",
+    "verse_text": "When you pass through the waters, I will be with you; through the rivers, they shall not overwhelm you. — Isaiah 43:2"
+  },
+  {
+    "title": "Put God first and He will provide what you need.",
+    "message": "Put God first and He will provide what you need.",
+    "verse_text": "Seek first the kingdom of God and his righteousness... — Matthew 6:33"
+  },
+  {
+    "title": "Let love lead — patient, kind, and true.",
+    "message": "Let love lead — patient, kind, and true.",
+    "verse_text": "Love is patient, love is kind... — 1 Corinthians 13:4"
+  },
+  {
+    "title": "Wait on the Lord — He will renew your strength.",
+    "message": "Wait on the Lord — He will renew your strength.",
+    "verse_text": "Those who hope in the Lord will renew their strength. — Isaiah 40:31"
+  },
+  {
+    "title": "God has good plans for your future — hope and purpose await.",
+    "message": "God has good plans for your future — hope and purpose await.",
+    "verse_text": "For I know the plans I have for you, plans to prosper you and not to harm you. — Jeremiah 29:11"
+  },
+  {
+    "title": "With Christ's strength, you can face any challenge.",
+    "message": "With Christ's strength, you can face any challenge.",
+    "verse_text": "I can do all things through Christ who strengthens me. — Philippians 4:13"
+  },
+  {
+    "title": "Jesus satisfies the deepest hunger of your soul.",
+    "message": "Jesus satisfies the deepest hunger of your soul.",
+    "verse_text": "I am the bread of life... — John 6:35"
+  },
+  {
+    "title": "Faith is trusting God even when you can't see the outcome.",
+    "message": "Faith is trusting God even when you can't see the outcome.",
+    "verse_text": "Now faith is confidence in what we hope for and assurance about what we do not see. — Hebrews 11:1"
+  },
+  {
+    "title": "Let love guide every action you take.",
+    "message": "Let love guide every action you take.",
+    "verse_text": "Do everything in love. — 1 Corinthians 16:14"
+  },
+  {
+    "title": "Jesus satisfies the deepest hunger of your soul.",
+    "message": "Jesus satisfies the deepest hunger of your soul.",
+    "verse_text": "I am the bread of life... — John 6:35"
+  },
+  {
+    "title": "Trust God to provide for your needs; don't be anxious.",
+    "message": "Trust God to provide for your needs; don't be anxious.",
+    "verse_text": "Do not be anxious about your life... — Luke 12:22"
+  },
+  {
+    "title": "Confess your wrongs — God forgives and restores.",
+    "message": "Confess your wrongs — God forgives and restores.",
+    "verse_text": "If we confess our sins, he is faithful and just to forgive us our sins. — 1 John 1:9"
+  },
+  {
+    "title": "Receive the peace of Jesus — it calms every storm.",
+    "message": "Receive the peace of Jesus — it calms every storm.",
+    "verse_text": "Peace I leave with you; my peace I give to you. — John 14:27"
+  },
+  {
+    "title": "God is near when your heart is broken and will heal you.",
+    "message": "God is near when your heart is broken and will heal you.",
+    "verse_text": "The Lord is close to the brokenhearted and saves those who are crushed in spirit. — Psalm 34:18"
+  },
+  {
+    "title": "Persevere through tests and receive God's reward.",
+    "message": "Persevere through tests and receive God's reward.",
+    "verse_text": "Blessed is the man who remains steadfast under trial... — James 1:12"
+  },
+  {
+    "title": "God gives perfect peace to those who trust Him.",
+    "message": "God gives perfect peace to those who trust Him.",
+    "verse_text": "You keep in perfect peace those whose minds are steadfast... — Isaiah 26:3"
+  },
+  {
+    "title": "God rejoices over you and quiets you with His love.",
+    "message": "God rejoices over you and quiets you with His love.",
+    "verse_text": "The Lord your God is with you... he will quiet you with his love. — Zephaniah 3:17"
+  },
+  {
+    "title": "Let Jesus' peace lead your life and choices.",
+    "message": "Let Jesus' peace lead your life and choices.",
+    "verse_text": "Let the peace of Christ rule in your hearts. — Colossians 3:15"
+  },
+  {
+    "title": "With God, nothing is impossible.",
+    "message": "With God, nothing is impossible.",
+    "verse_text": "For nothing will be impossible with God. — Luke 1:37"
+  },
+  {
+    "title": "Pray in faith and believe that God answers.",
+    "message": "Pray in faith and believe that God answers.",
+    "verse_text": "Whatever you ask in prayer, believe that you have received it... — Mark 11:24"
+  },
+  {
+    "title": "God can do far more than you hope or can imagine.",
+    "message": "God can do far more than you hope or can imagine.",
+    "verse_text": "He is able to do immeasurably more than all we ask or imagine. — Ephesians 3:20"
+  },
+  {
+    "title": "Fear not — God is with you and will strengthen you.",
+    "message": "Fear not — God is with you and will strengthen you.",
+    "verse_text": "Do not fear, for I am with you; do not be dismayed, for I am your God. — Isaiah 41:10"
+  },
+  {
+    "title": "Call on Jesus and find salvation and hope.",
+    "message": "Call on Jesus and find salvation and hope.",
+    "verse_text": "Everyone who calls on the name of the Lord will be saved. — Acts 2:21"
+  },
+  {
+    "title": "Jesus waits for you — open your heart to Him.",
+    "message": "Jesus waits for you — open your heart to Him.",
+    "verse_text": "Behold, I stand at the door and knock... — Revelation 3:20"
+  },
+  {
+    "title": "Jesus is the light that guides your path.",
+    "message": "Jesus is the light that guides your path.",
+    "verse_text": "I am the light of the world... — John 8:12"
+  },
+  {
+    "title": "Clothe yourself with compassion, kindness, and humility.",
+    "message": "Clothe yourself with compassion, kindness, and humility.",
+    "verse_text": "Put on then, as God's chosen ones, compassionate hearts... — Colossians 3:12"
+  },
+  {
+    "title": "Submit to God and stand against evil; it will flee.",
+    "message": "Submit to God and stand against evil; it will flee.",
+    "verse_text": "Submit yourselves to God; resist the devil, and he will flee from you. — James 4:7"
+  },
+  {
+    "title": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "message": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "verse_text": "I am the vine; you are the branches... — John 15:5"
+  },
+  {
+    "title": "The Spirit brings love, joy, peace, and goodness into you.",
+    "message": "The Spirit brings love, joy, peace, and goodness into you.",
+    "verse_text": "The fruit of the Spirit is love, joy, peace... — Galatians 5:22"
+  },
+  {
+    "title": "In Christ you are made new — old things pass away.",
+    "message": "In Christ you are made new — old things pass away.",
+    "verse_text": "If anyone is in Christ, the new creation has come: the old is gone. — 2 Corinthians 5:17"
+  },
+  {
+    "title": "Show kindness and forgiveness as God showed to you.",
+    "message": "Show kindness and forgiveness as God showed to you.",
+    "verse_text": "Be kind to one another, tenderhearted, forgiving one another... — Ephesians 4:32"
+  },
+  {
+    "title": "Pray in faith and believe that God answers.",
+    "message": "Pray in faith and believe that God answers.",
+    "verse_text": "Whatever you ask in prayer, believe that you have received it... — Mark 11:24"
+  },
+  {
+    "title": "Jesus gives life in full measure — abundant and meaningful.",
+    "message": "Jesus gives life in full measure — abundant and meaningful.",
+    "verse_text": "I came that they may have life and have it abundantly. — John 10:10"
+  },
+  {
+    "title": "Jesus waits for you — open your heart to Him.",
+    "message": "Jesus waits for you — open your heart to Him.",
+    "verse_text": "Behold, I stand at the door and knock... — Revelation 3:20"
+  },
+  {
+    "title": "Wait on the Lord — He will renew your strength.",
+    "message": "Wait on the Lord — He will renew your strength.",
+    "verse_text": "Those who hope in the Lord will renew their strength. — Isaiah 40:31"
+  },
+  {
+    "title": "God's grace has come to save all who believe.",
+    "message": "God's grace has come to save all who believe.",
+    "verse_text": "For the grace of God has appeared, bringing salvation to all people. — Titus 2:11"
+  },
+  {
+    "title": "Keep love at the center; it covers many sins.",
+    "message": "Keep love at the center; it covers many sins.",
+    "verse_text": "Above all, keep loving one another earnestly... — 1 Peter 4:8"
+  },
+  {
+    "title": "Keep rejoicing — joy is a command and a gift.",
+    "message": "Keep rejoicing — joy is a command and a gift.",
+    "verse_text": "Rejoice always. — 1 Thessalonians 5:16"
+  },
+  {
+    "title": "Humility before God brings blessing.",
+    "message": "Humility before God brings blessing.",
+    "verse_text": "Blessed are the poor in spirit... — Matthew 5:3"
+  },
+  {
+    "title": "God's mercy never ends — His love sustains you.",
+    "message": "God's mercy never ends — His love sustains you.",
+    "verse_text": "Because of the Lord's great love we are not consumed, for his mercies never fail. — Lamentations 3:22"
+  },
+  {
+    "title": "Ask God for wisdom — He gives generously to those who ask.",
+    "message": "Ask God for wisdom — He gives generously to those who ask.",
+    "verse_text": "If any lacks wisdom, ask God, who gives generously. — James 1:5"
+  },
+  {
+    "title": "God fills you with hope, joy, and peace as you trust Him.",
+    "message": "God fills you with hope, joy, and peace as you trust Him.",
+    "verse_text": "May the God of hope fill you with all joy and peace... — Romans 15:13"
+  },
+  {
+    "title": "God keeps you secure and strong to stand.",
+    "message": "God keeps you secure and strong to stand.",
+    "verse_text": "To him who is able to keep you from stumbling... — Jude 1:24"
+  },
+  {
+    "title": "Remember God's blessings and give Him thanks.",
+    "message": "Remember God's blessings and give Him thanks.",
+    "verse_text": "Forget not all his benefits... — Psalm 103:2"
+  },
+  {
+    "title": "Put God first and He will provide what you need.",
+    "message": "Put God first and He will provide what you need.",
+    "verse_text": "Seek first the kingdom of God and his righteousness... — Matthew 6:33"
+  },
+  {
+    "title": "You are chosen by God and called to shine His light.",
+    "message": "You are chosen by God and called to shine His light.",
+    "verse_text": "You are a chosen people, a royal priesthood... — 1 Peter 2:9"
+  },
+  {
+    "title": "Find strength in the Lord and His power.",
+    "message": "Find strength in the Lord and His power.",
+    "verse_text": "Be strong in the Lord and in his mighty power. — Ephesians 6:10"
+  },
+  {
+    "title": "Trust God to provide for your needs; don't be anxious.",
+    "message": "Trust God to provide for your needs; don't be anxious.",
+    "verse_text": "Do not be anxious about your life... — Luke 12:22"
+  },
+  {
+    "title": "Pray confidently — God hears and answers.",
+    "message": "Pray confidently — God hears and answers.",
+    "verse_text": "This is the confidence we have in approaching God... — 1 John 5:14"
+  },
+  {
+    "title": "Work for the Lord with all your heart and offer it to Him.",
+    "message": "Work for the Lord with all your heart and offer it to Him.",
+    "verse_text": "Whatever you do, work heartily, as for the Lord... — Colossians 3:23"
+  },
+  {
+    "title": "Let love lead — patient, kind, and true.",
+    "message": "Let love lead — patient, kind, and true.",
+    "verse_text": "Love is patient, love is kind... — 1 Corinthians 13:4"
+  },
+  {
+    "title": "God loved us first — Christ died to bring us back to Him.",
+    "message": "God loved us first — Christ died to bring us back to Him.",
+    "verse_text": "God demonstrates his own love for us in this: while we were still sinners, Christ died for us. — Romans 5:8"
+  },
+  {
+    "title": "Keep rejoicing — joy is a command and a gift.",
+    "message": "Keep rejoicing — joy is a command and a gift.",
+    "verse_text": "Rejoice always. — 1 Thessalonians 5:16"
+  },
+  {
+    "title": "Invite God into every step and He will guide you.",
+    "message": "Invite God into every step and He will guide you.",
+    "verse_text": "In all your ways acknowledge him, and he will make straight your paths. — Proverbs 3:6"
+  },
+  {
+    "title": "Jesus waits for you — open your heart to Him.",
+    "message": "Jesus waits for you — open your heart to Him.",
+    "verse_text": "Behold, I stand at the door and knock... — Revelation 3:20"
+  },
+  {
+    "title": "God is good and a safe refuge when troubles come.",
+    "message": "God is good and a safe refuge when troubles come.",
+    "verse_text": "The Lord is good, a refuge in times of trouble... — Nahum 1:7"
+  },
+  {
+    "title": "Trust God to provide for your needs; don't be anxious.",
+    "message": "Trust God to provide for your needs; don't be anxious.",
+    "verse_text": "Do not be anxious about your life... — Luke 12:22"
+  },
+  {
+    "title": "God is your light and salvation — you need not fear.",
+    "message": "God is your light and salvation — you need not fear.",
+    "verse_text": "The Lord is my light and my salvation; whom shall I fear? — Psalm 27:1"
+  },
+  {
+    "title": "God fills you with hope, joy, and peace as you trust Him.",
+    "message": "God fills you with hope, joy, and peace as you trust Him.",
+    "verse_text": "May the God of hope fill you with all joy and peace... — Romans 15:13"
+  },
+  {
+    "title": "God gives you power, love, and self-control, not fear.",
+    "message": "God gives you power, love, and self-control, not fear.",
+    "verse_text": "God gave us a spirit not of fear but of power and love and self-control. — 2 Timothy 1:7"
+  },
+  {
+    "title": "In Christ you are made new — old things pass away.",
+    "message": "In Christ you are made new — old things pass away.",
+    "verse_text": "If anyone is in Christ, the new creation has come: the old is gone. — 2 Corinthians 5:17"
+  },
+  {
+    "title": "God protects you — no weapon formed will succeed.",
+    "message": "God protects you — no weapon formed will succeed.",
+    "verse_text": "No weapon formed against you shall prosper. — Isaiah 54:17"
+  },
+  {
+    "title": "God's love for you is unbreakable and eternal.",
+    "message": "God's love for you is unbreakable and eternal.",
+    "verse_text": "Nothing can separate us from the love of God in Christ Jesus. — Romans 8:38"
+  },
+  {
+    "title": "God brings you into places of joy and celebration.",
+    "message": "God brings you into places of joy and celebration.",
+    "verse_text": "He brought me to the banquet hall... — Song of Solomon 2:4"
+  },
+  {
+    "title": "God is your light and salvation — you need not fear.",
+    "message": "God is your light and salvation — you need not fear.",
+    "verse_text": "The Lord is my light and my salvation; whom shall I fear? — Psalm 27:1"
+  },
+  {
+    "title": "When anxious, bring everything to God in prayer.",
+    "message": "When anxious, bring everything to God in prayer.",
+    "verse_text": "Do not be anxious about anything; pray about everything. — Philippians 4:6"
+  },
+  {
+    "title": "The Spirit brings love, joy, peace, and goodness into you.",
+    "message": "The Spirit brings love, joy, peace, and goodness into you.",
+    "verse_text": "The fruit of the Spirit is love, joy, peace... — Galatians 5:22"
+  },
+  {
+    "title": "Put God first and He will provide what you need.",
+    "message": "Put God first and He will provide what you need.",
+    "verse_text": "Seek first the kingdom of God and his righteousness... — Matthew 6:33"
+  },
+  {
+    "title": "Jesus satisfies the deepest hunger of your soul.",
+    "message": "Jesus satisfies the deepest hunger of your soul.",
+    "verse_text": "I am the bread of life... — John 6:35"
+  },
+  {
+    "title": "God brings you into places of joy and celebration.",
+    "message": "God brings you into places of joy and celebration.",
+    "verse_text": "He brought me to the banquet hall... — Song of Solomon 2:4"
+  },
+  {
+    "title": "God is your light and salvation — you need not fear.",
+    "message": "God is your light and salvation — you need not fear.",
+    "verse_text": "The Lord is my light and my salvation; whom shall I fear? — Psalm 27:1"
+  },
+  {
+    "title": "Confess your wrongs — God forgives and restores.",
+    "message": "Confess your wrongs — God forgives and restores.",
+    "verse_text": "If we confess our sins, he is faithful and just to forgive us our sins. — 1 John 1:9"
+  },
+  {
+    "title": "God is near when your heart is broken and will heal you.",
+    "message": "God is near when your heart is broken and will heal you.",
+    "verse_text": "The Lord is close to the brokenhearted and saves those who are crushed in spirit. — Psalm 34:18"
+  },
+  {
+    "title": "Give your worries to God; He cares deeply for you.",
+    "message": "Give your worries to God; He cares deeply for you.",
+    "verse_text": "Cast all your anxiety on him because he cares for you. — 1 Peter 5:7"
+  },
+  {
+    "title": "Receive the peace of Jesus — it calms every storm.",
+    "message": "Receive the peace of Jesus — it calms every storm.",
+    "verse_text": "Peace I leave with you; my peace I give to you. — John 14:27"
+  },
+  {
+    "title": "Through every storm, God is with you and will carry you.",
+    "message": "Through every storm, God is with you and will carry you.",
+    "verse_text": "When you pass through the waters, I will be with you; through the rivers, they shall not overwhelm you. — Isaiah 43:2"
+  },
+  {
+    "title": "With Christ's strength, you can face any challenge.",
+    "message": "With Christ's strength, you can face any challenge.",
+    "verse_text": "I can do all things through Christ who strengthens me. — Philippians 4:13"
+  },
+  {
+    "title": "Be a peacemaker and you will be called God's child.",
+    "message": "Be a peacemaker and you will be called God's child.",
+    "verse_text": "Blessed are the peacemakers... — Matthew 5:9"
+  },
+  {
+    "title": "God is good and a safe refuge when troubles come.",
+    "message": "God is good and a safe refuge when troubles come.",
+    "verse_text": "The Lord is good, a refuge in times of trouble... — Nahum 1:7"
+  },
+  {
+    "title": "Let Jesus' peace lead your life and choices.",
+    "message": "Let Jesus' peace lead your life and choices.",
+    "verse_text": "Let the peace of Christ rule in your hearts. — Colossians 3:15"
+  },
+  {
+    "title": "Find strength in the Lord and His power.",
+    "message": "Find strength in the Lord and His power.",
+    "verse_text": "Be strong in the Lord and in his mighty power. — Ephesians 6:10"
+  },
+  {
+    "title": "God walks with you through every valley; do not fear.",
+    "message": "God walks with you through every valley; do not fear.",
+    "verse_text": "Even though I walk through the darkest valley, I will fear no evil. — Psalm 23:4"
+  },
+  {
+    "title": "Jesus gives life in full measure — abundant and meaningful.",
+    "message": "Jesus gives life in full measure — abundant and meaningful.",
+    "verse_text": "I came that they may have life and have it abundantly. — John 10:10"
+  },
+  {
+    "title": "Blessing comes to those who trust God.",
+    "message": "Blessing comes to those who trust God.",
+    "verse_text": "Blessed is the man who trusts in the Lord... — Jeremiah 17:7"
+  },
+  {
+    "title": "God provides a way through every temptation.",
+    "message": "God provides a way through every temptation.",
+    "verse_text": "No temptation has overtaken you that is not common to man... — 1 Corinthians 10:13"
+  },
+  {
+    "title": "In Christ you are not condemned; you are free.",
+    "message": "In Christ you are not condemned; you are free.",
+    "verse_text": "There is therefore now no condemnation for those who are in Christ. — Romans 8:1"
+  },
+  {
+    "title": "Jesus is the light that guides your path.",
+    "message": "Jesus is the light that guides your path.",
+    "verse_text": "I am the light of the world... — John 8:12"
+  },
+  {
+    "title": "God's Word guides you — it lights your way.",
+    "message": "God's Word guides you — it lights your way.",
+    "verse_text": "Your word is a lamp to my feet and a light to my path. — Psalm 119:105"
+  },
+  {
+    "title": "You are never alone — He guides and cares for you.",
+    "message": "You are never alone — He guides and cares for you.",
+    "verse_text": "The Lord is my shepherd; I lack nothing. — Psalm 23:1"
+  },
+  {
+    "title": "Encourage one another toward love and good deeds.",
+    "message": "Encourage one another toward love and good deeds.",
+    "verse_text": "And let us consider how to stir up one another to love and good works. — Hebrews 10:24"
+  },
+  {
+    "title": "God is your light and salvation — you need not fear.",
+    "message": "God is your light and salvation — you need not fear.",
+    "verse_text": "The Lord is my light and my salvation; whom shall I fear? — Psalm 27:1"
+  },
+  {
+    "title": "Confess your wrongs — God forgives and restores.",
+    "message": "Confess your wrongs — God forgives and restores.",
+    "verse_text": "If we confess our sins, he is faithful and just to forgive us our sins. — 1 John 1:9"
+  },
+  {
+    "title": "God's love is great — He gave His Son for us.",
+    "message": "God's love is great — He gave His Son for us.",
+    "verse_text": "For God so loved the world that he gave his only Son. — John 3:16"
+  },
+  {
+    "title": "God's grace has come to save all who believe.",
+    "message": "God's grace has come to save all who believe.",
+    "verse_text": "For the grace of God has appeared, bringing salvation to all people. — Titus 2:11"
+  },
+  {
+    "title": "Bring your burdens to Jesus — He will give you rest.",
+    "message": "Bring your burdens to Jesus — He will give you rest.",
+    "verse_text": "Come to me, all who are weary, and I will give you rest. — Matthew 11:28"
+  },
+  {
+    "title": "Run to God's name for safety; He is your strong refuge.",
+    "message": "Run to God's name for safety; He is your strong refuge.",
+    "verse_text": "The name of the Lord is a strong tower... — Proverbs 18:10"
+  },
+  {
+    "title": "Ask God boldly — He listens and responds.",
+    "message": "Ask God boldly — He listens and responds.",
+    "verse_text": "Ask, and it will be given to you... — Matthew 7:7"
+  },
+  {
+    "title": "Jesus promises to be with you always, no matter what.",
+    "message": "Jesus promises to be with you always, no matter what.",
+    "verse_text": "I am with you always, to the end of the age. — Matthew 28:20"
+  },
+  {
+    "title": "Receive the peace of Jesus — it calms every storm.",
+    "message": "Receive the peace of Jesus — it calms every storm.",
+    "verse_text": "Peace I leave with you; my peace I give to you. — John 14:27"
+  },
+  {
+    "title": "God is your safe place and strength in hard times.",
+    "message": "God is your safe place and strength in hard times.",
+    "verse_text": "God is our refuge and strength, an ever-present help in trouble. — Psalm 46:1"
+  },
+  {
+    "title": "Encourage one another toward love and good deeds.",
+    "message": "Encourage one another toward love and good deeds.",
+    "verse_text": "And let us consider how to stir up one another to love and good works. — Hebrews 10:24"
+  },
+  {
+    "title": "Find joy in God and He will fulfill the desires He placed in you.",
+    "message": "Find joy in God and He will fulfill the desires He placed in you.",
+    "verse_text": "Delight yourself in the Lord, and he will give you the desires of your heart. — Psalm 37:4"
+  },
+  {
+    "title": "Keep love at the center; it covers many sins.",
+    "message": "Keep love at the center; it covers many sins.",
+    "verse_text": "Above all, keep loving one another earnestly... — 1 Peter 4:8"
+  },
+  {
+    "title": "Live with justice, mercy, and humility before God.",
+    "message": "Live with justice, mercy, and humility before God.",
+    "verse_text": "Act justly, love mercy, walk humbly with your God. — Micah 6:8"
+  },
+  {
+    "title": "Let Jesus' peace lead your life and choices.",
+    "message": "Let Jesus' peace lead your life and choices.",
+    "verse_text": "Let the peace of Christ rule in your hearts. — Colossians 3:15"
+  },
+  {
+    "title": "God provides everything you need for godly living.",
+    "message": "God provides everything you need for godly living.",
+    "verse_text": "His divine power has given us everything needed for life and godliness... — 2 Peter 1:3"
+  },
+  {
+    "title": "Work for the Lord with all your heart and offer it to Him.",
+    "message": "Work for the Lord with all your heart and offer it to Him.",
+    "verse_text": "Whatever you do, work heartily, as for the Lord... — Colossians 3:23"
+  },
+  {
+    "title": "Faith pleases God; trust Him and step out.",
+    "message": "Faith pleases God; trust Him and step out.",
+    "verse_text": "Without faith it is impossible to please God... — Hebrews 11:6"
+  },
+  {
+    "title": "Approach God with confidence to find grace and help.",
+    "message": "Approach God with confidence to find grace and help.",
+    "verse_text": "Let us then with confidence draw near to the throne of grace... — Hebrews 4:16"
+  },
+  {
+    "title": "God walks with you through every valley; do not fear.",
+    "message": "God walks with you through every valley; do not fear.",
+    "verse_text": "Even though I walk through the darkest valley, I will fear no evil. — Psalm 23:4"
+  },
+  {
+    "title": "Put God first and He will provide what you need.",
+    "message": "Put God first and He will provide what you need.",
+    "verse_text": "Seek first the kingdom of God and his righteousness... — Matthew 6:33"
+  },
+  {
+    "title": "God protects you — no weapon formed will succeed.",
+    "message": "God protects you — no weapon formed will succeed.",
+    "verse_text": "No weapon formed against you shall prosper. — Isaiah 54:17"
+  },
+  {
+    "title": "Show kindness and forgiveness as God showed to you.",
+    "message": "Show kindness and forgiveness as God showed to you.",
+    "verse_text": "Be kind to one another, tenderhearted, forgiving one another... — Ephesians 4:32"
+  },
+  {
+    "title": "God's Word guides you — it lights your way.",
+    "message": "God's Word guides you — it lights your way.",
+    "verse_text": "Your word is a lamp to my feet and a light to my path. — Psalm 119:105"
+  },
+  {
+    "title": "Look to God as your helper — He provides support.",
+    "message": "Look to God as your helper — He provides support.",
+    "verse_text": "I lift up my eyes to the hills... where does my help come from? — Psalm 121:1"
+  },
+  {
+    "title": "Trials produce patience — choose joy through them.",
+    "message": "Trials produce patience — choose joy through them.",
+    "verse_text": "Consider it pure joy when you face trials of many kinds. — James 1:2"
+  },
+  {
+    "title": "In Christ you are not condemned; you are free.",
+    "message": "In Christ you are not condemned; you are free.",
+    "verse_text": "There is therefore now no condemnation for those who are in Christ. — Romans 8:1"
+  },
+  {
+    "title": "Live today trusting God; He will care for your tomorrow.",
+    "message": "Live today trusting God; He will care for your tomorrow.",
+    "verse_text": "Do not worry about tomorrow... — Matthew 6:34"
+  },
+  {
+    "title": "Humility before God brings blessing.",
+    "message": "Humility before God brings blessing.",
+    "verse_text": "Blessed are the poor in spirit... — Matthew 5:3"
+  },
+  {
+    "title": "Put God first and He will provide what you need.",
+    "message": "Put God first and He will provide what you need.",
+    "verse_text": "Seek first the kingdom of God and his righteousness... — Matthew 6:33"
+  },
+  {
+    "title": "Give your worries to God; He cares deeply for you.",
+    "message": "Give your worries to God; He cares deeply for you.",
+    "verse_text": "Cast all your anxiety on him because he cares for you. — 1 Peter 5:7"
+  },
+  {
+    "title": "In Christ you are not condemned; you are free.",
+    "message": "In Christ you are not condemned; you are free.",
+    "verse_text": "There is therefore now no condemnation for those who are in Christ. — Romans 8:1"
+  },
+  {
+    "title": "God rejoices over you and quiets you with His love.",
+    "message": "God rejoices over you and quiets you with His love.",
+    "verse_text": "The Lord your God is with you... he will quiet you with his love. — Zephaniah 3:17"
+  },
+  {
+    "title": "God provides a way through every temptation.",
+    "message": "God provides a way through every temptation.",
+    "verse_text": "No temptation has overtaken you that is not common to man... — 1 Corinthians 10:13"
+  },
+  {
+    "title": "Give your worries to God; He cares deeply for you.",
+    "message": "Give your worries to God; He cares deeply for you.",
+    "verse_text": "Cast all your anxiety on him because he cares for you. — 1 Peter 5:7"
+  },
+  {
+    "title": "God keeps you secure and strong to stand.",
+    "message": "God keeps you secure and strong to stand.",
+    "verse_text": "To him who is able to keep you from stumbling... — Jude 1:24"
+  },
+  {
+    "title": "Trust God with your giving and watch Him provide.",
+    "message": "Trust God with your giving and watch Him provide.",
+    "verse_text": "Bring the whole tithe into the storehouse... — Malachi 3:10"
+  },
+  {
+    "title": "Live today trusting God; He will care for your tomorrow.",
+    "message": "Live today trusting God; He will care for your tomorrow.",
+    "verse_text": "Do not worry about tomorrow... — Matthew 6:34"
+  },
+  {
+    "title": "God protects you — no weapon formed will succeed.",
+    "message": "God protects you — no weapon formed will succeed.",
+    "verse_text": "No weapon formed against you shall prosper. — Isaiah 54:17"
+  },
+  {
+    "title": "Sin leads to death, but God gives the gift of life through Christ.",
+    "message": "Sin leads to death, but God gives the gift of life through Christ.",
+    "verse_text": "The wages of sin is death, but the gift of God is eternal life in Christ Jesus. — Romans 6:23"
+  },
+  {
+    "title": "Keep hope alive, stay patient in hardship, and pray constantly.",
+    "message": "Keep hope alive, stay patient in hardship, and pray constantly.",
+    "verse_text": "Be joyful in hope, patient in affliction, faithful in prayer. — Romans 12:12"
+  },
+  {
+    "title": "You are chosen by God and called to shine His light.",
+    "message": "You are chosen by God and called to shine His light.",
+    "verse_text": "You are a chosen people, a royal priesthood... — 1 Peter 2:9"
+  },
+  {
+    "title": "God's Word guides you — it lights your way.",
+    "message": "God's Word guides you — it lights your way.",
+    "verse_text": "Your word is a lamp to my feet and a light to my path. — Psalm 119:105"
+  },
+  {
+    "title": "In Christ you are not condemned; you are free.",
+    "message": "In Christ you are not condemned; you are free.",
+    "verse_text": "There is therefore now no condemnation for those who are in Christ. — Romans 8:1"
+  },
+  {
+    "title": "When anxious, bring everything to God in prayer.",
+    "message": "When anxious, bring everything to God in prayer.",
+    "verse_text": "Do not be anxious about anything; pray about everything. — Philippians 4:6"
+  },
+  {
+    "title": "Run to God's name for safety; He is your strong refuge.",
+    "message": "Run to God's name for safety; He is your strong refuge.",
+    "verse_text": "The name of the Lord is a strong tower... — Proverbs 18:10"
+  },
+  {
+    "title": "God is love — live and reflect His love.",
+    "message": "God is love — live and reflect His love.",
+    "verse_text": "Whoever does not love does not know God, because God is love. — 1 John 4:8"
+  },
+  {
+    "title": "Pray confidently — God hears and answers.",
+    "message": "Pray confidently — God hears and answers.",
+    "verse_text": "This is the confidence we have in approaching God... — 1 John 5:14"
+  },
+  {
+    "title": "God provides everything you need for godly living.",
+    "message": "God provides everything you need for godly living.",
+    "verse_text": "His divine power has given us everything needed for life and godliness... — 2 Peter 1:3"
+  },
+  {
+    "title": "Act in humility and value others above self.",
+    "message": "Act in humility and value others above self.",
+    "verse_text": "Do nothing from selfish ambition or conceit, but in humility count others more significant than yourselves. — Philippians 2:3"
+  },
+  {
+    "title": "Fear not — God is with you and will strengthen you.",
+    "message": "Fear not — God is with you and will strengthen you.",
+    "verse_text": "Do not fear, for I am with you; do not be dismayed, for I am your God. — Isaiah 41:10"
+  },
+  {
+    "title": "God will finish the work He started in your life.",
+    "message": "God will finish the work He started in your life.",
+    "verse_text": "He who began a good work in you will bring it to completion... — Philippians 1:6"
+  },
+  {
+    "title": "Submit to God and stand against evil; it will flee.",
+    "message": "Submit to God and stand against evil; it will flee.",
+    "verse_text": "Submit yourselves to God; resist the devil, and he will flee from you. — James 4:7"
+  },
+  {
+    "title": "God's mercy never ends — His love sustains you.",
+    "message": "God's mercy never ends — His love sustains you.",
+    "verse_text": "Because of the Lord's great love we are not consumed, for his mercies never fail. — Lamentations 3:22"
+  },
+  {
+    "title": "Run to God's name for safety; He is your strong refuge.",
+    "message": "Run to God's name for safety; He is your strong refuge.",
+    "verse_text": "The name of the Lord is a strong tower... — Proverbs 18:10"
+  },
+  {
+    "title": "God has good plans for your future — hope and purpose await.",
+    "message": "God has good plans for your future — hope and purpose await.",
+    "verse_text": "For I know the plans I have for you, plans to prosper you and not to harm you. — Jeremiah 29:11"
+  },
+  {
+    "title": "Receive the peace of Jesus — it calms every storm.",
+    "message": "Receive the peace of Jesus — it calms every storm.",
+    "verse_text": "Peace I leave with you; my peace I give to you. — John 14:27"
+  },
+  {
+    "title": "Let love lead — patient, kind, and true.",
+    "message": "Let love lead — patient, kind, and true.",
+    "verse_text": "Love is patient, love is kind... — 1 Corinthians 13:4"
+  },
+  {
+    "title": "Ask God for wisdom — He gives generously to those who ask.",
+    "message": "Ask God for wisdom — He gives generously to those who ask.",
+    "verse_text": "If any lacks wisdom, ask God, who gives generously. — James 1:5"
+  },
+  {
+    "title": "Blessing comes to those who trust God.",
+    "message": "Blessing comes to those who trust God.",
+    "verse_text": "Blessed is the man who trusts in the Lord... — Jeremiah 17:7"
+  },
+  {
+    "title": "Blessing comes to those who trust God.",
+    "message": "Blessing comes to those who trust God.",
+    "verse_text": "Blessed is the man who trusts in the Lord... — Jeremiah 17:7"
+  },
+  {
+    "title": "God's Word guides you — it lights your way.",
+    "message": "God's Word guides you — it lights your way.",
+    "verse_text": "Your word is a lamp to my feet and a light to my path. — Psalm 119:105"
+  },
+  {
+    "title": "Trust God to provide for your needs; don't be anxious.",
+    "message": "Trust God to provide for your needs; don't be anxious.",
+    "verse_text": "Do not be anxious about your life... — Luke 12:22"
+  },
+  {
+    "title": "Look to God as your helper — He provides support.",
+    "message": "Look to God as your helper — He provides support.",
+    "verse_text": "I lift up my eyes to the hills... where does my help come from? — Psalm 121:1"
+  },
+  {
+    "title": "God keeps you secure and strong to stand.",
+    "message": "God keeps you secure and strong to stand.",
+    "verse_text": "To him who is able to keep you from stumbling... — Jude 1:24"
+  },
+  {
+    "title": "Trust God fully and don't rely only on your own insight.",
+    "message": "Trust God fully and don't rely only on your own insight.",
+    "verse_text": "Trust in the Lord with all your heart and lean not on your own understanding. — Proverbs 3:5"
+  },
+  {
+    "title": "God's mercy never ends — His love sustains you.",
+    "message": "God's mercy never ends — His love sustains you.",
+    "verse_text": "Because of the Lord's great love we are not consumed, for his mercies never fail. — Lamentations 3:22"
+  },
+  {
+    "title": "God's love is great — He gave His Son for us.",
+    "message": "God's love is great — He gave His Son for us.",
+    "verse_text": "For God so loved the world that he gave his only Son. — John 3:16"
+  },
+  {
+    "title": "God brings you into places of joy and celebration.",
+    "message": "God brings you into places of joy and celebration.",
+    "verse_text": "He brought me to the banquet hall... — Song of Solomon 2:4"
+  },
+  {
+    "title": "Believe in Jesus and be saved; faith brings deliverance.",
+    "message": "Believe in Jesus and be saved; faith brings deliverance.",
+    "verse_text": "Believe in the Lord Jesus, and you will be saved—you and your household. — Acts 16:31"
+  },
+  {
+    "title": "When anxious, bring everything to God in prayer.",
+    "message": "When anxious, bring everything to God in prayer.",
+    "verse_text": "Do not be anxious about anything; pray about everything. — Philippians 4:6"
+  },
+  {
+    "title": "Find shelter in God — He watches over you.",
+    "message": "Find shelter in God — He watches over you.",
+    "verse_text": "Whoever dwells in the shelter of the Most High will rest in the shadow of the Almighty. — Psalm 91:1"
+  },
+  {
+    "title": "God rejoices over you and quiets you with His love.",
+    "message": "God rejoices over you and quiets you with His love.",
+    "verse_text": "The Lord your God is with you... he will quiet you with his love. — Zephaniah 3:17"
+  },
+  {
+    "title": "Treat others with the kindness you wish to receive.",
+    "message": "Treat others with the kindness you wish to receive.",
+    "verse_text": "Do to others as you would have them do to you. — Luke 6:31"
+  },
+  {
+    "title": "Faith is trusting God even when you can't see the outcome.",
+    "message": "Faith is trusting God even when you can't see the outcome.",
+    "verse_text": "Now faith is confidence in what we hope for and assurance about what we do not see. — Hebrews 11:1"
+  },
+  {
+    "title": "Jesus waits for you — open your heart to Him.",
+    "message": "Jesus waits for you — open your heart to Him.",
+    "verse_text": "Behold, I stand at the door and knock... — Revelation 3:20"
+  },
+  {
+    "title": "Treat others with the kindness you wish to receive.",
+    "message": "Treat others with the kindness you wish to receive.",
+    "verse_text": "Do to others as you would have them do to you. — Luke 6:31"
+  },
+  {
+    "title": "Look to God as your helper — He provides support.",
+    "message": "Look to God as your helper — He provides support.",
+    "verse_text": "I lift up my eyes to the hills... where does my help come from? — Psalm 121:1"
+  },
+  {
+    "title": "God's love is great — He gave His Son for us.",
+    "message": "God's love is great — He gave His Son for us.",
+    "verse_text": "For God so loved the world that he gave his only Son. — John 3:16"
+  },
+  {
+    "title": "Show kindness and forgiveness as God showed to you.",
+    "message": "Show kindness and forgiveness as God showed to you.",
+    "verse_text": "Be kind to one another, tenderhearted, forgiving one another... — Ephesians 4:32"
+  },
+  {
+    "title": "Keep love at the center; it covers many sins.",
+    "message": "Keep love at the center; it covers many sins.",
+    "verse_text": "Above all, keep loving one another earnestly... — 1 Peter 4:8"
+  },
+  {
+    "title": "God can do far more than you hope or can imagine.",
+    "message": "God can do far more than you hope or can imagine.",
+    "verse_text": "He is able to do immeasurably more than all we ask or imagine. — Ephesians 3:20"
+  },
+  {
+    "title": "Keep hope alive, stay patient in hardship, and pray constantly.",
+    "message": "Keep hope alive, stay patient in hardship, and pray constantly.",
+    "verse_text": "Be joyful in hope, patient in affliction, faithful in prayer. — Romans 12:12"
+  },
+  {
+    "title": "God keeps you secure and strong to stand.",
+    "message": "God keeps you secure and strong to stand.",
+    "verse_text": "To him who is able to keep you from stumbling... — Jude 1:24"
+  },
+  {
+    "title": "God's love is great — He gave His Son for us.",
+    "message": "God's love is great — He gave His Son for us.",
+    "verse_text": "For God so loved the world that he gave his only Son. — John 3:16"
+  },
+  {
+    "title": "You are never alone — He guides and cares for you.",
+    "message": "You are never alone — He guides and cares for you.",
+    "verse_text": "The Lord is my shepherd; I lack nothing. — Psalm 23:1"
+  },
+  {
+    "title": "Clothe yourself with compassion, kindness, and humility.",
+    "message": "Clothe yourself with compassion, kindness, and humility.",
+    "verse_text": "Put on then, as God's chosen ones, compassionate hearts... — Colossians 3:12"
+  },
+  {
+    "title": "God can do far more than you hope or can imagine.",
+    "message": "God can do far more than you hope or can imagine.",
+    "verse_text": "He is able to do immeasurably more than all we ask or imagine. — Ephesians 3:20"
+  },
+  {
+    "title": "Keep love at the center; it covers many sins.",
+    "message": "Keep love at the center; it covers many sins.",
+    "verse_text": "Above all, keep loving one another earnestly... — 1 Peter 4:8"
+  },
+  {
+    "title": "Ask God for wisdom — He gives generously to those who ask.",
+    "message": "Ask God for wisdom — He gives generously to those who ask.",
+    "verse_text": "If any lacks wisdom, ask God, who gives generously. — James 1:5"
+  },
+  {
+    "title": "Approach God with confidence to find grace and help.",
+    "message": "Approach God with confidence to find grace and help.",
+    "verse_text": "Let us then with confidence draw near to the throne of grace... — Hebrews 4:16"
+  },
+  {
+    "title": "Humility before God brings blessing.",
+    "message": "Humility before God brings blessing.",
+    "verse_text": "Blessed are the poor in spirit... — Matthew 5:3"
+  },
+  {
+    "title": "God's Word guides you — it lights your way.",
+    "message": "God's Word guides you — it lights your way.",
+    "verse_text": "Your word is a lamp to my feet and a light to my path. — Psalm 119:105"
+  },
+  {
+    "title": "Jesus gives life in full measure — abundant and meaningful.",
+    "message": "Jesus gives life in full measure — abundant and meaningful.",
+    "verse_text": "I came that they may have life and have it abundantly. — John 10:10"
+  },
+  {
+    "title": "Encourage one another toward love and good deeds.",
+    "message": "Encourage one another toward love and good deeds.",
+    "verse_text": "And let us consider how to stir up one another to love and good works. — Hebrews 10:24"
+  },
+  {
+    "title": "A day is coming when God will remove sorrow and pain.",
+    "message": "A day is coming when God will remove sorrow and pain.",
+    "verse_text": "He will wipe away every tear... — Revelation 21:4"
+  },
+  {
+    "title": "Trials produce patience — choose joy through them.",
+    "message": "Trials produce patience — choose joy through them.",
+    "verse_text": "Consider it pure joy when you face trials of many kinds. — James 1:2"
+  },
+  {
+    "title": "Pray in faith and believe that God answers.",
+    "message": "Pray in faith and believe that God answers.",
+    "verse_text": "Whatever you ask in prayer, believe that you have received it... — Mark 11:24"
+  },
+  {
+    "title": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "message": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "verse_text": "I am the vine; you are the branches... — John 15:5"
+  },
+  {
+    "title": "Give your worries to God; He cares deeply for you.",
+    "message": "Give your worries to God; He cares deeply for you.",
+    "verse_text": "Cast all your anxiety on him because he cares for you. — 1 Peter 5:7"
+  },
+  {
+    "title": "God's grace has come to save all who believe.",
+    "message": "God's grace has come to save all who believe.",
+    "verse_text": "For the grace of God has appeared, bringing salvation to all people. — Titus 2:11"
+  },
+  {
+    "title": "Jesus waits for you — open your heart to Him.",
+    "message": "Jesus waits for you — open your heart to Him.",
+    "verse_text": "Behold, I stand at the door and knock... — Revelation 3:20"
+  },
+  {
+    "title": "Trust God with your giving and watch Him provide.",
+    "message": "Trust God with your giving and watch Him provide.",
+    "verse_text": "Bring the whole tithe into the storehouse... — Malachi 3:10"
+  },
+  {
+    "title": "God is your safe place and strength in hard times.",
+    "message": "God is your safe place and strength in hard times.",
+    "verse_text": "God is our refuge and strength, an ever-present help in trouble. — Psalm 46:1"
+  },
+  {
+    "title": "Put God first and He will provide what you need.",
+    "message": "Put God first and He will provide what you need.",
+    "verse_text": "Seek first the kingdom of God and his righteousness... — Matthew 6:33"
+  },
+  {
+    "title": "Salvation is a gift of grace — accept it by faith.",
+    "message": "Salvation is a gift of grace — accept it by faith.",
+    "verse_text": "For by grace you have been saved through faith. — Ephesians 2:8"
+  },
+  {
+    "title": "Give thanks in every situation; gratitude transforms.",
+    "message": "Give thanks in every situation; gratitude transforms.",
+    "verse_text": "Give thanks in all circumstances... — 1 Thessalonians 5:18"
+  },
+  {
+    "title": "Find strength in the Lord and His power.",
+    "message": "Find strength in the Lord and His power.",
+    "verse_text": "Be strong in the Lord and in his mighty power. — Ephesians 6:10"
+  },
+  {
+    "title": "The Spirit brings love, joy, peace, and goodness into you.",
+    "message": "The Spirit brings love, joy, peace, and goodness into you.",
+    "verse_text": "The fruit of the Spirit is love, joy, peace... — Galatians 5:22"
+  },
+  {
+    "title": "Give thanks in every situation; gratitude transforms.",
+    "message": "Give thanks in every situation; gratitude transforms.",
+    "verse_text": "Give thanks in all circumstances... — 1 Thessalonians 5:18"
+  },
+  {
+    "title": "God's grace has come to save all who believe.",
+    "message": "God's grace has come to save all who believe.",
+    "verse_text": "For the grace of God has appeared, bringing salvation to all people. — Titus 2:11"
+  },
+  {
+    "title": "Run to God's name for safety; He is your strong refuge.",
+    "message": "Run to God's name for safety; He is your strong refuge.",
+    "verse_text": "The name of the Lord is a strong tower... — Proverbs 18:10"
+  },
+  {
+    "title": "Protect your heart; it shapes your life.",
+    "message": "Protect your heart; it shapes your life.",
+    "verse_text": "Guard your heart above all else... — Proverbs 4:23"
+  },
+  {
+    "title": "Faith is trusting God even when you can't see the outcome.",
+    "message": "Faith is trusting God even when you can't see the outcome.",
+    "verse_text": "Now faith is confidence in what we hope for and assurance about what we do not see. — Hebrews 11:1"
+  },
+  {
+    "title": "Call on Jesus and find salvation and hope.",
+    "message": "Call on Jesus and find salvation and hope.",
+    "verse_text": "Everyone who calls on the name of the Lord will be saved. — Acts 2:21"
+  },
+  {
+    "title": "God provides a way through every temptation.",
+    "message": "God provides a way through every temptation.",
+    "verse_text": "No temptation has overtaken you that is not common to man... — 1 Corinthians 10:13"
+  },
+  {
+    "title": "With Christ's strength, you can face any challenge.",
+    "message": "With Christ's strength, you can face any challenge.",
+    "verse_text": "I can do all things through Christ who strengthens me. — Philippians 4:13"
+  },
+  {
+    "title": "Work for the Lord with all your heart and offer it to Him.",
+    "message": "Work for the Lord with all your heart and offer it to Him.",
+    "verse_text": "Whatever you do, work heartily, as for the Lord... — Colossians 3:23"
+  },
+  {
+    "title": "Jesus promises to be with you always, no matter what.",
+    "message": "Jesus promises to be with you always, no matter what.",
+    "verse_text": "I am with you always, to the end of the age. — Matthew 28:20"
+  },
+  {
+    "title": "Live with justice, mercy, and humility before God.",
+    "message": "Live with justice, mercy, and humility before God.",
+    "verse_text": "Act justly, love mercy, walk humbly with your God. — Micah 6:8"
+  },
+  {
+    "title": "God's grace is enough; His power shines through your weakness.",
+    "message": "God's grace is enough; His power shines through your weakness.",
+    "verse_text": "My grace is sufficient for you, for my power is made perfect in weakness. — 2 Corinthians 12:9"
+  },
+  {
+    "title": "Sin leads to death, but God gives the gift of life through Christ.",
+    "message": "Sin leads to death, but God gives the gift of life through Christ.",
+    "verse_text": "The wages of sin is death, but the gift of God is eternal life in Christ Jesus. — Romans 6:23"
+  },
+  {
+    "title": "Protect your heart; it shapes your life.",
+    "message": "Protect your heart; it shapes your life.",
+    "verse_text": "Guard your heart above all else... — Proverbs 4:23"
+  },
+  {
+    "title": "The call of God invites you into living fellowship with Him.",
+    "message": "The call of God invites you into living fellowship with Him.",
+    "verse_text": "The Spirit and the bride say, 'Come' — Revelation 22:17"
+  },
+  {
+    "title": "Pray confidently — God hears and answers.",
+    "message": "Pray confidently — God hears and answers.",
+    "verse_text": "This is the confidence we have in approaching God... — 1 John 5:14"
+  },
+  {
+    "title": "Run to God's name for safety; He is your strong refuge.",
+    "message": "Run to God's name for safety; He is your strong refuge.",
+    "verse_text": "The name of the Lord is a strong tower... — Proverbs 18:10"
+  },
+  {
+    "title": "God rejoices over you and quiets you with His love.",
+    "message": "God rejoices over you and quiets you with His love.",
+    "verse_text": "The Lord your God is with you... he will quiet you with his love. — Zephaniah 3:17"
+  },
+  {
+    "title": "Run your race with perseverance and focus on Jesus.",
+    "message": "Run your race with perseverance and focus on Jesus.",
+    "verse_text": "Let us run with endurance the race that is set before us... — Hebrews 12:1"
+  },
+  {
+    "title": "Blessing comes to those who trust God.",
+    "message": "Blessing comes to those who trust God.",
+    "verse_text": "Blessed is the man who trusts in the Lord... — Jeremiah 17:7"
+  },
+  {
+    "title": "Fear not — God is with you and will strengthen you.",
+    "message": "Fear not — God is with you and will strengthen you.",
+    "verse_text": "Do not fear, for I am with you; do not be dismayed, for I am your God. — Isaiah 41:10"
+  },
+  {
+    "title": "Faith is trusting God even when you can't see the outcome.",
+    "message": "Faith is trusting God even when you can't see the outcome.",
+    "verse_text": "Now faith is confidence in what we hope for and assurance about what we do not see. — Hebrews 11:1"
+  },
+  {
+    "title": "Look to God as your helper — He provides support.",
+    "message": "Look to God as your helper — He provides support.",
+    "verse_text": "I lift up my eyes to the hills... where does my help come from? — Psalm 121:1"
+  },
+  {
+    "title": "Call on Jesus and find salvation and hope.",
+    "message": "Call on Jesus and find salvation and hope.",
+    "verse_text": "Everyone who calls on the name of the Lord will be saved. — Acts 2:21"
+  },
+  {
+    "title": "Trials produce patience — choose joy through them.",
+    "message": "Trials produce patience — choose joy through them.",
+    "verse_text": "Consider it pure joy when you face trials of many kinds. — James 1:2"
+  },
+  {
+    "title": "With God, nothing is impossible.",
+    "message": "With God, nothing is impossible.",
+    "verse_text": "For nothing will be impossible with God. — Luke 1:37"
+  },
+  {
+    "title": "A day is coming when God will remove sorrow and pain.",
+    "message": "A day is coming when God will remove sorrow and pain.",
+    "verse_text": "He will wipe away every tear... — Revelation 21:4"
+  },
+  {
+    "title": "God keeps you secure and strong to stand.",
+    "message": "God keeps you secure and strong to stand.",
+    "verse_text": "To him who is able to keep you from stumbling... — Jude 1:24"
+  },
+  {
+    "title": "God gives perfect peace to those who trust Him.",
+    "message": "God gives perfect peace to those who trust Him.",
+    "verse_text": "You keep in perfect peace those whose minds are steadfast... — Isaiah 26:3"
+  },
+  {
+    "title": "Fill your mind with what is true and pure.",
+    "message": "Fill your mind with what is true and pure.",
+    "verse_text": "Think on these things: true, noble... excellent... — Philippians 4:8"
+  },
+  {
+    "title": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "message": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "verse_text": "I am the vine; you are the branches... — John 15:5"
+  },
+  {
+    "title": "God keeps you secure and strong to stand.",
+    "message": "God keeps you secure and strong to stand.",
+    "verse_text": "To him who is able to keep you from stumbling... — Jude 1:24"
+  },
+  {
+    "title": "God will finish the work He started in your life.",
+    "message": "God will finish the work He started in your life.",
+    "verse_text": "He who began a good work in you will bring it to completion... — Philippians 1:6"
+  },
+  {
+    "title": "Let love guide every action you take.",
+    "message": "Let love guide every action you take.",
+    "verse_text": "Do everything in love. — 1 Corinthians 16:14"
+  },
+  {
+    "title": "You are chosen by God and called to shine His light.",
+    "message": "You are chosen by God and called to shine His light.",
+    "verse_text": "You are a chosen people, a royal priesthood... — 1 Peter 2:9"
+  },
+  {
+    "title": "Find strength in the Lord and His power.",
+    "message": "Find strength in the Lord and His power.",
+    "verse_text": "Be strong in the Lord and in his mighty power. — Ephesians 6:10"
+  },
+  {
+    "title": "God protects you — no weapon formed will succeed.",
+    "message": "God protects you — no weapon formed will succeed.",
+    "verse_text": "No weapon formed against you shall prosper. — Isaiah 54:17"
+  },
+  {
+    "title": "Work for the Lord with all your heart and offer it to Him.",
+    "message": "Work for the Lord with all your heart and offer it to Him.",
+    "verse_text": "Whatever you do, work heartily, as for the Lord... — Colossians 3:23"
+  },
+  {
+    "title": "Pray confidently — God hears and answers.",
+    "message": "Pray confidently — God hears and answers.",
+    "verse_text": "This is the confidence we have in approaching God... — 1 John 5:14"
+  },
+  {
+    "title": "In Christ you are made new — old things pass away.",
+    "message": "In Christ you are made new — old things pass away.",
+    "verse_text": "If anyone is in Christ, the new creation has come: the old is gone. — 2 Corinthians 5:17"
+  },
+  {
+    "title": "In Christ you are made new — old things pass away.",
+    "message": "In Christ you are made new — old things pass away.",
+    "verse_text": "If anyone is in Christ, the new creation has come: the old is gone. — 2 Corinthians 5:17"
+  },
+  {
+    "title": "There is a season for every purpose under heaven.",
+    "message": "There is a season for every purpose under heaven.",
+    "verse_text": "For everything there is a season... — Ecclesiastes 3:1"
+  },
+  {
+    "title": "God is love — live and reflect His love.",
+    "message": "God is love — live and reflect His love.",
+    "verse_text": "Whoever does not love does not know God, because God is love. — 1 John 4:8"
+  },
+  {
+    "title": "God's love for you is unbreakable and eternal.",
+    "message": "God's love for you is unbreakable and eternal.",
+    "verse_text": "Nothing can separate us from the love of God in Christ Jesus. — Romans 8:38"
+  },
+  {
+    "title": "Faith is trusting God even when you can't see the outcome.",
+    "message": "Faith is trusting God even when you can't see the outcome.",
+    "verse_text": "Now faith is confidence in what we hope for and assurance about what we do not see. — Hebrews 11:1"
+  },
+  {
+    "title": "Trials produce patience — choose joy through them.",
+    "message": "Trials produce patience — choose joy through them.",
+    "verse_text": "Consider it pure joy when you face trials of many kinds. — James 1:2"
+  },
+  {
+    "title": "Be a peacemaker and you will be called God's child.",
+    "message": "Be a peacemaker and you will be called God's child.",
+    "verse_text": "Blessed are the peacemakers... — Matthew 5:9"
+  },
+  {
+    "title": "Trust God to provide for your needs; don't be anxious.",
+    "message": "Trust God to provide for your needs; don't be anxious.",
+    "verse_text": "Do not be anxious about your life... — Luke 12:22"
+  },
+  {
+    "title": "God's love for you is unbreakable and eternal.",
+    "message": "God's love for you is unbreakable and eternal.",
+    "verse_text": "Nothing can separate us from the love of God in Christ Jesus. — Romans 8:38"
+  },
+  {
+    "title": "Live with justice, mercy, and humility before God.",
+    "message": "Live with justice, mercy, and humility before God.",
+    "verse_text": "Act justly, love mercy, walk humbly with your God. — Micah 6:8"
+  },
+  {
+    "title": "God gives perfect peace to those who trust Him.",
+    "message": "God gives perfect peace to those who trust Him.",
+    "verse_text": "You keep in perfect peace those whose minds are steadfast... — Isaiah 26:3"
+  },
+  {
+    "title": "God has good plans for your future — hope and purpose await.",
+    "message": "God has good plans for your future — hope and purpose await.",
+    "verse_text": "For I know the plans I have for you, plans to prosper you and not to harm you. — Jeremiah 29:11"
+  },
+  {
+    "title": "Keep rejoicing — joy is a command and a gift.",
+    "message": "Keep rejoicing — joy is a command and a gift.",
+    "verse_text": "Rejoice always. — 1 Thessalonians 5:16"
+  },
+  {
+    "title": "God fills you with hope, joy, and peace as you trust Him.",
+    "message": "God fills you with hope, joy, and peace as you trust Him.",
+    "verse_text": "May the God of hope fill you with all joy and peace... — Romans 15:13"
+  },
+  {
+    "title": "Fill your mind with what is true and pure.",
+    "message": "Fill your mind with what is true and pure.",
+    "verse_text": "Think on these things: true, noble... excellent... — Philippians 4:8"
+  },
+  {
+    "title": "Ask God boldly — He listens and responds.",
+    "message": "Ask God boldly — He listens and responds.",
+    "verse_text": "Ask, and it will be given to you... — Matthew 7:7"
+  },
+  {
+    "title": "God provides everything you need for godly living.",
+    "message": "God provides everything you need for godly living.",
+    "verse_text": "His divine power has given us everything needed for life and godliness... — 2 Peter 1:3"
+  },
+  {
+    "title": "Keep hope alive, stay patient in hardship, and pray constantly.",
+    "message": "Keep hope alive, stay patient in hardship, and pray constantly.",
+    "verse_text": "Be joyful in hope, patient in affliction, faithful in prayer. — Romans 12:12"
+  },
+  {
+    "title": "Keep rejoicing — joy is a command and a gift.",
+    "message": "Keep rejoicing — joy is a command and a gift.",
+    "verse_text": "Rejoice always. — 1 Thessalonians 5:16"
+  },
+  {
+    "title": "You are chosen by God and called to shine His light.",
+    "message": "You are chosen by God and called to shine His light.",
+    "verse_text": "You are a chosen people, a royal priesthood... — 1 Peter 2:9"
+  },
+  {
+    "title": "When anxious, bring everything to God in prayer.",
+    "message": "When anxious, bring everything to God in prayer.",
+    "verse_text": "Do not be anxious about anything; pray about everything. — Philippians 4:6"
+  },
+  {
+    "title": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "message": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "verse_text": "I am the vine; you are the branches... — John 15:5"
+  },
+  {
+    "title": "When anxious, bring everything to God in prayer.",
+    "message": "When anxious, bring everything to God in prayer.",
+    "verse_text": "Do not be anxious about anything; pray about everything. — Philippians 4:6"
+  },
+  {
+    "title": "Act in humility and value others above self.",
+    "message": "Act in humility and value others above self.",
+    "verse_text": "Do nothing from selfish ambition or conceit, but in humility count others more significant than yourselves. — Philippians 2:3"
+  },
+  {
+    "title": "God provides a way through every temptation.",
+    "message": "God provides a way through every temptation.",
+    "verse_text": "No temptation has overtaken you that is not common to man... — 1 Corinthians 10:13"
+  },
+  {
+    "title": "God is near when your heart is broken and will heal you.",
+    "message": "God is near when your heart is broken and will heal you.",
+    "verse_text": "The Lord is close to the brokenhearted and saves those who are crushed in spirit. — Psalm 34:18"
+  },
+  {
+    "title": "Jesus satisfies the deepest hunger of your soul.",
+    "message": "Jesus satisfies the deepest hunger of your soul.",
+    "verse_text": "I am the bread of life... — John 6:35"
+  },
+  {
+    "title": "Humility before God brings blessing.",
+    "message": "Humility before God brings blessing.",
+    "verse_text": "Blessed are the poor in spirit... — Matthew 5:3"
+  },
+  {
+    "title": "Blessing comes to those who trust God.",
+    "message": "Blessing comes to those who trust God.",
+    "verse_text": "Blessed is the man who trusts in the Lord... — Jeremiah 17:7"
+  },
+  {
+    "title": "Jesus is the light that guides your path.",
+    "message": "Jesus is the light that guides your path.",
+    "verse_text": "I am the light of the world... — John 8:12"
+  },
+  {
+    "title": "Confess Jesus as Lord and believe — receive salvation.",
+    "message": "Confess Jesus as Lord and believe — receive salvation.",
+    "verse_text": "If you declare with your mouth, 'Jesus is Lord,' and believe... you will be saved. — Romans 10:9"
+  },
+  {
+    "title": "Invite God into every step and He will guide you.",
+    "message": "Invite God into every step and He will guide you.",
+    "verse_text": "In all your ways acknowledge him, and he will make straight your paths. — Proverbs 3:6"
+  },
+  {
+    "title": "Invite God into every step and He will guide you.",
+    "message": "Invite God into every step and He will guide you.",
+    "verse_text": "In all your ways acknowledge him, and he will make straight your paths. — Proverbs 3:6"
+  },
+  {
+    "title": "Through every storm, God is with you and will carry you.",
+    "message": "Through every storm, God is with you and will carry you.",
+    "verse_text": "When you pass through the waters, I will be with you; through the rivers, they shall not overwhelm you. — Isaiah 43:2"
+  },
+  {
+    "title": "Jesus promises to be with you always, no matter what.",
+    "message": "Jesus promises to be with you always, no matter what.",
+    "verse_text": "I am with you always, to the end of the age. — Matthew 28:20"
+  },
+  {
+    "title": "Approach God with confidence to find grace and help.",
+    "message": "Approach God with confidence to find grace and help.",
+    "verse_text": "Let us then with confidence draw near to the throne of grace... — Hebrews 4:16"
+  },
+  {
+    "title": "Act in humility and value others above self.",
+    "message": "Act in humility and value others above self.",
+    "verse_text": "Do nothing from selfish ambition or conceit, but in humility count others more significant than yourselves. — Philippians 2:3"
+  },
+  {
+    "title": "God will work all things for your good when you trust Him.",
+    "message": "God will work all things for your good when you trust Him.",
+    "verse_text": "In all things God works for the good of those who love him. — Romans 8:28"
+  },
+  {
+    "title": "Fear not — God is with you and will strengthen you.",
+    "message": "Fear not — God is with you and will strengthen you.",
+    "verse_text": "Do not fear, for I am with you; do not be dismayed, for I am your God. — Isaiah 41:10"
+  },
+  {
+    "title": "God's love is great — He gave His Son for us.",
+    "message": "God's love is great — He gave His Son for us.",
+    "verse_text": "For God so loved the world that he gave his only Son. — John 3:16"
+  },
+  {
+    "title": "Pray in faith and believe that God answers.",
+    "message": "Pray in faith and believe that God answers.",
+    "verse_text": "Whatever you ask in prayer, believe that you have received it... — Mark 11:24"
+  },
+  {
+    "title": "The Spirit brings love, joy, peace, and goodness into you.",
+    "message": "The Spirit brings love, joy, peace, and goodness into you.",
+    "verse_text": "The fruit of the Spirit is love, joy, peace... — Galatians 5:22"
+  },
+  {
+    "title": "Believe in Jesus and be saved; faith brings deliverance.",
+    "message": "Believe in Jesus and be saved; faith brings deliverance.",
+    "verse_text": "Believe in the Lord Jesus, and you will be saved—you and your household. — Acts 16:31"
+  },
+  {
+    "title": "God gives perfect peace to those who trust Him.",
+    "message": "God gives perfect peace to those who trust Him.",
+    "verse_text": "You keep in perfect peace those whose minds are steadfast... — Isaiah 26:3"
+  },
+  {
+    "title": "God keeps you secure and strong to stand.",
+    "message": "God keeps you secure and strong to stand.",
+    "verse_text": "To him who is able to keep you from stumbling... — Jude 1:24"
+  },
+  {
+    "title": "God is love — live and reflect His love.",
+    "message": "God is love — live and reflect His love.",
+    "verse_text": "Whoever does not love does not know God, because God is love. — 1 John 4:8"
+  },
+  {
+    "title": "Trust God fully and don't rely only on your own insight.",
+    "message": "Trust God fully and don't rely only on your own insight.",
+    "verse_text": "Trust in the Lord with all your heart and lean not on your own understanding. — Proverbs 3:5"
+  },
+  {
+    "title": "Let Jesus' peace lead your life and choices.",
+    "message": "Let Jesus' peace lead your life and choices.",
+    "verse_text": "Let the peace of Christ rule in your hearts. — Colossians 3:15"
+  },
+  {
+    "title": "God has good plans for your future — hope and purpose await.",
+    "message": "God has good plans for your future — hope and purpose await.",
+    "verse_text": "For I know the plans I have for you, plans to prosper you and not to harm you. — Jeremiah 29:11"
+  },
+  {
+    "title": "Persevere through tests and receive God's reward.",
+    "message": "Persevere through tests and receive God's reward.",
+    "verse_text": "Blessed is the man who remains steadfast under trial... — James 1:12"
+  },
+  {
+    "title": "Live in integrity and lead by example, no matter your age.",
+    "message": "Live in integrity and lead by example, no matter your age.",
+    "verse_text": "Let no one despise you for your youth... — 1 Timothy 4:12"
+  },
+  {
+    "title": "God protects you — no weapon formed will succeed.",
+    "message": "God protects you — no weapon formed will succeed.",
+    "verse_text": "No weapon formed against you shall prosper. — Isaiah 54:17"
+  },
+  {
+    "title": "God provides everything you need for godly living.",
+    "message": "God provides everything you need for godly living.",
+    "verse_text": "His divine power has given us everything needed for life and godliness... — 2 Peter 1:3"
+  },
+  {
+    "title": "God is good and a safe refuge when troubles come.",
+    "message": "God is good and a safe refuge when troubles come.",
+    "verse_text": "The Lord is good, a refuge in times of trouble... — Nahum 1:7"
+  },
+  {
+    "title": "Live in integrity and lead by example, no matter your age.",
+    "message": "Live in integrity and lead by example, no matter your age.",
+    "verse_text": "Let no one despise you for your youth... — 1 Timothy 4:12"
+  },
+  {
+    "title": "God will finish the work He started in your life.",
+    "message": "God will finish the work He started in your life.",
+    "verse_text": "He who began a good work in you will bring it to completion... — Philippians 1:6"
+  },
+  {
+    "title": "Be a peacemaker and you will be called God's child.",
+    "message": "Be a peacemaker and you will be called God's child.",
+    "verse_text": "Blessed are the peacemakers... — Matthew 5:9"
+  },
+  {
+    "title": "Put God first and He will provide what you need.",
+    "message": "Put God first and He will provide what you need.",
+    "verse_text": "Seek first the kingdom of God and his righteousness... — Matthew 6:33"
+  },
+  {
+    "title": "God provides a way through every temptation.",
+    "message": "God provides a way through every temptation.",
+    "verse_text": "No temptation has overtaken you that is not common to man... — 1 Corinthians 10:13"
+  },
+  {
+    "title": "Invite God into every step and He will guide you.",
+    "message": "Invite God into every step and He will guide you.",
+    "verse_text": "In all your ways acknowledge him, and he will make straight your paths. — Proverbs 3:6"
+  },
+  {
+    "title": "Ask God for wisdom — He gives generously to those who ask.",
+    "message": "Ask God for wisdom — He gives generously to those who ask.",
+    "verse_text": "If any lacks wisdom, ask God, who gives generously. — James 1:5"
+  },
+  {
+    "title": "The call of God invites you into living fellowship with Him.",
+    "message": "The call of God invites you into living fellowship with Him.",
+    "verse_text": "The Spirit and the bride say, 'Come' — Revelation 22:17"
+  },
+  {
+    "title": "God has good plans for your future — hope and purpose await.",
+    "message": "God has good plans for your future — hope and purpose await.",
+    "verse_text": "For I know the plans I have for you, plans to prosper you and not to harm you. — Jeremiah 29:11"
+  },
+  {
+    "title": "God is your safe place and strength in hard times.",
+    "message": "God is your safe place and strength in hard times.",
+    "verse_text": "God is our refuge and strength, an ever-present help in trouble. — Psalm 46:1"
+  },
+  {
+    "title": "Run your race with perseverance and focus on Jesus.",
+    "message": "Run your race with perseverance and focus on Jesus.",
+    "verse_text": "Let us run with endurance the race that is set before us... — Hebrews 12:1"
+  },
+  {
+    "title": "Sin leads to death, but God gives the gift of life through Christ.",
+    "message": "Sin leads to death, but God gives the gift of life through Christ.",
+    "verse_text": "The wages of sin is death, but the gift of God is eternal life in Christ Jesus. — Romans 6:23"
+  },
+  {
+    "title": "Keep rejoicing — joy is a command and a gift.",
+    "message": "Keep rejoicing — joy is a command and a gift.",
+    "verse_text": "Rejoice always. — 1 Thessalonians 5:16"
+  },
+  {
+    "title": "Protect your heart; it shapes your life.",
+    "message": "Protect your heart; it shapes your life.",
+    "verse_text": "Guard your heart above all else... — Proverbs 4:23"
+  },
+  {
+    "title": "God is your safe place and strength in hard times.",
+    "message": "God is your safe place and strength in hard times.",
+    "verse_text": "God is our refuge and strength, an ever-present help in trouble. — Psalm 46:1"
+  },
+  {
+    "title": "Give your worries to God; He cares deeply for you.",
+    "message": "Give your worries to God; He cares deeply for you.",
+    "verse_text": "Cast all your anxiety on him because he cares for you. — 1 Peter 5:7"
+  },
+  {
+    "title": "Jesus is the light that guides your path.",
+    "message": "Jesus is the light that guides your path.",
+    "verse_text": "I am the light of the world... — John 8:12"
+  },
+  {
+    "title": "With God, nothing is impossible.",
+    "message": "With God, nothing is impossible.",
+    "verse_text": "For nothing will be impossible with God. — Luke 1:37"
+  },
+  {
+    "title": "You are never alone — He guides and cares for you.",
+    "message": "You are never alone — He guides and cares for you.",
+    "verse_text": "The Lord is my shepherd; I lack nothing. — Psalm 23:1"
+  },
+  {
+    "title": "Remember God's blessings and give Him thanks.",
+    "message": "Remember God's blessings and give Him thanks.",
+    "verse_text": "Forget not all his benefits... — Psalm 103:2"
+  },
+  {
+    "title": "God is love — live and reflect His love.",
+    "message": "God is love — live and reflect His love.",
+    "verse_text": "Whoever does not love does not know God, because God is love. — 1 John 4:8"
+  },
+  {
+    "title": "There is a season for every purpose under heaven.",
+    "message": "There is a season for every purpose under heaven.",
+    "verse_text": "For everything there is a season... — Ecclesiastes 3:1"
+  },
+  {
+    "title": "God will never abandon you — He is always near.",
+    "message": "God will never abandon you — He is always near.",
+    "verse_text": "I will never leave you nor forsake you. — Hebrews 13:5"
+  },
+  {
+    "title": "Let love lead — patient, kind, and true.",
+    "message": "Let love lead — patient, kind, and true.",
+    "verse_text": "Love is patient, love is kind... — 1 Corinthians 13:4"
+  },
+  {
+    "title": "God provides everything you need for godly living.",
+    "message": "God provides everything you need for godly living.",
+    "verse_text": "His divine power has given us everything needed for life and godliness... — 2 Peter 1:3"
+  },
+  {
+    "title": "Ask God boldly — He listens and responds.",
+    "message": "Ask God boldly — He listens and responds.",
+    "verse_text": "Ask, and it will be given to you... — Matthew 7:7"
+  },
+  {
+    "title": "God is good and a safe refuge when troubles come.",
+    "message": "God is good and a safe refuge when troubles come.",
+    "verse_text": "The Lord is good, a refuge in times of trouble... — Nahum 1:7"
+  },
+  {
+    "title": "Trust God fully and don't rely only on your own insight.",
+    "message": "Trust God fully and don't rely only on your own insight.",
+    "verse_text": "Trust in the Lord with all your heart and lean not on your own understanding. — Proverbs 3:5"
+  },
+  {
+    "title": "Pray in faith and believe that God answers.",
+    "message": "Pray in faith and believe that God answers.",
+    "verse_text": "Whatever you ask in prayer, believe that you have received it... — Mark 11:24"
+  },
+  {
+    "title": "Fill your mind with what is true and pure.",
+    "message": "Fill your mind with what is true and pure.",
+    "verse_text": "Think on these things: true, noble... excellent... — Philippians 4:8"
+  },
+  {
+    "title": "A day is coming when God will remove sorrow and pain.",
+    "message": "A day is coming when God will remove sorrow and pain.",
+    "verse_text": "He will wipe away every tear... — Revelation 21:4"
+  },
+  {
+    "title": "Humility before God brings blessing.",
+    "message": "Humility before God brings blessing.",
+    "verse_text": "Blessed are the poor in spirit... — Matthew 5:3"
+  },
+  {
+    "title": "Faith pleases God; trust Him and step out.",
+    "message": "Faith pleases God; trust Him and step out.",
+    "verse_text": "Without faith it is impossible to please God... — Hebrews 11:6"
+  },
+  {
+    "title": "Faith is trusting God even when you can't see the outcome.",
+    "message": "Faith is trusting God even when you can't see the outcome.",
+    "verse_text": "Now faith is confidence in what we hope for and assurance about what we do not see. — Hebrews 11:1"
+  },
+  {
+    "title": "Be a peacemaker and you will be called God's child.",
+    "message": "Be a peacemaker and you will be called God's child.",
+    "verse_text": "Blessed are the peacemakers... — Matthew 5:9"
+  },
+  {
+    "title": "Live in integrity and lead by example, no matter your age.",
+    "message": "Live in integrity and lead by example, no matter your age.",
+    "verse_text": "Let no one despise you for your youth... — 1 Timothy 4:12"
+  },
+  {
+    "title": "Believe in Jesus and be saved; faith brings deliverance.",
+    "message": "Believe in Jesus and be saved; faith brings deliverance.",
+    "verse_text": "Believe in the Lord Jesus, and you will be saved—you and your household. — Acts 16:31"
+  },
+  {
+    "title": "Jesus gives life in full measure — abundant and meaningful.",
+    "message": "Jesus gives life in full measure — abundant and meaningful.",
+    "verse_text": "I came that they may have life and have it abundantly. — John 10:10"
+  },
+  {
+    "title": "Keep love at the center; it covers many sins.",
+    "message": "Keep love at the center; it covers many sins.",
+    "verse_text": "Above all, keep loving one another earnestly... — 1 Peter 4:8"
+  },
+  {
+    "title": "God brings you into places of joy and celebration.",
+    "message": "God brings you into places of joy and celebration.",
+    "verse_text": "He brought me to the banquet hall... — Song of Solomon 2:4"
+  },
+  {
+    "title": "God gives you power, love, and self-control, not fear.",
+    "message": "God gives you power, love, and self-control, not fear.",
+    "verse_text": "God gave us a spirit not of fear but of power and love and self-control. — 2 Timothy 1:7"
+  },
+  {
+    "title": "Trust God with your giving and watch Him provide.",
+    "message": "Trust God with your giving and watch Him provide.",
+    "verse_text": "Bring the whole tithe into the storehouse... — Malachi 3:10"
+  },
+  {
+    "title": "God gives perfect peace to those who trust Him.",
+    "message": "God gives perfect peace to those who trust Him.",
+    "verse_text": "You keep in perfect peace those whose minds are steadfast... — Isaiah 26:3"
+  },
+  {
+    "title": "Act in humility and value others above self.",
+    "message": "Act in humility and value others above self.",
+    "verse_text": "Do nothing from selfish ambition or conceit, but in humility count others more significant than yourselves. — Philippians 2:3"
+  },
+  {
+    "title": "Call on Jesus and find salvation and hope.",
+    "message": "Call on Jesus and find salvation and hope.",
+    "verse_text": "Everyone who calls on the name of the Lord will be saved. — Acts 2:21"
+  },
+  {
+    "title": "Run to God's name for safety; He is your strong refuge.",
+    "message": "Run to God's name for safety; He is your strong refuge.",
+    "verse_text": "The name of the Lord is a strong tower... — Proverbs 18:10"
+  },
+  {
+    "title": "God fills you with hope, joy, and peace as you trust Him.",
+    "message": "God fills you with hope, joy, and peace as you trust Him.",
+    "verse_text": "May the God of hope fill you with all joy and peace... — Romans 15:13"
+  },
+  {
+    "title": "Give thanks in every situation; gratitude transforms.",
+    "message": "Give thanks in every situation; gratitude transforms.",
+    "verse_text": "Give thanks in all circumstances... — 1 Thessalonians 5:18"
+  },
+  {
+    "title": "God is near when your heart is broken and will heal you.",
+    "message": "God is near when your heart is broken and will heal you.",
+    "verse_text": "The Lord is close to the brokenhearted and saves those who are crushed in spirit. — Psalm 34:18"
+  },
+  {
+    "title": "When anxious, bring everything to God in prayer.",
+    "message": "When anxious, bring everything to God in prayer.",
+    "verse_text": "Do not be anxious about anything; pray about everything. — Philippians 4:6"
+  },
+  {
+    "title": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "message": "Stay connected to Jesus; apart from Him you can do nothing.",
+    "verse_text": "I am the vine; you are the branches... — John 15:5"
+  },
+  {
+    "title": "Persevere through tests and receive God's reward.",
+    "message": "Persevere through tests and receive God's reward.",
+    "verse_text": "Blessed is the man who remains steadfast under trial... — James 1:12"
+  },
+  {
+    "title": "God will finish the work He started in your life.",
+    "message": "God will finish the work He started in your life.",
+    "verse_text": "He who began a good work in you will bring it to completion... — Philippians 1:6"
+  },
+  {
+    "title": "God will work all things for your good when you trust Him.",
+    "message": "God will work all things for your good when you trust Him.",
+    "verse_text": "In all things God works for the good of those who love him. — Romans 8:28"
+  },
+  {
+    "title": "God is your safe place and strength in hard times.",
+    "message": "God is your safe place and strength in hard times.",
+    "verse_text": "God is our refuge and strength, an ever-present help in trouble. — Psalm 46:1"
+  },
+  {
+    "title": "God walks with you through every valley; do not fear.",
+    "message": "God walks with you through every valley; do not fear.",
+    "verse_text": "Even though I walk through the darkest valley, I will fear no evil. — Psalm 23:4"
+  },
+  {
+    "title": "You are never alone — He guides and cares for you.",
+    "message": "You are never alone — He guides and cares for you.",
+    "verse_text": "The Lord is my shepherd; I lack nothing. — Psalm 23:1"
+  },
+  {
+    "title": "Confess your wrongs — God forgives and restores.",
+    "message": "Confess your wrongs — God forgives and restores.",
+    "verse_text": "If we confess our sins, he is faithful and just to forgive us our sins. — 1 John 1:9"
+  },
+  {
+    "title": "God is your safe place and strength in hard times.",
+    "message": "God is your safe place and strength in hard times.",
+    "verse_text": "God is our refuge and strength, an ever-present help in trouble. — Psalm 46:1"
+  },
+  {
+    "title": "Jesus waits for you — open your heart to Him.",
+    "message": "Jesus waits for you — open your heart to Him.",
+    "verse_text": "Behold, I stand at the door and knock... — Revelation 3:20"
+  },
+  {
+    "title": "Let love lead — patient, kind, and true.",
+    "message": "Let love lead — patient, kind, and true.",
+    "verse_text": "Love is patient, love is kind... — 1 Corinthians 13:4"
+  },
+  {
+    "title": "Let love lead — patient, kind, and true.",
+    "message": "Let love lead — patient, kind, and true.",
+    "verse_text": "Love is patient, love is kind... — 1 Corinthians 13:4"
+  },
+  {
+    "title": "God's mercy never ends — His love sustains you.",
+    "message": "God's mercy never ends — His love sustains you.",
+    "verse_text": "Because of the Lord's great love we are not consumed, for his mercies never fail. — Lamentations 3:22"
+  },
+  {
+    "title": "Jesus gives life in full measure — abundant and meaningful.",
+    "message": "Jesus gives life in full measure — abundant and meaningful.",
+    "verse_text": "I came that they may have life and have it abundantly. — John 10:10"
+  },
+  {
+    "title": "God gives perfect peace to those who trust Him.",
+    "message": "God gives perfect peace to those who trust Him.",
+    "verse_text": "You keep in perfect peace those whose minds are steadfast... — Isaiah 26:3"
+  },
+  {
+    "title": "Ask God for wisdom — He gives generously to those who ask.",
+    "message": "Ask God for wisdom — He gives generously to those who ask.",
+    "verse_text": "If any lacks wisdom, ask God, who gives generously. — James 1:5"
+  },
+  {
+    "title": "Call on the Lord; He is close to those who seek Him.",
+    "message": "Call on the Lord; He is close to those who seek Him.",
+    "verse_text": "The Lord is near to all who call on him... — Psalm 145:18"
+  },
+  {
+    "title": "Find joy in God and He will fulfill the desires He placed in you.",
+    "message": "Find joy in God and He will fulfill the desires He placed in you.",
+    "verse_text": "Delight yourself in the Lord, and he will give you the desires of your heart. — Psalm 37:4"
+  },
+  {
+    "title": "God protects you — no weapon formed will succeed.",
+    "message": "God protects you — no weapon formed will succeed.",
+    "verse_text": "No weapon formed against you shall prosper. — Isaiah 54:17"
+  },
+  {
+    "title": "With God, nothing is impossible.",
+    "message": "With God, nothing is impossible.",
+    "verse_text": "For nothing will be impossible with God. — Luke 1:37"
+  },
+  {
+    "title": "Protect your heart; it shapes your life.",
+    "message": "Protect your heart; it shapes your life.",
+    "verse_text": "Guard your heart above all else... — Proverbs 4:23"
+  },
+  {
+    "title": "Remember God's blessings and give Him thanks.",
+    "message": "Remember God's blessings and give Him thanks.",
+    "verse_text": "Forget not all his benefits... — Psalm 103:2"
+  },
+  {
+    "title": "You are chosen by God and called to shine His light.",
+    "message": "You are chosen by God and called to shine His light.",
+    "verse_text": "You are a chosen people, a royal priesthood... — 1 Peter 2:9"
+  },
+  {
+    "title": "The Spirit brings love, joy, peace, and goodness into you.",
+    "message": "The Spirit brings love, joy, peace, and goodness into you.",
+    "verse_text": "The fruit of the Spirit is love, joy, peace... — Galatians 5:22"
+  },
+  {
+    "title": "God is love — live and reflect His love.",
+    "message": "God is love — live and reflect His love.",
+    "verse_text": "Whoever does not love does not know God, because God is love. — 1 John 4:8"
+  },
+  {
+    "title": "Let love lead — patient, kind, and true.",
+    "message": "Let love lead — patient, kind, and true.",
+    "verse_text": "Love is patient, love is kind... — 1 Corinthians 13:4"
+  },
+  {
+    "title": "When anxious, bring everything to God in prayer.",
+    "message": "When anxious, bring everything to God in prayer.",
+    "verse_text": "Do not be anxious about anything; pray about everything. — Philippians 4:6"
+  },
+  {
+    "title": "God's grace is enough; His power shines through your weakness.",
+    "message": "God's grace is enough; His power shines through your weakness.",
+    "verse_text": "My grace is sufficient for you, for my power is made perfect in weakness. — 2 Corinthians 12:9"
+  },
+  {
+    "title": "Fear not — God is with you and will strengthen you.",
+    "message": "Fear not — God is with you and will strengthen you.",
+    "verse_text": "Do not fear, for I am with you; do not be dismayed, for I am your God. — Isaiah 41:10"
+  },
+  {
+    "title": "Find joy in God and He will fulfill the desires He placed in you.",
+    "message": "Find joy in God and He will fulfill the desires He placed in you.",
+    "verse_text": "Delight yourself in the Lord, and he will give you the desires of your heart. — Psalm 37:4"
+  },
+  {
+    "title": "You are chosen by God and called to shine His light.",
+    "message": "You are chosen by God and called to shine His light.",
+    "verse_text": "You are a chosen people, a royal priesthood... — 1 Peter 2:9"
+  },
+  {
+    "title": "Pray confidently — God hears and answers.",
+    "message": "Pray confidently — God hears and answers.",
+    "verse_text": "This is the confidence we have in approaching God... — 1 John 5:14"
+  },
+  {
+    "title": "Humility before God brings blessing.",
+    "message": "Humility before God brings blessing.",
+    "verse_text": "Blessed are the poor in spirit... — Matthew 5:3"
+  }
+];
 
 
 let current = 0;
-
 function show(i){
   current = i % messages.length;
   const msg = messages[current];
-  const title = msg.title || 'SoulVibe Sanctuary';
-  const verse = (msg.references && msg.references.length) ? msg.references[0] : '';
   const titleEl = document.getElementById('message-title');
   const verseEl = document.getElementById('verse-line');
   titleEl.classList.remove('fade');
   verseEl.classList.remove('fade');
   void titleEl.offsetWidth;
-  titleEl.textContent = title;
-  verseEl.textContent = verse;
+  titleEl.textContent = msg.message || 'SoulVibe Sanctuary';
+  verseEl.textContent = msg.verse_text || '';
   titleEl.classList.add('fade');
   verseEl.classList.add('fade');
 }
-
 function next(){ show(current + 1); }
-
 window.addEventListener('DOMContentLoaded', ()=>{
   if(!messages || messages.length === 0){
     document.getElementById('message-title').textContent = 'No verses available';
