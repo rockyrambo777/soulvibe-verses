@@ -2504,26 +2504,58 @@ const messages = [
 
 
 let current = 0;
-function show(i){
+
+function show(i) {
+
   current = i % messages.length;
+
   const msg = messages[current];
-  const titleEl = document.getElementById('message-title');
-  const verseEl = document.getElementById('verse-line');
-  titleEl.classList.remove('fade');
-  verseEl.classList.remove('fade');
+
+  const titleEl = document.getElementById("message-title");
+  const verseEl = document.getElementById("verse-line");
+
+  titleEl.classList.remove("fade");
+  verseEl.classList.remove("fade");
+
+  /* Force animation reset */
   void titleEl.offsetWidth;
-  titleEl.textContent = msg.message || 'SoulVibe Sanctuary';
-  verseEl.textContent = msg.verse_text || '';
-  titleEl.classList.add('fade');
-  verseEl.classList.add('fade');
+
+  titleEl.textContent =
+    msg.message || "SoulVibe Sanctuary";
+
+  verseEl.textContent =
+    msg.verse_text || "";
+
+  titleEl.classList.add("fade");
+  verseEl.classList.add("fade");
 }
-function next(){ show(current + 1); }
-window.addEventListener('DOMContentLoaded', ()=>{
-  if(!messages || messages.length === 0){
-    document.getElementById('message-title').textContent = 'No verses available';
-    document.getElementById('verse-line').textContent = '';
+
+
+function next() {
+
+  show(current + 1);
+
+}
+
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  if (!messages || messages.length === 0) {
+
+    document.getElementById("message-title").textContent =
+      "SoulVibe Sanctuary";
+
+    document.getElementById("verse-line").textContent =
+      "24/7 Soul Worship";
+
     return;
   }
+
   show(0);
-  setInterval(next, ROTATE_SECONDS * 1000);
+
+  setInterval(
+    next,
+    ROTATE_SECONDS * 1000
+  );
+
 });
